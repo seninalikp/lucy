@@ -1,0 +1,123 @@
+{
+  "stage": "33 provider registry",
+  "created_at": "2026-06-12T19:57:52.319341+00:00",
+  "mode": "local_provider_metadata_only",
+  "providers": {
+    "google": {
+      "provider_id": "google",
+      "display_name": "Google / Gemini",
+      "aliases": [
+        "google",
+        "gemini"
+      ],
+      "role": "external_model_provider",
+      "enabled": false,
+      "future_use": "Gemini model provider after later approval.",
+      "credential_label_only": [
+        "GOOGLE API KEY",
+        "GEMINI API KEY"
+      ],
+      "api_key_value": "[blocked]",
+      "api_key_value_stored": false,
+      "api_key_value_returned": false,
+      "provider_call_allowed": false,
+      "network_allowed": false,
+      "health_check_allowed": false,
+      "model_routing_allowed": false,
+      "external_model_execution_allowed": false,
+      "created_at": "2026-06-12T19:57:52.319377+00:00",
+      "updated_at": "2026-06-12T19:57:52.319377+00:00"
+    },
+    "openrouter": {
+      "provider_id": "openrouter",
+      "display_name": "OpenRouter",
+      "aliases": [
+        "openrouter"
+      ],
+      "role": "external_model_provider_gateway",
+      "enabled": false,
+      "future_use": "Multi-model routing gateway after later approval.",
+      "credential_label_only": [
+        "OPENROUTER API KEY"
+      ],
+      "api_key_value": "[blocked]",
+      "api_key_value_stored": false,
+      "api_key_value_returned": false,
+      "provider_call_allowed": false,
+      "network_allowed": false,
+      "health_check_allowed": false,
+      "model_routing_allowed": false,
+      "external_model_execution_allowed": false,
+      "created_at": "2026-06-12T19:57:52.319402+00:00",
+      "updated_at": "2026-06-12T19:57:52.319402+00:00"
+    },
+    "groq": {
+      "provider_id": "groq",
+      "display_name": "Groq",
+      "aliases": [
+        "groq"
+      ],
+      "role": "external_model_provider",
+      "enabled": false,
+      "future_use": "Fast external model provider after later approval.",
+      "credential_label_only": [
+        "GROQ API KEY"
+      ],
+      "api_key_value": "[blocked]",
+      "api_key_value_stored": false,
+      "api_key_value_returned": false,
+      "provider_call_allowed": false,
+      "network_allowed": false,
+      "health_check_allowed": false,
+      "model_routing_allowed": false,
+      "external_model_execution_allowed": false,
+      "created_at": "2026-06-12T19:57:52.319420+00:00",
+      "updated_at": "2026-06-12T19:57:52.319420+00:00"
+    },
+    "nvidia": {
+      "provider_id": "nvidia",
+      "display_name": "NVIDIA",
+      "aliases": [
+        "nvidia"
+      ],
+      "role": "external_model_provider",
+      "enabled": false,
+      "future_use": "NVIDIA external model provider after later approval.",
+      "credential_label_only": [
+        "NVIDIA API KEY"
+      ],
+      "api_key_value": "[blocked]",
+      "api_key_value_stored": false,
+      "api_key_value_returned": false,
+      "provider_call_allowed": false,
+      "network_allowed": false,
+      "health_check_allowed": false,
+      "model_routing_allowed": false,
+      "external_model_execution_allowed": false,
+      "created_at": "2026-06-12T19:57:52.319437+00:00",
+      "updated_at": "2026-06-12T19:57:52.319437+00:00"
+    }
+  },
+  "registry_events": [],
+  "blocked": {
+    "api_key_values": true,
+    "api_key_file_reading": true,
+    "secret_value_loading": true,
+    "provider_calls": true,
+    "network_access": true,
+    "provider_health_checks": true,
+    "model_routing": true,
+    "external_model_execution": true
+  },
+  "not_implemented": [
+    "API key reading",
+    "secret value loading",
+    "provider calls",
+    "network access",
+    "provider health checks",
+    "model routing",
+    "external model execution",
+    "provider output ingestion",
+    "cost/quota tracking"
+  ]
+}

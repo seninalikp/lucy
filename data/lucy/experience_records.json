@@ -1,0 +1,23 @@
+[
+  {
+    "experience_id": "ex_01bfe1febc1a",
+    "created_at": "2026-06-09T02:50:19.112287+00:00",
+    "stage": "18 experience storage",
+    "source_stage": "17 approved patch pipeline",
+    "event_type": "accepted_stage",
+    "title": "Stage 17 approved patch pipeline accepted",
+    "summary": "Stage 17 added approval-required patch plan records from passed shadow tests only.",
+    "lesson": "Patch plans must require approval and must not apply code automatically.",
+    "risk_noted": "self-modification drift",
+    "future_rule": "Keep real patching disabled unless an approved later workflow allows it.",
+    "confidence": "high",
+    "sensitivity": "safe_project",
+    "approved_for_storage": true,
+    "blocked_content": [],
+    "not_implemented": [
+      "deep recall",
+      "identity stability",
+      "long-term strategy"
+    ]
+  }
+]

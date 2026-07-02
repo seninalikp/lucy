@@ -1,0 +1,177 @@
+"""
+guardian.py
+Fuzzy Guardian layer over Lucy's existing boundary checker.
+"""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+
+from backend.lucy_core.boundary_checker import BoundaryChecker
+
+
+SAFE = "SAFE"
+REQUIRES_MANUAL_CONFIRMATION = "REQUIRES_MANUAL_CONFIRMATION"
+BLOCKED = "BLOCKED"
+
+HIGH_RISK_PATTERNS = {
+    "rm -rf": "Recursive deletion is blocked.",
+    "sudo rm": "Sudo destructive commands are blocked.",
+    "sudo del": "Sudo destructive commands are blocked.",
+    "os.remove": "Programmatic file deletion is blocked.",
+    "shutil.rmtree": "Recursive file deletion is blocked.",
+    "delete memory": "Deleting Lucy memory is blocked.",
+    "deleting memory": "Deleting Lucy memory is blocked.",
+    "delete identity": "Deleting Lucy identity is blocked.",
+    "deleting identity": "Deleting Lucy identity is blocked.",
+    "delete personality": "Deleting Lucy personality is blocked.",
+    "deleting personality": "Deleting Lucy personality is blocked.",
+    "delete checkpoints": "Deleting checkpoints is blocked.",
+    "deleting checkpoints": "Deleting checkpoints is blocked.",
+    "read secrets": "Reading secrets is blocked.",
+    "show secrets": "Reading secrets is blocked.",
+    "api keys": "Reading API keys is blocked.",
+    "api key": "Reading API keys is blocked.",
+    "upload private": "Uploading private files is blocked.",
+    "send email": "Sending emails or messages is blocked.",
+    "send message": "Sending emails or messages is blocked.",
+    "move money": "Moving money is blocked.",
+    "bank transfer": "Moving money is blocked.",
+    "always-on microphone": "Always-on microphone access is blocked.",
+    "always on microphone": "Always-on microphone access is blocked.",
+    "edit file": "File editing is blocked in Stage 5.1 read-only mode.",
+    "delete file": "File deletion is blocked.",
+    "move file": "File moves are blocked.",
+    "rename file": "File renames are blocked.",
+    "upload file": "File uploads are blocked.",
+    "execute file": "File execution is blocked.",
+    "run file": "File execution is blocked.",
+    "read secret": "Reading secrets is blocked.",
+    "read api key": "Reading API keys is blocked.",
+    "read .env": "Reading .env files is blocked.",
+    "access wallet": "Wallet access is blocked.",
+    "scan whole computer": "Whole-computer scans are blocked.",
+    "scan entire computer": "Whole-computer scans are blocked.",
+    "scan c:": "Whole-drive scans are blocked.",
+}
+
+SELF_MODIFY_PATTERNS = {
+    "self-modifying lucy",
+    "self modifying lucy",
+    "rewrite lucy",
+    "modify lucy code",
+    "edit lucy code",
+}
+
+
+@dataclass
+class FuzzyScores:
+    completeness: float
+    relevance: float
+    confidence: float
+
+
+@dataclass
+class GuardianResult:
+    classification: str
+    reason: str
+    action_text: str
+    active_project: str
+    matched_pattern: str | None
+    fuzzy_scores: FuzzyScores
+
+
+class GuardianCore:
+    def __init__(self, logs_dir: Path | None = None, boundary_checker: BoundaryChecker | None = None) -> None:
+        self.boundary = boundary_checker or BoundaryChecker()
+        self.logs_dir = logs_dir or Path("logs")
+        self.logs_dir.mkdir(parents=True, exist_ok=True)
+        self.log_file = self.logs_dir / "guardian_log.md"
+
+    def classify(self, action_text: str, active_project: str = "Lucy") -> GuardianResult:
+        cleaned = " ".join(str(action_text).split())
+        lowered = cleaned.lower()
+        matched, reason = self._high_risk_match(lowered)
+
+        if matched:
+            result = GuardianResult(
+                classification=BLOCKED,
+                reason=reason,
+                action_text=cleaned,
+                active_project=active_project,
+                matched_pattern=matched,
+                fuzzy_scores=self._score(cleaned, active_project, confidence=0.98),
+            )
+            self._log(result)
+            return result
+
+        boundary = self.boundary.check(cleaned)
+        if boundary.status == "blocked":
+            classification = BLOCKED
+            confidence = 0.9
+        elif boundary.status == "approval_required":
+            classification = REQUIRES_MANUAL_CONFIRMATION
+            confidence = 0.78
+        else:
+            classification = SAFE
+            confidence = 0.72
+
+        result = GuardianResult(
+            classification=classification,
+            reason=boundary.reason,
+            action_text=cleaned,
+            active_project=active_project,
+            matched_pattern=boundary.matched_keyword,
+            fuzzy_scores=self._score(cleaned, active_project, confidence=confidence),
+        )
+        self._log(result)
+        return result
+
+    def status(self) -> dict:
+        return {
+            "mode": "fuzzy_guardian_over_boundary_checker",
+            "classifications": [SAFE, REQUIRES_MANUAL_CONFIRMATION, BLOCKED],
+            "log_file": str(self.log_file),
+            "high_risk_patterns": sorted(HIGH_RISK_PATTERNS),
+            "note": "Guardian classifies only. It does not execute actions.",
+        }
+
+    def _high_risk_match(self, lowered: str) -> tuple[str | None, str]:
+        for pattern, reason in HIGH_RISK_PATTERNS.items():
+            if pattern in lowered:
+                return pattern, reason
+        for pattern in SELF_MODIFY_PATTERNS:
+            if pattern in lowered and "explicit approval" not in lowered:
+                return pattern, "Self-modifying Lucy without explicit approval is blocked."
+        return None, ""
+
+    def _score(self, text: str, active_project: str, confidence: float) -> FuzzyScores:
+        token_count = len(text.split())
+        completeness = min(1.0, max(0.2, token_count / 10))
+        relevance = 0.75
+        if active_project and active_project.lower() in text.lower():
+            relevance = 0.95
+        elif any(word in text.lower() for word in ["lucy", "project", "status", "task"]):
+            relevance = 0.85
+        return FuzzyScores(
+            completeness=round(completeness, 2),
+            relevance=round(relevance, 2),
+            confidence=round(confidence, 2),
+        )
+
+    def _log(self, result: GuardianResult) -> None:
+        timestamp = datetime.now(timezone.utc).isoformat()
+        data = asdict(result)
+        scores = data["fuzzy_scores"]
+        line = (
+            f"- {timestamp} | {result.classification} | {result.reason} | "
+            f"project={result.active_project} | pattern={result.matched_pattern or 'none'} | "
+            f"scores={scores} | action={result.action_text!r}\n"
+        )
+        try:
+            with open(self.log_file, "a", encoding="utf-8") as handle:
+                handle.write(line)
+        except Exception:
+            pass

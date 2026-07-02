@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "stage": "11 safe access",
+  "access_state": "disabled",
+  "local_only_policy": "prepared",
+  "external_access": "blocked",
+  "network_server": "not enabled",
+  "phone_browser_access": "not enabled",
+  "token_generation": "blocked",
+  "future_access_changes_require_approval": true,
+  "source_policy": "caller_supplied_label_only"
+}

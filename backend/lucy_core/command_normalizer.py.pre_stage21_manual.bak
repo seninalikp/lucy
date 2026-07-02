@@ -1,0 +1,111 @@
+"""
+Deterministic command aliases for safe Stage 16 cleanup commands.
+
+This is exact alias handling only. It does not perform fuzzy routing and it
+does not normalize unsafe action requests.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class NormalizedCommand:
+    text: str
+    changed: bool = False
+    clarification: str = ""
+
+
+EXACT_ALIASES = {
+    "valuation lab status": "evaluation lab status",
+    "eval lab status": "evaluation lab status",
+    "evaluation lab": "evaluation lab status",
+    "show evaluation": "show evaluations",
+    "evaluate prposal": "evaluate proposal",
+    "eval proposal": "evaluate proposal",
+    "eval prposal": "evaluate proposal",
+    "evaluate groth proposal": "evaluate growth proposals",
+    "evaluate growth proposal": "evaluate growth proposals",
+    "growth proposal status": "growth proposals status",
+    "groth proposal status": "growth proposals status",
+    "self modal status": "self model status",
+    "shadow test status": "shadow testing status",
+    "show shadow test": "show shadow tests",
+    "first thot status": "first thought status",
+    "run time status": "runtime status",
+    "agents status": "agent status",
+    "agents report": "agent report",
+    "patch status": "patch pipeline status",
+    "show patch plan": "show patch plans",
+    "prepare patch": "prepare patch plan",
+    "create patch": "create patch plan",
+    "prepare patch plan": "prepare patch plan",
+    "create patch plan": "create patch plan",
+    "experience": "experience storage status",
+    "experiences": "show experiences",
+    "record lesson": "record experience",
+    "show lessons": "show experiences",
+    "next": "what next",
+    "now what": "what next",
+    "wht next": "what next",
+    "identity": "identity stability status",
+    "identity status": "identity stability status",
+    "identity stability status": "identity stability status",
+    "identity checks": "show identity checks",
+    "show identity checks": "show identity checks",
+    "show identity stability checks": "show identity stability checks",
+    "check identity": "check identity stability",
+    "identity check": "identity check",
+    "check identity stability": "check identity stability",
+    "stability status": "identity stability status",
+    "strategy": "create long-term strategy",
+    "strategies": "show long-term strategies",
+    "strategy status": "long-term strategy status",
+    "long term strategy status": "long-term strategy status",
+    "long-term strategy status": "long-term strategy status",
+    "create strategy": "create long-term strategy",
+    "create long term strategy": "create long-term strategy",
+    "create long-term strategy": "create long-term strategy",
+    "show strategies": "show long-term strategies",
+    "show long term strategies": "show long-term strategies",
+    "show long-term strategies": "show long-term strategies",
+}
+
+PREFIX_ALIASES = (
+    ("evaluate prposal ", "evaluate proposal "),
+    ("eval proposal ", "evaluate proposal "),
+    ("eval prposal ", "evaluate proposal "),
+    ("shadow test prposal ", "shadow test proposal "),
+    ("prepare patch ", "prepare patch plan "),
+    ("create patch ", "create patch plan "),
+)
+
+CLARIFICATIONS = {
+    "proposal": "Do you mean growth proposals status, evaluate proposal, or show growth proposals?",
+    "shadow": "Do you mean shadow testing status, run shadow test, or show shadow tests?",
+}
+
+
+def normalize_command(text: str) -> NormalizedCommand:
+    original = str(text or "").strip()
+    cleaned = re.sub(r"\s+", " ", original)
+    lowered = cleaned.lower()
+
+    if lowered in CLARIFICATIONS:
+        return NormalizedCommand(text=cleaned, clarification=CLARIFICATIONS[lowered])
+
+    alias = EXACT_ALIASES.get(lowered)
+    if alias is not None:
+        return NormalizedCommand(text=alias, changed=alias != cleaned)
+
+    for source, target in PREFIX_ALIASES:
+        if lowered.startswith(source):
+            suffix = cleaned[len(source):].strip()
+            if source in {"prepare patch ", "create patch "} and suffix.lower().startswith("plan"):
+                return NormalizedCommand(text=cleaned)
+            normalized = target + suffix if suffix else target.strip()
+            return NormalizedCommand(text=normalized, changed=True)
+
+    return NormalizedCommand(text=cleaned)

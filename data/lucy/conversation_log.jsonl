@@ -1,0 +1,105 @@
+{"timestamp": "2026-06-07T14:54:07.041977+00:00", "input": "hi", "reply": "Hey. I'm operational. What are we working on?", "quality": "low"}
+{"timestamp": "2026-06-07T14:54:16.642030+00:00", "input": "how are you", "reply": "Systems nominal. What do you need?", "quality": "low"}
+{"timestamp": "2026-06-07T14:54:25.746096+00:00", "input": "hyy", "reply": "Understood. What would you like to do?", "quality": "low"}
+{"timestamp": "2026-06-07T14:54:33.650018+00:00", "input": "tell me", "reply": "Understood. What would you like to do?", "quality": "low"}
+{"timestamp": "2026-06-07T14:54:49.841877+00:00", "input": "ok we are work in progress okeee", "reply": "Understood. What would you like to do?", "quality": "low"}
+{"timestamp": "2026-06-07T16:04:15.287087+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T16:04:17.670364+00:00", "input": "hy", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T16:04:25.366360+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T16:04:37.942395+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T16:05:13.319000+00:00", "input": "ok we are work in progress okeee", "reply": "Confirmed. Lucy is work in progress. Current safe move: Review desktop UI, checkpoint_0101, fallback learning proposals, and NVIDIA key setup after sleep..", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T16:05:29.334262+00:00", "input": "random", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T16:05:46.198260+00:00", "input": "what can you do", "reply": "I can help with your active project, run checks, review memory, and answer questions about my current state. What would you like to start with?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T18:48:03.326105+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T18:48:11.261320+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T18:48:26.941315+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:10:29.274630+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:10:29.318156+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:10:29.362886+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:12:05.425000+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:12:05.470170+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:12:05.514379+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:20:08.620553+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:20:13.819665+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:20:19.883640+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:35:44.863824+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:35:44.971938+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:35:45.062271+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:42:41.067410+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:42:49.258356+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T19:43:00.014469+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:02:13.841917+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:02:13.929011+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:02:14.053362+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:14:26.361386+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:14:30.504610+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:14:38.072579+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:56:59.709054+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:56:59.765016+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T20:56:59.823736+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:16:57.013973+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:17:03.173118+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:17:09.397169+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:30:34.308779+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:30:34.372814+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:30:34.435350+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:47:34.989567+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:47:35.047316+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T21:47:36.963470+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T22:03:27.740049+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T22:03:27.803355+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T22:03:27.871567+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T22:14:04.413379+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T22:14:04.468576+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T22:14:06.482016+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T23:49:19.288004+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T23:49:19.372410+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-07T23:49:19.468867+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:07:13.828149+00:00", "input": "evaluate groth proposal", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:07:36.740127+00:00", "input": "evaluate prposal", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:08:05.060145+00:00", "input": "show evaluation", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:09:19.028229+00:00", "input": "self modal status", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:10:21.908958+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:10:29.428433+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:10:38.484668+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:12:11.628170+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:12:11.675521+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:14:23.442654+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:14:23.504858+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:15:34.706766+00:00", "input": "valuation lab status", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:15:35.479857+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:15:35.532987+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-08T02:15:36.501885+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T01:29:44.490474+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T01:29:44.554001+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T01:29:44.616773+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T01:33:02.094924+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T01:33:02.179512+00:00", "input": "tell me", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T01:33:03.475361+00:00", "input": "what next", "reply": "Tell you about what - current Lucy status, next step, or what changed last session?", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T02:20:07.214674+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T02:28:05.933713+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T02:50:22.744978+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T03:03:42.424470+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T12:09:29.868004+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T12:09:33.563588+00:00", "input": "hlo", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T12:37:22.732207+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-09T13:13:32.156554+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-10T16:30:58.458946+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-10T16:57:35.754421+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-10T16:53:18.186916+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T08:02:01.760035+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T10:18:18.158692+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T10:37:48.977957+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T13:57:04.992628+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T13:57:21.742343+00:00", "input": "tody", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T13:57:27.294142+00:00", "input": "today logs", "reply": "I'm tracking this as context. Give me the next instruction or ask for current status.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T20:30:18.629931+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T21:01:34.632351+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T21:43:49.353304+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T22:23:41.818271+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-11T23:19:18.859293+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-12T02:38:21.567680+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-12T18:37:33.561175+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-06-12T19:58:11.867301+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-07-02T13:10:10.751327+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}
+{"timestamp": "2026-07-02T13:10:16.089411+00:00", "input": "hi", "reply": "Hey. I'm here. Active project: Lucy.", "quality": "low", "source": "fallback_v2"}

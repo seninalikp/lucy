@@ -1,0 +1,36 @@
+{
+  "source": "ELIE memory/build_memory.json and project_memory.json",
+  "source_note": "ELIE describes itself as a tiny Lucy-inspired skeleton and references Lucy V0.1 Checkpoint 023 architecture style. This file preserves recovered architecture history, not original Lucy source code.",
+  "highest_recovered_checkpoint": "023",
+  "confidence": "reference_only",
+  "notes": [
+    "Lucy's original checkpoint files are not present in the current workspace.",
+    "ELIE is treated as a smaller reference implementation, not Lucy herself.",
+    "Lucy must stay the top-level system; ELIE patterns can be reused only as architecture."
+  ],
+  "checkpoints": [
+    {"checkpoint": "001", "desc": "Core Architecture Foundation initialized."},
+    {"checkpoint": "002", "desc": "Folder structure and first local core files created."},
+    {"checkpoint": "003", "desc": "Foundational identity memory separated from project memory."},
+    {"checkpoint": "004", "desc": "Guardian Core concept added as the brakes layer."},
+    {"checkpoint": "005", "desc": "Car Theory architecture written into project direction."},
+    {"checkpoint": "006", "desc": "Session state and resume context introduced."},
+    {"checkpoint": "007", "desc": "Current stable version marker added."},
+    {"checkpoint": "008", "desc": "Conversation notes file added for safe lightweight continuity."},
+    {"checkpoint": "009", "desc": "Permission levels introduced as access-control keys."},
+    {"checkpoint": "010", "desc": "Local fallback command loop stabilized."},
+    {"checkpoint": "011", "desc": "Smarter command understanding and voice polish."},
+    {"checkpoint": "012", "desc": "Decision pipeline and API brain preparation."},
+    {"checkpoint": "013", "desc": "Safe brain wrapper active."},
+    {"checkpoint": "014", "desc": "Local brain response checker implemented."},
+    {"checkpoint": "015", "desc": "First safe external API brain test isolated."},
+    {"checkpoint": "016", "desc": "Brain router and local fallback pipeline."},
+    {"checkpoint": "017", "desc": "Modular brain rules and wrapper rules separated into files."},
+    {"checkpoint": "018", "desc": "Safety blocked actions expanded for secrets, camera, mic, and destructive commands."},
+    {"checkpoint": "019", "desc": "Memory read/write design kept JSON-based and modular."},
+    {"checkpoint": "020", "desc": "Checkpoint backup habit added before risky changes."},
+    {"checkpoint": "021", "desc": "Pre-UI update backup reference created."},
+    {"checkpoint": "022", "desc": "Memory router fix reference created."},
+    {"checkpoint": "023", "desc": "Desktop UI visual upgrade completed in original Lucy track; core preserved. ELIE excluded UI by design."}
+  ]
+}

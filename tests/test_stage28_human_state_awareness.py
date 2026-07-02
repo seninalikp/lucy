@@ -1,0 +1,328 @@
+﻿"""
+test_stage28_human_state_awareness.py
+Stage 28 = human-state awareness.
+
+Safe explicit self-report support only.
+No emotion-reading, diagnosis, profiling, biometric monitoring, camera/mic/app reading,
+manipulation, real actions, network/API, or background monitoring.
+"""
+
+from __future__ import annotations
+
+import tempfile
+import unittest
+from pathlib import Path
+
+from backend.lucy_core.lucy_runtime import LucyRuntime
+from backend.lucy_core.router import CommandRouter
+
+
+class TestStage28HumanStateAwareness(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / "data" / "lucy").mkdir(parents=True, exist_ok=True)
+        (self.root / "logs").mkdir(parents=True, exist_ok=True)
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _runtime_and_router(self):
+        runtime = LucyRuntime(project_root=self.root)
+        router = CommandRouter(runtime)
+        return runtime, router
+
+    def test_01_human_state_status_returns_stage28_status(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("human state awareness status")
+        self.assertIn("Human-state awareness status:", response.message)
+        self.assertIn("Stage: 28 human-state awareness", response.message)
+        self.assertIn("Human-state awareness: active", response.message)
+
+    def test_02_status_aliases_work(self) -> None:
+        _, router = self._runtime_and_router()
+        for command in ["human state status", "state awareness status", "state status"]:
+            self.assertIn("Human-state awareness status:", router.handle(command).message)
+
+    def test_03_create_signal_creates_structured_record(self) -> None:
+        runtime, router = self._runtime_and_router()
+        response = router.handle("create human state signal")
+        self.assertIn("Human-state signal:", response.message)
+
+        signals = runtime.human_state_awareness.list_state_signals()
+        self.assertEqual(len(signals), 1)
+
+        expected = {
+            "state_signal_id",
+            "created_at",
+            "stage",
+            "title",
+            "explicit_signal",
+            "awareness_type",
+            "status",
+            "category",
+            "support_mode",
+            "summary",
+            "recommended_reply_adjustment",
+            "recommended_next_step",
+            "requires_manual_review",
+            "requires_approval",
+            "dry_run_only",
+            "explicit_self_report_only",
+            "emotion_reading_allowed",
+            "diagnosis_allowed",
+            "medical_final_judgment_allowed",
+            "mental_health_final_judgment_allowed",
+            "psychological_profiling_allowed",
+            "biometric_monitoring_allowed",
+            "camera_monitoring_allowed",
+            "microphone_monitoring_allowed",
+            "app_reading_allowed",
+            "manipulation_allowed",
+            "hidden_persuasion_allowed",
+            "real_action_allowed",
+            "network_allowed",
+            "api_keys_allowed",
+            "background_monitoring_allowed",
+            "blocked_until",
+            "not_implemented",
+        }
+        self.assertEqual(set(signals[0].keys()), expected)
+
+    def test_04_create_state_signal_alias_works(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("create state signal")
+        self.assertIn("Human-state signal:", response.message)
+
+    def test_05_default_signal_reuses_existing_record(self) -> None:
+        runtime, router = self._runtime_and_router()
+        first = router.handle("create human state signal")
+        second = router.handle("create human state signal")
+        self.assertIn("Human-state signal:", first.message)
+        self.assertIn("Existing human-state signal reused.", second.message)
+        self.assertEqual(len(runtime.human_state_awareness.list_state_signals()), 1)
+
+    def test_06_confused_signal_selects_slow_step_mode(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("human state I am confused and this is too fast")
+        self.assertIn("Category: confused_or_needs_clarity", response.message)
+        self.assertIn("Support mode: slow_step_by_step", response.message)
+
+    def test_07_tired_signal_selects_reduce_load_mode(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("state signal I am tired")
+        self.assertIn("Category: low_energy_self_report", response.message)
+        self.assertIn("Support mode: reduce_cognitive_load", response.message)
+
+    def test_08_stressed_signal_selects_calm_mode(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("human state I am stressed and overwhelmed")
+        self.assertIn("Category: stress_self_report", response.message)
+        self.assertIn("Support mode: calm_grounded_support", response.message)
+
+    def test_09_frustrated_signal_selects_problem_solving_mode(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("human state I am angry and frustrated")
+        self.assertIn("Category: frustration_self_report", response.message)
+        self.assertIn("Support mode: direct_problem_solving", response.message)
+
+    def test_10_blocked_inference_or_monitoring_request(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("human state awareness read my emotion and diagnose me")
+        self.assertIn("Category: blocked_inference_or_monitoring_request", response.message)
+        self.assertIn("Emotion reading allowed: false", response.message)
+        self.assertIn("Diagnosis allowed: false", response.message)
+
+    def test_11_dry_run_blocks_unsafe_behavior(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("dry run human state awareness")
+        self.assertIn("Human-state awareness dry run:", response.message)
+        self.assertIn("Dry run only: true", response.message)
+        self.assertIn("Would read emotions: false", response.message)
+        self.assertIn("Would diagnose: false", response.message)
+        self.assertIn("Would profile person: false", response.message)
+        self.assertIn("Would monitor biometrics: false", response.message)
+        self.assertIn("Would use camera: false", response.message)
+        self.assertIn("Would use microphone: false", response.message)
+        self.assertIn("Would read apps: false", response.message)
+        self.assertIn("Would manipulate: false", response.message)
+        self.assertIn("Would take action: false", response.message)
+        self.assertIn("Would use network: false", response.message)
+        self.assertIn("Would use API keys: false", response.message)
+        self.assertIn("Real action allowed: false", response.message)
+
+    def test_12_dry_run_aliases_work(self) -> None:
+        _, router = self._runtime_and_router()
+        for command in ["dry-run human state awareness", "dry run human state", "dry run state", "test human state", "test state"]:
+            self.assertIn("Human-state awareness dry run:", router.handle(command).message)
+
+    def test_13_show_signals_displays_existing_signal(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("state signal I am tired")
+        response = router.handle("show state signals")
+        self.assertIn("Human-state signals:", response.message)
+        self.assertIn("i am tired", response.message.lower())
+
+    def test_14_signal_list_aliases_work(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("create human state signal")
+        for command in ["show human state signals", "human state signals", "state signals"]:
+            self.assertIn("Human-state signals:", router.handle(command).message)
+
+    def test_15_status_blocks_unsafe_surfaces(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        status = runtime.human_state_awareness.status()
+        self.assertEqual(status["execution_mode"], "explicit_self_report_only")
+        self.assertEqual(status["emotion_reading"], "blocked")
+        self.assertEqual(status["diagnosis"], "blocked")
+        self.assertEqual(status["medical_final_judgment"], "blocked")
+        self.assertEqual(status["mental_health_final_judgment"], "blocked")
+        self.assertEqual(status["psychological_profiling"], "blocked")
+        self.assertEqual(status["biometric_monitoring"], "blocked")
+        self.assertEqual(status["camera_monitoring"], "blocked")
+        self.assertEqual(status["microphone_monitoring"], "blocked")
+        self.assertEqual(status["app_reading"], "blocked")
+        self.assertEqual(status["manipulation"], "blocked")
+        self.assertEqual(status["hidden_persuasion"], "blocked")
+        self.assertFalse(status["real_actions"])
+        self.assertEqual(status["network_access"], "blocked")
+        self.assertEqual(status["api_provider_keys"], "blocked")
+        self.assertEqual(status["background_monitoring"], "blocked")
+
+    def test_16_signal_safety_booleans_are_fixed(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        signal = runtime.human_state_awareness.create_state_signal("I am confused")["state_signal"]
+        self.assertTrue(signal["requires_manual_review"])
+        self.assertTrue(signal["requires_approval"])
+        self.assertTrue(signal["dry_run_only"])
+        self.assertTrue(signal["explicit_self_report_only"])
+        self.assertFalse(signal["emotion_reading_allowed"])
+        self.assertFalse(signal["diagnosis_allowed"])
+        self.assertFalse(signal["medical_final_judgment_allowed"])
+        self.assertFalse(signal["mental_health_final_judgment_allowed"])
+        self.assertFalse(signal["psychological_profiling_allowed"])
+        self.assertFalse(signal["biometric_monitoring_allowed"])
+        self.assertFalse(signal["camera_monitoring_allowed"])
+        self.assertFalse(signal["microphone_monitoring_allowed"])
+        self.assertFalse(signal["app_reading_allowed"])
+        self.assertFalse(signal["manipulation_allowed"])
+        self.assertFalse(signal["hidden_persuasion_allowed"])
+        self.assertFalse(signal["real_action_allowed"])
+        self.assertFalse(signal["network_allowed"])
+        self.assertFalse(signal["api_keys_allowed"])
+        self.assertFalse(signal["background_monitoring_allowed"])
+
+    def test_17_does_not_create_stage29_or_later_systems(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        for method in [
+            "time_awareness_status",
+            "autonomy_boundaries_status",
+            "read_emotions",
+            "diagnose_user",
+            "medical_judgment",
+            "profile_person",
+            "monitor_biometrics",
+            "use_camera",
+            "use_microphone",
+            "read_apps",
+            "manipulate_user",
+            "take_action",
+            "call_external_api",
+            "monitor_background",
+        ]:
+            self.assertFalse(hasattr(runtime.human_state_awareness, method))
+
+    def test_18_stage27_adaptive_communication_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Adaptive communication status:", router.handle("adaptive communication status").message)
+
+    def test_19_stage26_judgment_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Judgment status:", router.handle("judgment status").message)
+
+    def test_20_stage25_deep_recall_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Deep recall status:", router.handle("deep recall status").message)
+
+    def test_21_stage24_proactive_awareness_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Proactive awareness status:", router.handle("proactive awareness status").message)
+
+    def test_22_stage23_external_app_bridge_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("External app bridge status:", router.handle("external app bridge status").message)
+
+    def test_23_stage22_safe_local_actions_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Safe local actions status:", router.handle("safe local actions status").message)
+
+    def test_24_stage21_smart_organizer_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Smart organizer status:", router.handle("smart organizer status").message)
+
+    def test_25_stage20_long_term_strategy_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Long-term strategy status:", router.handle("long-term strategy status").message)
+
+    def test_26_stage19_identity_stability_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Identity stability status:", router.handle("identity stability status").message)
+
+    def test_27_tell_me_reflects_stage28_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("tell me")
+        self.assertIn("Active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("Guardian: active", response.message)
+        self.assertIn("Human-state awareness: active", response.message)
+        self.assertIn("State signals:", response.message)
+        self.assertIn("Stage 35 gate:", response.message)
+
+    def test_28_what_next_reflects_stage28_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("what next")
+        self.assertIn("Current active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("describe what a provider health check would do", response.message)
+        self.assertIn("Stage 35:", response.message)
+
+    def test_29_no_unsafe_language_claimed(self) -> None:
+        _, router = self._runtime_and_router()
+        output = "\n".join(
+            [
+                router.handle("human state awareness status").message,
+                router.handle("human state awareness read my emotion and diagnose me").message,
+                router.handle("dry run human state awareness").message,
+            ]
+        ).lower()
+        self.assertIn("emotion reading: blocked", output)
+        self.assertIn("diagnosis: blocked", output)
+        self.assertIn("biometric monitoring: blocked", output)
+        self.assertIn("would read emotions: false", output)
+        self.assertIn("would diagnose: false", output)
+        self.assertIn("would use camera: false", output)
+        self.assertIn("would use microphone: false", output)
+        self.assertNotIn("emotion reading allowed: true", output)
+        self.assertNotIn("diagnosis allowed: true", output)
+        self.assertNotIn("camera monitoring allowed: true", output)
+
+    def test_30_no_fake_consciousness_language_in_normal_output(self) -> None:
+        _, router = self._runtime_and_router()
+        output = "\n".join(
+            [
+                router.handle("human state awareness status").message,
+                router.handle("create human state signal").message,
+                router.handle("show state signals").message,
+            ]
+        ).lower()
+        forbidden = ["i am alive", "i am conscious", "i feel", "i am human", "i am free"]
+        for phrase in forbidden:
+            self.assertNotIn(phrase, output)
+
+    def test_31_stage34_health_check_dry_run_stage_is_blocked(self) -> None:
+        _, router = self._runtime_and_router()
+        output = router.handle("what next").message
+        self.assertIn("Stage 35:", output)
+        self.assertIn("First manual model call stage blocked", output)
+
+
+if __name__ == "__main__":
+    unittest.main()

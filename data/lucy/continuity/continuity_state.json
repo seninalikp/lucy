@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "mode": "local_non_secret_rolling_backups",
+  "created_at": "2026-06-07T00:43:10.768660+00:00",
+  "updated_at": "2028-04-06T19:06:30.332014+00:00",
+  "change_counter": 0,
+  "next_auto_backup_after": 4,
+  "last_backup_at": "2028-04-06T19:06:30.100756+00:00",
+  "last_backup_path": "C:\\Users\\senin ali kp\\Documents\\lucy\\data\\lucy\\continuity\\backups\\lucy_continuity_20280406_190630_startup_continuity_refresh.zip",
+  "total_backups_created": 3
+}

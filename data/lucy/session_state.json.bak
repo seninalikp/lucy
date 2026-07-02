@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "session_count": 84,
+  "last_opened": "2026-07-02T13:09:58.209351+00:00",
+  "last_closed": "2026-06-12T18:43:30.073730+00:00",
+  "graceful_shutdown": false,
+  "crash_recovery_needed": true,
+  "active_project": "Lucy",
+  "current_checkpoint": "checkpoint_0102",
+  "last_user_intent": "tool policy",
+  "last_command": "tool policy",
+  "last_response_summary": "Tool policy: Approved folders: 0 Safe reads: True Writes enabled: False Network enabled: False Execution enabled: False Large read confirmation: True Max safe read bytes: 65536 Max search results: 50 Blocked: write/delete/execute/network/secrets/money/identity-memory actions.",
+  "next_action": "Finish Stage 34 provider health-check dry-run checks, run tests, and back up after acceptance.",
+  "unsaved_items": [],
+  "system_status": "online",
+  "last_error": ""
+}

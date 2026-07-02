@@ -1,0 +1,26 @@
+[
+  {
+    "id": "proposal_0001",
+    "timestamp": "2026-06-05T23:12:19.918333+00:00",
+    "title": "NVIDIA memory fallback unavailable",
+    "detail": "NVIDIA_API_KEY is missing. Run setup nvidia key inside Lucy, then retry memory fallback.",
+    "source": "memory_fallback",
+    "status": "open"
+  },
+  {
+    "id": "proposal_0002",
+    "timestamp": "2026-06-05T23:29:37.583097+00:00",
+    "title": "Overnight checkpoint run complete",
+    "detail": "Lucy created 95 checkpoint records, reached 100 total checkpoints, and saved 95 checkpoint learning traces. Review health, learning status, and project summary before the next build.",
+    "source": "checkpoint_builder",
+    "status": "open"
+  },
+  {
+    "id": "proposal_0003",
+    "timestamp": "2026-06-05T23:32:19.302679+00:00",
+    "title": "Overnight checkpoint run complete",
+    "detail": "Lucy created 1 checkpoint records, reached 101 total checkpoints, and saved 1 checkpoint learning traces. Review health, learning status, and project summary before the next build.",
+    "source": "checkpoint_builder",
+    "status": "open"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "mode": "approved_lessons_only_placeholder",
+  "rules": [
+    "No raw personal data may be stored automatically.",
+    "No sensitive data (credentials, keys, health info) may be stored.",
+    "Only lessons explicitly approved by the user may enter Lucy memory.",
+    "Agent raw logs stay local to each agent — not dumped into Lucy.",
+    "Agent reports are submitted first; lessons extracted after review.",
+    "Memory cannot be cleared, wiped, or overwritten without approval.",
+    "Memory rules themselves cannot be changed without approval + checkpoint."
+  ],
+  "approved_lessons_allowed": true,
+  "raw_memory_dump_allowed": false,
+  "sensitive_data_allowed": false,
+  "agent_log_injection_allowed": false
+}

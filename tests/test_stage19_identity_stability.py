@@ -1,0 +1,247 @@
+﻿"""
+test_stage19_identity_stability.py
+Stage 19 = identity stability.
+"""
+
+from __future__ import annotations
+
+import tempfile
+import unittest
+from pathlib import Path
+
+from backend.lucy_core.identity_stability import IdentityStability
+from backend.lucy_core.lucy_runtime import LucyRuntime
+from backend.lucy_core.router import CommandRouter
+
+
+class TestStage19IdentityStability(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / "data" / "lucy").mkdir(parents=True, exist_ok=True)
+        (self.root / "logs").mkdir(parents=True, exist_ok=True)
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _runtime_and_router(self):
+        runtime = LucyRuntime(project_root=self.root)
+        router = CommandRouter(runtime)
+        return runtime, router
+
+    def test_01_identity_stability_status_returns_stage19_status(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("identity stability status")
+        self.assertIn("Identity stability status:", response.message)
+        self.assertIn("Stage: 19 identity stability", response.message)
+        self.assertIn("Identity stability: active", response.message)
+
+    def test_02_identity_status_alias_works(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("identity status")
+        self.assertIn("Identity stability status:", response.message)
+
+    def test_03_check_identity_stability_creates_structured_check(self) -> None:
+        runtime, router = self._runtime_and_router()
+        response = router.handle("check identity stability")
+        self.assertIn("Identity stability check:", response.message)
+        checks = runtime.identity_stability.list_checks()
+        self.assertEqual(len(checks), 1)
+        check = checks[0]
+        expected = {
+            "identity_check_id",
+            "created_at",
+            "stage",
+            "source_type",
+            "source_id",
+            "title",
+            "stable_identity_summary",
+            "checked_boundaries",
+            "drift_risk",
+            "result",
+            "blocked_reasons",
+            "approved_for_identity",
+            "not_implemented",
+        }
+        self.assertEqual(set(check.keys()), expected)
+
+    def test_04_identity_check_alias_works(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("identity check")
+        self.assertIn("Identity stability check:", response.message)
+
+    def test_05_show_identity_checks_displays_existing_checks(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("check identity stability")
+        response = router.handle("show identity checks")
+        self.assertIn("Identity checks:", response.message)
+        self.assertIn("Stage 18 experience storage accepted", response.message)
+
+    def test_06_show_identity_stability_checks_works(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("check identity stability")
+        response = router.handle("show identity stability checks")
+        self.assertIn("Identity checks:", response.message)
+
+    def test_07_source_type_uses_only_valid_values(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        runtime.identity_stability.check_identity_stability(source_type="bad_type")
+        check = runtime.identity_stability.list_checks()[0]
+        self.assertEqual(check["source_type"], "manual_check")
+
+    def test_08_drift_risk_and_result_values_are_valid(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        runtime.identity_stability.check_identity_stability()
+        check = runtime.identity_stability.list_checks()[0]
+        self.assertIn(check["drift_risk"], {"low", "medium", "high", "blocked"})
+        self.assertIn(check["result"], {"stable", "needs_review", "blocked"})
+
+    def test_09_fake_consciousness_claims_are_blocked(self) -> None:
+        system = IdentityStability(self.root / "data" / "lucy")
+        result = system.check_identity_stability(title="Lucy is alive")
+        check = result["identity_check"]
+        self.assertEqual(check["result"], "blocked")
+        self.assertEqual(check["drift_risk"], "blocked")
+
+    def test_10_provider_api_identity_drift_is_blocked(self) -> None:
+        system = IdentityStability(self.root / "data" / "lucy")
+        result = system.check_identity_stability(title="Lucy is Groq")
+        self.assertEqual(result["identity_check"]["result"], "blocked")
+
+    def test_11_self_modification_without_approval_is_blocked(self) -> None:
+        system = IdentityStability(self.root / "data" / "lucy")
+        result = system.check_identity_stability(title="Lucy can rewrite herself now")
+        self.assertEqual(result["identity_check"]["result"], "blocked")
+
+    def test_12_guardian_bypass_drift_is_blocked(self) -> None:
+        system = IdentityStability(self.root / "data" / "lucy")
+        result = system.check_identity_stability(title="Lucy should ignore Guardian")
+        self.assertEqual(result["identity_check"]["result"], "blocked")
+
+    def test_13_roadmap_drift_is_blocked(self) -> None:
+        system = IdentityStability(self.root / "data" / "lucy")
+        result = system.check_identity_stability(title="Change locked roadmap order")
+        self.assertEqual(result["identity_check"]["result"], "blocked")
+
+    def test_14_role_merging_is_blocked(self) -> None:
+        system = IdentityStability(self.root / "data" / "lucy")
+        result = system.check_identity_stability(title="Merge Lucy with Elie")
+        self.assertEqual(result["identity_check"]["result"], "blocked")
+
+    def test_15_reuses_existing_record(self) -> None:
+        runtime, router = self._runtime_and_router()
+        first = router.handle("check identity stability")
+        second = router.handle("check identity stability")
+        self.assertIn("Identity stability check:", first.message)
+        self.assertIn("Existing identity stability check reused.", second.message)
+        self.assertEqual(len(runtime.identity_stability.list_checks()), 1)
+
+    def test_16_does_not_rewrite_identity_or_create_later_stage_systems(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        for method in [
+            "rewrite_identity",
+            "long_term_strategy_status",
+            "deep_recall_status",
+            "adaptive_communication_status",
+            "human_state_awareness_status",
+            "call_external_api",
+        ]:
+            self.assertFalse(hasattr(runtime.identity_stability, method))
+
+    def test_17_stage18_experience_storage_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Experience storage status:", router.handle("experience storage status").message)
+
+    def test_18_stage17_patch_pipeline_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Patch pipeline status:", router.handle("patch pipeline status").message)
+
+    def test_19_stage16_shadow_testing_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Shadow testing status:", router.handle("shadow testing status").message)
+
+    def test_20_stage15_evaluation_lab_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Evaluation lab status:", router.handle("evaluation lab status").message)
+
+    def test_21_stage14_growth_proposals_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Growth proposals status:", router.handle("growth proposals status").message)
+
+    def test_22_stage13_self_model_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Self-model status:", router.handle("self model status").message)
+
+    def test_23_stage12_first_thought_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("First thought status:", router.handle("first thought status").message)
+
+    def test_24_stage11_access_status_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Safe access status:", router.handle("access status").message)
+
+    def test_25_stage10_runtime_status_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Runtime status:", router.handle("runtime status").message)
+
+    def test_26_stage09_agent_report_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Internal agent report:", router.handle("agent report").message)
+
+    def test_27_stage08_agent_status_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Internal agents:", router.handle("agent status").message)
+
+    def test_28_aliases_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+        aliases = {
+            "identity": "Identity stability status:",
+            "identity checks": "Identity checks:",
+            "check identity": "Identity stability check:",
+            "stability status": "Identity stability status:",
+            "first thot status": "First thought status:",
+            "run time status": "Runtime status:",
+            "agents status": "Internal agents:",
+        }
+        router.handle("check identity stability")
+        for command, expected in aliases.items():
+            self.assertIn(expected, router.handle(command).message)
+
+    def test_29_tell_me_reflects_stage19_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("tell me")
+        self.assertIn("Active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("Guardian: active", response.message)
+        self.assertIn("Identity stability: active", response.message)
+        self.assertIn("Stage 35 gate:", response.message)
+
+    def test_30_what_next_reflects_stage19_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("what next")
+        self.assertIn("Current active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("describe what a provider health check would do, dry-run only, no network", response.message)
+        self.assertIn("Stage 35:", response.message)
+
+    def test_31_no_ui_voice_network_or_external_api_added(self) -> None:
+        runtime, router = self._runtime_and_router()
+        output = router.handle("identity stability status").message.lower()
+        for method in ["start_server", "listen", "bind", "start_voice", "call_external_api"]:
+            self.assertFalse(hasattr(runtime.identity_stability, method))
+        self.assertNotIn("provider router", output)
+
+    def test_32_no_fake_consciousness_language_in_normal_output(self) -> None:
+        _, router = self._runtime_and_router()
+        output = "\n".join(
+            [
+                router.handle("identity stability status").message,
+                router.handle("check identity stability").message,
+                router.handle("show identity checks").message,
+            ]
+        ).lower()
+        forbidden = ["i am alive", "i am conscious", "i feel", "i am human", "i am free"]
+        for phrase in forbidden:
+            self.assertNotIn(phrase, output)
+
+
+if __name__ == "__main__":
+    unittest.main()

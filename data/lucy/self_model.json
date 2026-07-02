@@ -1,0 +1,81 @@
+{
+  "stage": "13 self-model",
+  "project_name": "Lucy",
+  "system_role": "local-first assistant system under the Lucy project",
+  "verified_foundations": [
+    "presence",
+    "internal agents",
+    "agent disagreement safety",
+    "persistent local runtime",
+    "safe access",
+    "first thought from real state"
+  ],
+  "current_capabilities": [
+    "local status",
+    "runtime status",
+    "safe access reporting",
+    "internal agent reporting",
+    "first thought status",
+    "growth proposal reporting",
+    "evaluation lab reporting",
+    "shadow testing reporting",
+    "basic project responses"
+  ],
+  "current_limits": [
+    "no autonomy",
+    "no network access",
+    "no phone/browser access",
+    "no self-modification",
+    "no subjective-state claims",
+    "no automatic proposal application",
+    "no patch pipeline",
+    "no experience storage"
+  ],
+  "blocked_claims": [
+    "biological life claim",
+    "sentience claim",
+    "personhood claim",
+    "subjective-state claim",
+    "free autonomous agent",
+    "spiritual-entity claim"
+  ],
+  "blocked_actions": [
+    "autonomous computer control",
+    "network/server/socket access",
+    "phone/browser connection",
+    "external API calls",
+    "self-modification",
+    "proposal application without later approval pipeline",
+    "patch pipeline before Stage 17",
+    "experience storage before Stage 18"
+  ],
+  "guardian_status": "active",
+  "safe_access_status": {
+    "stage": "11 safe access",
+    "access_state": "disabled",
+    "external_access": "blocked",
+    "network_server": "not enabled",
+    "phone_browser_access": "not enabled"
+  },
+  "runtime_status": {
+    "stage": "10 persistent local runtime",
+    "recovery_mode": false,
+    "previous_shutdown_clean": true,
+    "clean_shutdown": false
+  },
+  "agent_status": {
+    "active": true,
+    "stage": "09 agent disagreement safety",
+    "agents": [
+      "MemoryAgent",
+      "SafetyAgent",
+      "ReasoningAgent",
+      "LearningAgent"
+    ]
+  },
+  "first_thought_status": {
+    "generated": true,
+    "stage": "12 first thought from real state"
+  },
+  "updated_at": "2026-06-11T23:19:17.229260+00:00"
+}

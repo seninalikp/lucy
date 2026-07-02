@@ -1,0 +1,213 @@
+"""
+runtime_health.py
+Checks that Lucy runtime components are present and safe.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from pathlib import Path
+
+
+@dataclass
+class HealthCheck:
+    name: str
+    passed: bool
+    detail: str
+
+
+@dataclass
+class HealthReport:
+    checks: list[HealthCheck] = field(default_factory=list)
+
+    @property
+    def all_passed(self) -> bool:
+        return all(check.passed for check in self.checks)
+
+    @property
+    def passed_count(self) -> int:
+        return sum(1 for check in self.checks if check.passed)
+
+    @property
+    def failed_count(self) -> int:
+        return sum(1 for check in self.checks if not check.passed)
+
+
+def run_health_check(project_root: Path, config: dict) -> HealthReport:
+    """Run all Lucy health checks."""
+    report = HealthReport()
+
+    def check(name: str, passed: bool, detail: str) -> None:
+        report.checks.append(HealthCheck(name=name, passed=passed, detail=detail))
+
+    runtime_cfg = project_root / "config" / "lucy_runtime_config.json"
+    check("config_exists", runtime_cfg.exists(), str(runtime_cfg))
+
+    protected_cfg = project_root / "config" / "lucy_protected_actions.json"
+    check("protected_actions_config_exists", protected_cfg.exists(), str(protected_cfg))
+
+    from backend.lucy_core.spine_loader import find_spine_file
+
+    spine_path = find_spine_file(project_root)
+    spine_detail = str(spine_path) if spine_path else "No spine file found - fallback active"
+    check("spine_file_found", spine_path is not None, spine_detail)
+
+    logs_dir = project_root / "data" / "lucy" / "logs"
+    check("logs_dir_exists", logs_dir.exists(), str(logs_dir))
+
+    approvals_file = project_root / "data" / "lucy" / "approvals" / "approval_requests.json"
+    check("approvals_file_exists", approvals_file.exists(), str(approvals_file))
+
+    checkpoints_dir = project_root / "data" / "lucy" / "checkpoints"
+    check("checkpoints_dir_exists", checkpoints_dir.exists(), str(checkpoints_dir))
+
+    memory_rules = project_root / "data" / "lucy" / "memory" / "memory_rules.json"
+    check("memory_rules_exists", memory_rules.exists(), str(memory_rules))
+
+    memory_file = project_root / "data" / "lucy" / "memory" / "memory.json"
+    check("memory_file_exists", memory_file.exists(), str(memory_file))
+
+    projects_file = project_root / "data" / "lucy" / "projects.json"
+    check("projects_file_exists", projects_file.exists(), str(projects_file))
+
+    reminders_file = project_root / "data" / "lucy" / "reminders.json"
+    check("reminders_file_exists", reminders_file.exists(), str(reminders_file))
+
+    recovered_file = project_root / "data" / "lucy" / "recovered_architecture.json"
+    check("recovered_architecture_exists", recovered_file.exists(), str(recovered_file))
+
+    learning_dir = project_root / "data" / "lucy" / "learning"
+    check("learning_dir_exists", learning_dir.exists(), str(learning_dir))
+
+    talking_style_file = learning_dir / "talking_style.json"
+    check("talking_style_file_exists", talking_style_file.exists(), str(talking_style_file))
+
+    secure_dir = project_root / "data" / "lucy" / "secure"
+    check("secure_dir_exists", secure_dir.exists(), str(secure_dir))
+
+    registry_file = project_root / "data" / "lucy" / "agent_registry.json"
+    check("agent_registry_exists", registry_file.exists(), str(registry_file))
+
+    build_log = project_root / "logs" / "build_log.md"
+    check("build_log_exists", build_log.exists(), str(build_log))
+
+    test_log = project_root / "logs" / "test_log.md"
+    check("test_log_exists", test_log.exists(), str(test_log))
+
+    tools_module = project_root / "backend" / "lucy_core" / "tools.py"
+    check("tools_module_exists", tools_module.exists(), str(tools_module))
+
+    reminders_module = project_root / "backend" / "lucy_core" / "reminders.py"
+    check("reminders_module_exists", reminders_module.exists(), str(reminders_module))
+
+    brain_module = project_root / "backend" / "lucy_core" / "brain.py"
+    check("brain_module_exists", brain_module.exists(), str(brain_module))
+
+    cognition_module = project_root / "backend" / "lucy_core" / "cognition.py"
+    check("cognition_module_exists", cognition_module.exists(), str(cognition_module))
+
+    cognition_dir = project_root / "data" / "lucy" / "cognition"
+    check("cognition_dir_exists", cognition_dir.exists(), str(cognition_dir))
+
+    ops_module = project_root / "backend" / "lucy_core" / "ops.py"
+    check("ops_module_exists", ops_module.exists(), str(ops_module))
+
+    recovery_module = project_root / "backend" / "lucy_core" / "recovery.py"
+    check("recovery_module_exists", recovery_module.exists(), str(recovery_module))
+
+    learning_module = project_root / "backend" / "lucy_core" / "learning.py"
+    check("learning_module_exists", learning_module.exists(), str(learning_module))
+
+    knowledge_module = project_root / "backend" / "lucy_core" / "knowledge.py"
+    check("knowledge_module_exists", knowledge_module.exists(), str(knowledge_module))
+
+    knowledge_dir = project_root / "data" / "lucy" / "knowledge"
+    check("knowledge_dir_exists", knowledge_dir.exists(), str(knowledge_dir))
+
+    daily_module = project_root / "backend" / "lucy_core" / "daily_context.py"
+    check("daily_context_module_exists", daily_module.exists(), str(daily_module))
+
+    daily_file = project_root / "data" / "lucy" / "daily" / "daily_context.json"
+    check("daily_context_file_exists", daily_file.exists(), str(daily_file))
+
+    continuity_module = project_root / "backend" / "lucy_core" / "continuity.py"
+    check("continuity_module_exists", continuity_module.exists(), str(continuity_module))
+
+    continuity_state = project_root / "data" / "lucy" / "continuity" / "continuity_state.json"
+    check("continuity_state_exists", continuity_state.exists(), str(continuity_state))
+
+    safe_storage_module = project_root / "backend" / "lucy_core" / "safe_storage.py"
+    check("safe_storage_module_exists", safe_storage_module.exists(), str(safe_storage_module))
+
+    session_state_module = project_root / "backend" / "lucy_core" / "session_state.py"
+    check("session_state_module_exists", session_state_module.exists(), str(session_state_module))
+
+    session_state_file = project_root / "data" / "lucy" / "session_state.json"
+    check("session_state_file_exists", session_state_file.exists(), str(session_state_file))
+
+    guardian_module = project_root / "backend" / "lucy_core" / "guardian.py"
+    check("guardian_module_exists", guardian_module.exists(), str(guardian_module))
+
+    scheduler_module = project_root / "backend" / "lucy_core" / "scheduler.py"
+    check("scheduler_module_exists", scheduler_module.exists(), str(scheduler_module))
+
+    reflection_module = project_root / "backend" / "lucy_core" / "reflection.py"
+    check("reflection_module_exists", reflection_module.exists(), str(reflection_module))
+
+    reflection_log = project_root / "data" / "lucy" / "reflection_log.jsonl"
+    check("reflection_log_exists", reflection_log.exists(), str(reflection_log))
+
+    api_tools_module = project_root / "backend" / "lucy_core" / "api_tools.py"
+    check("api_tools_module_exists", api_tools_module.exists(), str(api_tools_module))
+
+    secrets_module = project_root / "backend" / "lucy_core" / "secrets.py"
+    check("secrets_module_exists", secrets_module.exists(), str(secrets_module))
+
+    checkpoint_builder_module = project_root / "backend" / "lucy_core" / "checkpoint_builder.py"
+    check("checkpoint_builder_module_exists", checkpoint_builder_module.exists(), str(checkpoint_builder_module))
+
+    desktop_ui_module = project_root / "backend" / "lucy_core" / "desktop_ui.py"
+    check("desktop_ui_module_exists", desktop_ui_module.exists(), str(desktop_ui_module))
+
+    desktop_launcher = project_root / "run_lucy_desktop.py"
+    check("desktop_launcher_exists", desktop_launcher.exists(), str(desktop_launcher))
+
+    blocked = config.get("protected_actions_blocked", False)
+    check("protected_actions_blocked", blocked, f"protected_actions_blocked={blocked}")
+
+    web_ui = config.get("web_ui_enabled", False)
+    check("web_ui_enabled", web_ui, f"web_ui_enabled={web_ui}")
+
+    api_enabled = config.get("api_enabled", False)
+    check("api_chat_tools_configured", api_enabled, f"api_enabled={api_enabled}")
+
+    autonomy = config.get("autonomy_enabled", True)
+    check("autonomy_disabled", not autonomy, f"autonomy_enabled={autonomy}")
+
+    agent_exec = config.get("agent_execution_enabled", True)
+    check("agent_execution_disabled", not agent_exec, f"agent_execution_enabled={agent_exec}")
+
+    fallback_learning = config.get("fallback_learning_enabled", False)
+    check("fallback_learning_enabled", fallback_learning, f"fallback_learning_enabled={fallback_learning}")
+
+    permanent_memory = config.get("permanent_memory_enabled", False)
+    check("permanent_memory_enabled", permanent_memory, f"permanent_memory_enabled={permanent_memory}")
+
+    talking_style_learning = config.get("talking_style_learning_enabled", False)
+    check(
+        "talking_style_learning_enabled",
+        talking_style_learning,
+        f"talking_style_learning_enabled={talking_style_learning}",
+    )
+
+    encrypted_secret_storage = config.get("encrypted_secret_storage_enabled", False)
+    check(
+        "encrypted_secret_storage_enabled",
+        encrypted_secret_storage,
+        f"encrypted_secret_storage_enabled={encrypted_secret_storage}",
+    )
+
+    desktop_ui = config.get("desktop_ui_enabled", False)
+    check("desktop_ui_enabled", desktop_ui, f"desktop_ui_enabled={desktop_ui}")
+
+    return report

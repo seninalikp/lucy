@@ -1,0 +1,60 @@
+[
+  {
+    "awareness_scan_id": "pa_02e95214ed57",
+    "created_at": "2026-06-11T08:01:57.911668+00:00",
+    "stage": "24 proactive awareness",
+    "title": "Stage 24 manual proactive awareness dry-run scan",
+    "awareness_type": "manual_state_scan",
+    "status": "observed",
+    "summary": "Prepare a manual-only awareness scan that notices safe local project state without acting.",
+    "observations": [
+      "Stage 23 external app bridge is accepted and backed up.",
+      "Stage 24 is active only after Senin starts it.",
+      "Lucy may report safe local awareness status when asked.",
+      "Lucy must not monitor in the background.",
+      "Lucy must not trigger reminders, notifications, apps, or external bridges."
+    ],
+    "dry_run_plan": [
+      "Confirm proactive awareness status.",
+      "Create one awareness scan.",
+      "Show awareness scans.",
+      "Dry-run awareness check.",
+      "Confirm no background monitoring exists.",
+      "Confirm no automatic notifications exist.",
+      "Confirm no autonomous reminders/actions exist.",
+      "Run tests.",
+      "Run manual checks.",
+      "Clean restart.",
+      "Back up locally and upload to Drive after acceptance."
+    ],
+    "requires_approval": true,
+    "dry_run_only": true,
+    "background_monitoring_allowed": false,
+    "automatic_notifications_allowed": false,
+    "automatic_reminder_firing_allowed": false,
+    "scheduled_autonomous_checks_allowed": false,
+    "real_action_allowed": false,
+    "external_bridge_execution_allowed": false,
+    "network_allowed": false,
+    "api_keys_allowed": false,
+    "blocked_until": "Stage 24 accepted, backed up locally, uploaded to Drive, and Senin explicitly approves Stage 25.",
+    "not_implemented": [
+      "background monitoring",
+      "automatic notifications",
+      "automatic reminder firing",
+      "scheduled autonomous checks",
+      "app opening",
+      "browser automation",
+      "phone control",
+      "external app bridge execution",
+      "network access",
+      "API/provider keys",
+      "deep recall",
+      "judgment",
+      "adaptive communication",
+      "human-state awareness",
+      "time awareness",
+      "autonomy boundaries"
+    ]
+  }
+]

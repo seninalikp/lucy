@@ -1,0 +1,36 @@
+[
+  {
+    "organizer_item_id": "so_b04ea4f6380d",
+    "created_at": "2026-06-10T16:30:54.843197+00:00",
+    "stage": "21 smart organizer",
+    "title": "Stage 21 smart organizer checks before backup",
+    "group": "current_stage",
+    "status": "open",
+    "priority": "medium",
+    "summary": "Keep Stage 21 focused on organizing status only, without actions or autonomy.",
+    "next_visible_step": "Run tests, manual checks, clean restart, local backup, and Drive upload before Stage 22.",
+    "blocked_until": "Stage 21 accepted, backed up locally, uploaded to Drive, and Senin explicitly approves Stage 22.",
+    "safety_notes": [
+      "Organizer can list and group information only.",
+      "Organizer cannot take local actions.",
+      "Organizer cannot monitor proactively.",
+      "Organizer cannot access external apps or APIs.",
+      "Organizer cannot become deep recall or autonomy."
+    ],
+    "approval_required": true,
+    "action_allowed": false,
+    "proactive_allowed": false,
+    "not_implemented": [
+      "safe local actions",
+      "external app bridge",
+      "proactive awareness",
+      "deep recall",
+      "judgment",
+      "adaptive communication",
+      "human-state awareness",
+      "time awareness",
+      "autonomy boundaries",
+      "API/provider work"
+    ]
+  }
+]

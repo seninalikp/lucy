@@ -1,0 +1,58 @@
+# Stage 14 Growth Proposals Checkpoint
+
+- Date/time: 2026-06-08 03:33:39 +05:30
+- Active stage: 14 = growth proposals
+- Files changed:
+  - backend/lucy_core/growth_proposals.py
+  - backend/lucy_core/lucy_runtime.py
+  - backend/lucy_core/router.py
+  - backend/lucy_core/self_model.py
+  - tests/test_stage10_persistent_local_runtime.py
+  - tests/test_stage11_safe_access.py
+  - tests/test_stage12_first_thought.py
+  - tests/test_stage13_self_model.py
+  - tests/test_stage14_growth_proposals.py
+  - data/lucy/growth_proposals.json
+  - logs/stage14_growth_proposals.md
+- Tests run:
+  - python -m unittest discover -s tests -v
+  - python -m unittest tests/test_stage14_growth_proposals.py -v
+  - python -m unittest tests/test_stage13_self_model.py tests/test_stage14_growth_proposals.py -v
+  - python -m unittest discover -s tests -v
+- Test result:
+  - Baseline suite: Ran 292 tests OK.
+  - Stage 14 focused suite: Ran 20 tests OK.
+  - Stage 13 + Stage 14 focused suites: Ran 40 tests OK.
+  - Full suite after Stage 14 patch: Ran 312 tests OK.
+- Manual checks:
+  - growth proposals status
+  - growth proposals
+  - propose growth
+  - show growth proposals
+  - growth proposal status
+  - self model status
+  - self model
+  - what are you
+  - first thought status
+  - access status
+  - runtime status
+  - agent status
+  - agent report
+  - hi
+  - tell me
+  - what next
+- What improved:
+  - Lucy can create conservative, approval-required growth proposal records.
+  - Proposal records include possible future file areas but do not edit code.
+  - Proposal review can only update status to rejected or approved_for_future.
+  - Proposal status excludes applied, tested, shadow_passed, and patched.
+  - The self-model now reflects growth proposal reporting while still blocking automatic proposal application.
+- What was intentionally NOT implemented:
+  - Stage 15 evaluation lab.
+  - Stage 16 shadow testing.
+  - Stage 17 approved patch pipeline.
+  - Experience storage.
+  - UI, voice, network, external APIs, daemon, or autonomy behavior.
+  - Fake consciousness language.
+  - Patch application.
+- Next locked stage: 15 = evaluation lab

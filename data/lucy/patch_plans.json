@@ -1,0 +1,38 @@
+[
+  {
+    "patch_plan_id": "pp_0ace0ffd7b6b",
+    "created_at": "2026-06-09T02:20:05.828804+00:00",
+    "stage": "17 approved patch pipeline",
+    "source_proposal_id": "gp_a680de431434",
+    "source_evaluation_id": "ev_11e8c2f9bd03",
+    "source_shadow_test_id": "st_6075247a370c",
+    "proposal_title": "Improve vague command handling",
+    "status": "planned",
+    "approval_required": true,
+    "real_patching_enabled": false,
+    "implementation_allowed": false,
+    "suggested_files": [
+      "backend/lucy_core/router.py",
+      "tests"
+    ],
+    "safety_checks": [
+      "shadow test exists",
+      "shadow test result is pass",
+      "evaluation exists",
+      "proposal exists",
+      "approval is required",
+      "real patching is disabled",
+      "no experience storage",
+      "no API/provider work",
+      "no fake-consciousness language",
+      "no roadmap jump"
+    ],
+    "blocked_reasons": [],
+    "not_implemented": [
+      "real patching",
+      "experience storage",
+      "automatic application",
+      "provider/API work"
+    ]
+  }
+]

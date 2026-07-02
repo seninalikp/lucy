@@ -1,0 +1,598 @@
+{
+  "version": "0.2.0",
+  "active_project": "Lucy",
+  "created_at": "2026-06-05T00:00:00+00:00",
+  "updated_at": "2026-06-05T23:54:57.180728+00:00",
+  "projects": {
+    "Lucy": {
+      "name": "Lucy",
+      "status": "recovered_checkpoint_023_architecture_reconstruction",
+      "summary": "Local-first JARVIS-style operating assistant reconstructed from Lucy Part 1 plus ELIE's Lucy V0.1 Checkpoint 023 architecture reference.",
+      "next_action": "Finish Stage 17 checks, run tests, and back up after acceptance.",
+      "notes": [
+        "Restored from lucy part1.zip backup.",
+        "Agents remain planned and inactive until Lucy's foundation is stable."
+      ],
+      "tasks": [
+        {
+          "id": "task_0001",
+          "text": "Restore Lucy backup into the local project folder.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "id": "task_0002",
+          "text": "Build local memory, project tracker, router, and terminal chat.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "id": "task_0003",
+          "text": "Add focused tests for guardian, memory, projects, and router.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "id": "task_0004",
+          "text": "Install Python 3.10+ and run the Lucy command/test verification suite.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T23:32:19.842492+00:00"
+        },
+        {
+          "id": "task_0005",
+          "text": "Use Lucy operator commands to scan workspace, search files, read safe project files, and review approvals.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "id": "task_0006",
+          "text": "Preserve recovered Lucy V0.1 checkpoint 001-023 architecture map from ELIE memory.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "id": "task_0007",
+          "text": "Add safe local brain/router and project backup/scan ops inspired by ELIE.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "id": "task_0008",
+          "text": "Install Python 3.10+ and verify recovered Lucy commands.",
+          "status": "done",
+          "created_at": "2026-06-05T00:00:00+00:00",
+          "completed_at": "2026-06-05T23:32:47.517341+00:00"
+        },
+        {
+          "id": "task_0009",
+          "text": "Add session-only NVIDIA key prompt, local learning loop, and NVIDIA memory fallback tool.",
+          "status": "done",
+          "created_at": "2026-06-06T00:00:00+00:00",
+          "completed_at": "2026-06-06T00:00:00+00:00"
+        },
+        {
+          "id": "task_0010",
+          "text": "Finish Stage 17 checks, run tests, and back up after acceptance.",
+          "status": "open",
+          "created_at": "2026-06-05T23:33:28.809282+00:00",
+          "completed_at": null
+        }
+      ],
+      "checkpoints": [
+        {
+          "checkpoint_id": "checkpoint_0002",
+          "reason": "Restored Lucy backup and added Checkpoint 1 local foundation modules.",
+          "timestamp": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0003",
+          "reason": "Added safe local operator tools, reminders, approval review commands, and expanded daily brief.",
+          "timestamp": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0004",
+          "reason": "Recovered Lucy V0.1 checkpoint 001-023 architecture map from ELIE and added brain/ops reconstruction modules.",
+          "timestamp": "2026-06-05T00:00:00+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0005",
+          "reason": "Added session-only NVIDIA key setup, local autosave learning loop, and NVIDIA memory fallback API tool.",
+          "timestamp": "2026-06-06T00:00:00+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0006",
+          "reason": "Overnight checkpoint 0006: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:25.952793+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0007",
+          "reason": "Overnight checkpoint 0007: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:26.020264+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0008",
+          "reason": "Overnight checkpoint 0008: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:26.068243+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0009",
+          "reason": "Overnight checkpoint 0009: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:26.154770+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0010",
+          "reason": "Overnight checkpoint 0010: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:26.225849+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0011",
+          "reason": "Overnight checkpoint 0011: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:26.320432+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0012",
+          "reason": "Overnight checkpoint 0012: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:26.409196+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0013",
+          "reason": "Overnight checkpoint 0013: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:26.477455+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0014",
+          "reason": "Overnight checkpoint 0014: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:26.570437+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0015",
+          "reason": "Overnight checkpoint 0015: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:26.670986+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0016",
+          "reason": "Overnight checkpoint 0016: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:26.736565+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0017",
+          "reason": "Overnight checkpoint 0017: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:26.800132+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0018",
+          "reason": "Overnight checkpoint 0018: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:26.867717+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0019",
+          "reason": "Overnight checkpoint 0019: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:26.948445+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0020",
+          "reason": "Overnight checkpoint 0020: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:27.071014+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0021",
+          "reason": "Overnight checkpoint 0021: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:27.135091+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0022",
+          "reason": "Overnight checkpoint 0022: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:27.184209+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0023",
+          "reason": "Overnight checkpoint 0023: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:27.234858+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0024",
+          "reason": "Overnight checkpoint 0024: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:27.311091+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0025",
+          "reason": "Overnight checkpoint 0025: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:27.379164+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0026",
+          "reason": "Overnight checkpoint 0026: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:27.422149+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0027",
+          "reason": "Overnight checkpoint 0027: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:27.475337+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0028",
+          "reason": "Overnight checkpoint 0028: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:27.571220+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0029",
+          "reason": "Overnight checkpoint 0029: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:27.662951+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0030",
+          "reason": "Overnight checkpoint 0030: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:27.720464+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0031",
+          "reason": "Overnight checkpoint 0031: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:27.812374+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0032",
+          "reason": "Overnight checkpoint 0032: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:27.880336+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0033",
+          "reason": "Overnight checkpoint 0033: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:28.020473+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0034",
+          "reason": "Overnight checkpoint 0034: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:28.181456+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0035",
+          "reason": "Overnight checkpoint 0035: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:28.321078+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0036",
+          "reason": "Overnight checkpoint 0036: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:28.479065+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0037",
+          "reason": "Overnight checkpoint 0037: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:28.619272+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0038",
+          "reason": "Overnight checkpoint 0038: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:28.722282+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0039",
+          "reason": "Overnight checkpoint 0039: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:28.820246+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0040",
+          "reason": "Overnight checkpoint 0040: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:28.918264+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0041",
+          "reason": "Overnight checkpoint 0041: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:29.054021+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0042",
+          "reason": "Overnight checkpoint 0042: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:29.249058+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0043",
+          "reason": "Overnight checkpoint 0043: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:29.353340+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0044",
+          "reason": "Overnight checkpoint 0044: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:29.485244+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0045",
+          "reason": "Overnight checkpoint 0045: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:29.647625+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0046",
+          "reason": "Overnight checkpoint 0046: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:29.735835+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0047",
+          "reason": "Overnight checkpoint 0047: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:29.863673+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0048",
+          "reason": "Overnight checkpoint 0048: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:30.015819+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0049",
+          "reason": "Overnight checkpoint 0049: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:30.138320+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0050",
+          "reason": "Overnight checkpoint 0050: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:30.271777+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0051",
+          "reason": "Overnight checkpoint 0051: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:30.421836+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0052",
+          "reason": "Overnight checkpoint 0052: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:30.537584+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0053",
+          "reason": "Overnight checkpoint 0053: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:30.663388+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0054",
+          "reason": "Overnight checkpoint 0054: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:30.832022+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0055",
+          "reason": "Overnight checkpoint 0055: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:30.935807+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0056",
+          "reason": "Overnight checkpoint 0056: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:31.038546+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0057",
+          "reason": "Overnight checkpoint 0057: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:31.154358+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0058",
+          "reason": "Overnight checkpoint 0058: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:31.247409+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0059",
+          "reason": "Overnight checkpoint 0059: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:31.333145+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0060",
+          "reason": "Overnight checkpoint 0060: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:31.433158+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0061",
+          "reason": "Overnight checkpoint 0061: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:31.532695+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0062",
+          "reason": "Overnight checkpoint 0062: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:31.651778+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0063",
+          "reason": "Overnight checkpoint 0063: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:31.769327+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0064",
+          "reason": "Overnight checkpoint 0064: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:31.900229+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0065",
+          "reason": "Overnight checkpoint 0065: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:31.982234+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0066",
+          "reason": "Overnight checkpoint 0066: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:32.150328+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0067",
+          "reason": "Overnight checkpoint 0067: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:32.233880+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0068",
+          "reason": "Overnight checkpoint 0068: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:32.413745+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0069",
+          "reason": "Overnight checkpoint 0069: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:32.570380+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0070",
+          "reason": "Overnight checkpoint 0070: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:32.707375+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0071",
+          "reason": "Overnight checkpoint 0071: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:32.805253+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0072",
+          "reason": "Overnight checkpoint 0072: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:32.892629+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0073",
+          "reason": "Overnight checkpoint 0073: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:32.965601+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0074",
+          "reason": "Overnight checkpoint 0074: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:33.049031+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0075",
+          "reason": "Overnight checkpoint 0075: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:33.120608+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0076",
+          "reason": "Overnight checkpoint 0076: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:33.231137+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0077",
+          "reason": "Overnight checkpoint 0077: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:33.382715+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0078",
+          "reason": "Overnight checkpoint 0078: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:33.522862+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0079",
+          "reason": "Overnight checkpoint 0079: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:33.670022+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0080",
+          "reason": "Overnight checkpoint 0080: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:33.836367+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0081",
+          "reason": "Overnight checkpoint 0081: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:34.065909+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0082",
+          "reason": "Overnight checkpoint 0082: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:34.201686+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0083",
+          "reason": "Overnight checkpoint 0083: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:34.364185+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0084",
+          "reason": "Overnight checkpoint 0084: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:34.801757+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0085",
+          "reason": "Overnight checkpoint 0085: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:35.084427+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0086",
+          "reason": "Overnight checkpoint 0086: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:35.360161+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0087",
+          "reason": "Overnight checkpoint 0087: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:35.582171+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0088",
+          "reason": "Overnight checkpoint 0088: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:35.749476+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0089",
+          "reason": "Overnight checkpoint 0089: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:35.881984+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0090",
+          "reason": "Overnight checkpoint 0090: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:36.031145+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0091",
+          "reason": "Overnight checkpoint 0091: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:29:36.235990+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0092",
+          "reason": "Overnight checkpoint 0092: Local memory remains the first source of truth.",
+          "timestamp": "2026-06-05T23:29:36.451075+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0093",
+          "reason": "Overnight checkpoint 0093: Project tracker linked this checkpoint to Lucy.",
+          "timestamp": "2026-06-05T23:29:36.586782+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0094",
+          "reason": "Overnight checkpoint 0094: Local self-learning trace saved for this checkpoint.",
+          "timestamp": "2026-06-05T23:29:36.709882+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0095",
+          "reason": "Overnight checkpoint 0095: External APIs remain tools, not Lucy's brain.",
+          "timestamp": "2026-06-05T23:29:36.800496+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0096",
+          "reason": "Overnight checkpoint 0096: Desktop UI path kept available for easier control.",
+          "timestamp": "2026-06-05T23:29:36.912608+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0097",
+          "reason": "Overnight checkpoint 0097: Runtime health remains part of the build loop.",
+          "timestamp": "2026-06-05T23:29:37.011975+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0098",
+          "reason": "Overnight checkpoint 0098: Recovered checkpoint 023 reference remains separate from Lucy identity.",
+          "timestamp": "2026-06-05T23:29:37.125650+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0099",
+          "reason": "Overnight checkpoint 0099: Safe operator tools stay read-only unless explicitly designed otherwise.",
+          "timestamp": "2026-06-05T23:29:37.297011+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0100",
+          "reason": "Overnight checkpoint 0100: Overnight build mode saved progress without unsafe autonomy.",
+          "timestamp": "2026-06-05T23:29:37.456104+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0101",
+          "reason": "Overnight checkpoint 0101: Guardian safety boundary preserved.",
+          "timestamp": "2026-06-05T23:32:19.192568+00:00"
+        },
+        {
+          "checkpoint_id": "checkpoint_0102",
+          "reason": "Permanent NVIDIA key storage, permanent memory status, and talking style learning",
+          "timestamp": "2026-06-05T23:54:57.180689+00:00"
+        }
+      ],
+      "updated_at": "2026-06-05T23:54:57.180715+00:00"
+    }
+  }
+}

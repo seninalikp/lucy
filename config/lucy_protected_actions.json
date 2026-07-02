@@ -1,0 +1,97 @@
+{
+  "version": "0.1.0",
+  "managed_by": "LUCY",
+  "note": "All actions below are blocked by default. None may proceed without explicit approval and a checkpoint.",
+  "actions": {
+    "file_delete": {
+      "label": "File Deletion",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "protected_file_edit": {
+      "label": "Protected File Edit",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "api_key_change": {
+      "label": "API Key Change",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "wallet_access": {
+      "label": "Wallet Access",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "money_movement": {
+      "label": "Money Movement",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "live_trading": {
+      "label": "Live Trading",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "root_command": {
+      "label": "Root / Sudo Command",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "safety_rule_change": {
+      "label": "Safety Rule Change",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "agent_identity_change": {
+      "label": "Agent Identity Change",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "deployment_mainnet": {
+      "label": "Mainnet Deployment",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "hidden_mining": {
+      "label": "Hidden Mining",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "system_install": {
+      "label": "System Package Install",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "memory_wipe": {
+      "label": "Memory Wipe",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "self_modification": {
+      "label": "Self-Modification",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    },
+    "web_ui_action": {
+      "label": "Web UI Protected Action",
+      "blocked_by_default": true,
+      "requires_approval": true,
+      "requires_checkpoint": true
+    }
+  }
+}

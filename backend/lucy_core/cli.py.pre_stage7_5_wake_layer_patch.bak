@@ -1,0 +1,57 @@
+"""
+cli.py
+Terminal interface for Lucy Core Runtime.
+"""
+
+from __future__ import annotations
+
+import sys
+
+from backend.lucy_core.router import CommandRouter
+
+
+def run_chat(router: CommandRouter) -> None:
+    print()
+    print("LUCY is online.")
+    print("Local mode: memory, projects, guardian checks, logs, and checkpoints.")
+    print("Type 'help' for commands or 'exit' to stop.")
+    print()
+
+    while True:
+        try:
+            raw = input("lucy> ")
+        except (EOFError, KeyboardInterrupt):
+            print()
+            print("Lucy shutting down cleanly.")
+            return
+
+        response = router.handle(raw)
+        if response.message:
+            print(response.message)
+        if response.should_exit:
+            return
+
+
+def run_cli(runtime) -> None:
+    """Parse sys.argv and dispatch to chat or one-shot command mode."""
+    router = CommandRouter(runtime)
+    args = sys.argv[1:]
+
+    try:
+        if not args:
+            run_chat(router)
+            return
+
+        if args[0].lower() == "chat":
+            run_chat(router)
+            return
+
+        response = router.handle(" ".join(args))
+        if response.message:
+            print(response.message)
+    finally:
+        try:
+            if not runtime.session_state.status().get("graceful_shutdown"):
+                runtime.graceful_shutdown("CLI session ended cleanly.")
+        except Exception:
+            pass

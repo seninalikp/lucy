@@ -1,0 +1,52 @@
+[
+  {
+    "safe_action_id": "sa_c979c7a8ba31",
+    "created_at": "2026-06-10T16:57:32.295550+00:00",
+    "stage": "22 safe local actions",
+    "title": "Stage 22 dry-run backup checklist proposal",
+    "action_type": "prepare_manual_checklist",
+    "status": "proposed",
+    "summary": "Prepare a dry-run checklist for Stage 22 tests, manual checks, clean restart, local backup, and Drive upload.",
+    "dry_run_plan": [
+      "Confirm Stage 22 status.",
+      "Create one safe action proposal.",
+      "Show proposed safe actions.",
+      "Confirm no real execution exists.",
+      "Run tests.",
+      "Run manual checks.",
+      "Clean restart.",
+      "Back up locally and upload to Drive after acceptance."
+    ],
+    "requires_approval": true,
+    "dry_run_only": true,
+    "real_execution_allowed": false,
+    "shell_execution_allowed": false,
+    "file_delete_allowed": false,
+    "file_move_allowed": false,
+    "file_edit_allowed": false,
+    "app_open_allowed": false,
+    "network_allowed": false,
+    "background_allowed": false,
+    "blocked_until": "Stage 22 accepted, backed up locally, uploaded to Drive, and Senin explicitly approves Stage 23.",
+    "not_implemented": [
+      "real file modification",
+      "file deletion",
+      "file moving",
+      "shell command execution",
+      "app opening",
+      "network access",
+      "browser control",
+      "phone control",
+      "background automation",
+      "proactive monitoring",
+      "external app bridge",
+      "deep recall",
+      "judgment",
+      "adaptive communication",
+      "human-state awareness",
+      "time awareness",
+      "autonomy boundaries",
+      "API/provider work"
+    ]
+  }
+]

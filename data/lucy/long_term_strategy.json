@@ -1,0 +1,38 @@
+[
+  {
+    "strategy_id": "ls_e99271afe393",
+    "created_at": "2026-06-09T13:13:27.638024+00:00",
+    "stage": "20 long-term strategy",
+    "title": "Protect Lucy roadmap and build carefully toward post-30 tool readiness",
+    "horizon": "long",
+    "status": "draft",
+    "summary": "Continue Lucy through the locked roadmap one accepted, tested, backed-up stage at a time.",
+    "strategic_rules": [
+      "Do not skip locked stages.",
+      "Do not start the next stage before tests, manual checks, clean restart, local backup, and Drive upload.",
+      "Keep APIs/provider keys after Stage 30 only.",
+      "Treat future APIs as tools only, not Lucy identity.",
+      "Keep Guardian, safe access, identity stability, and approval gates intact."
+    ],
+    "near_term_focus": "Complete Stage 20 checks and secure backup before Stage 21.",
+    "future_direction": "Prepare Lucy for careful local-first maturity before post-30 provider/tool integration.",
+    "risk_level": "low",
+    "blocked_reasons": [],
+    "approval_required": true,
+    "autonomy_allowed": false,
+    "implementation_allowed": false,
+    "not_implemented": [
+      "smart organizer",
+      "safe local actions",
+      "external app bridge",
+      "proactive awareness",
+      "deep recall",
+      "judgment",
+      "adaptive communication",
+      "human-state awareness",
+      "time awareness",
+      "autonomy boundaries",
+      "API/provider work"
+    ]
+  }
+]

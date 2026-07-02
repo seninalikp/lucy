@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "stage": "10 persistent local runtime",
+  "active_project": "Lucy",
+  "guardian_status": "active",
+  "started_at": "2026-06-11T20:29:56.424276+00:00",
+  "last_heartbeat": "2026-06-11T20:30:11.848708+00:00",
+  "last_command": "judgments",
+  "clean_shutdown": false,
+  "previous_shutdown_clean": false,
+  "recovery_mode": true,
+  "shutdown_at": "2026-06-11T13:58:54.769615+00:00",
+  "runtime_id": "0f063d12555f49fe82ebb36f5fdcdb55"
+}

@@ -1,0 +1,214 @@
+[
+  {
+    "recall_session_id": "dr_a122fea005ef",
+    "created_at": "2026-06-11T10:18:14.566757+00:00",
+    "stage": "25 deep recall",
+    "title": "Stage 25 safe deep recall session: stage status",
+    "query": "stage status",
+    "recall_type": "safe_structured_records",
+    "status": "observed",
+    "summary": "Found 6 safe structured record match(es) for: stage status.",
+    "safe_sources_checked": [
+      "experience_storage.json",
+      "identity_stability_checks.json",
+      "long_term_strategy.json",
+      "smart_organizer.json",
+      "safe_local_actions.json",
+      "external_app_bridge.json",
+      "proactive_awareness.json"
+    ],
+    "blocked_sources": [
+      "raw chat logs",
+      "secrets",
+      ".env",
+      "api keys",
+      "passwords",
+      "tokens",
+      "private keys",
+      "wallets",
+      "browser data",
+      "phone data",
+      "WhatsApp data",
+      "Instagram data",
+      "Chrome data"
+    ],
+    "matches": [
+      {
+        "source": "identity_stability_checks.json",
+        "record_id": "id_31f3bfddcb76",
+        "title": "Stage 18 experience storage accepted",
+        "stage": "19 identity stability",
+        "safe_excerpt": "Stage 18 experience storage accepted | 19 identity stability"
+      },
+      {
+        "source": "long_term_strategy.json",
+        "record_id": "ls_e99271afe393",
+        "title": "Protect Lucy roadmap and build carefully toward post-30 tool readiness",
+        "stage": "20 long-term strategy",
+        "safe_excerpt": "Continue Lucy through the locked roadmap one accepted, tested, backed-up stage at a time. | Protect Lucy roadmap and build carefully toward post-30 tool readiness | 20 long-term strategy | draft"
+      },
+      {
+        "source": "smart_organizer.json",
+        "record_id": "so_b04ea4f6380d",
+        "title": "Stage 21 smart organizer checks before backup",
+        "stage": "21 smart organizer",
+        "safe_excerpt": "Keep Stage 21 focused on organizing status only, without actions or autonomy. | Stage 21 smart organizer checks before backup | 21 smart organizer | open"
+      },
+      {
+        "source": "safe_local_actions.json",
+        "record_id": "sa_c979c7a8ba31",
+        "title": "Stage 22 dry-run backup checklist proposal",
+        "stage": "22 safe local actions",
+        "safe_excerpt": "Prepare a dry-run checklist for Stage 22 tests, manual checks, clean restart, local backup, and Drive upload. | Stage 22 dry-run backup checklist proposal | 22 safe local actions | proposed"
+      },
+      {
+        "source": "external_app_bridge.json",
+        "record_id": "br_34cb6a4215ab",
+        "title": "Stage 23 dry-run external app bridge permission plan",
+        "stage": "23 external app bridge",
+        "safe_excerpt": "Prepare a dry-run permission-gated bridge plan without connecting to external apps. | Stage 23 dry-run external app bridge permission plan | 23 external app bridge | proposed"
+      },
+      {
+        "source": "proactive_awareness.json",
+        "record_id": "pa_02e95214ed57",
+        "title": "Stage 24 manual proactive awareness dry-run scan",
+        "stage": "24 proactive awareness",
+        "safe_excerpt": "Prepare a manual-only awareness scan that notices safe local project state without acting. | Stage 24 manual proactive awareness dry-run scan | 24 proactive awareness | observed"
+      }
+    ],
+    "match_count": 6,
+    "requires_approval": true,
+    "dry_run_only": true,
+    "raw_chat_logs_allowed": false,
+    "secrets_allowed": false,
+    "whole_computer_search_allowed": false,
+    "network_allowed": false,
+    "api_keys_allowed": false,
+    "background_monitoring_allowed": false,
+    "real_action_allowed": false,
+    "blocked_until": "Stage 25 accepted, backed up locally, uploaded to Drive, and Senin explicitly approves Stage 26.",
+    "not_implemented": [
+      "raw chat log recall",
+      "secret recall",
+      "whole computer search",
+      "browser recall",
+      "phone recall",
+      "external app recall",
+      "network access",
+      "API/provider keys",
+      "background monitoring",
+      "automatic notifications",
+      "judgment",
+      "adaptive communication",
+      "human-state awareness",
+      "time awareness",
+      "autonomy boundaries"
+    ]
+  },
+  {
+    "recall_session_id": "dr_6a9bf51df949",
+    "created_at": "2026-06-11T10:18:14.768852+00:00",
+    "stage": "25 deep recall",
+    "title": "Stage 25 safe deep recall session: stage",
+    "query": "stage",
+    "recall_type": "safe_structured_records",
+    "status": "observed",
+    "summary": "Found 6 safe structured record match(es) for: stage.",
+    "safe_sources_checked": [
+      "experience_storage.json",
+      "identity_stability_checks.json",
+      "long_term_strategy.json",
+      "smart_organizer.json",
+      "safe_local_actions.json",
+      "external_app_bridge.json",
+      "proactive_awareness.json"
+    ],
+    "blocked_sources": [
+      "raw chat logs",
+      "secrets",
+      ".env",
+      "api keys",
+      "passwords",
+      "tokens",
+      "private keys",
+      "wallets",
+      "browser data",
+      "phone data",
+      "WhatsApp data",
+      "Instagram data",
+      "Chrome data"
+    ],
+    "matches": [
+      {
+        "source": "identity_stability_checks.json",
+        "record_id": "id_31f3bfddcb76",
+        "title": "Stage 18 experience storage accepted",
+        "stage": "19 identity stability",
+        "safe_excerpt": "Stage 18 experience storage accepted | 19 identity stability"
+      },
+      {
+        "source": "long_term_strategy.json",
+        "record_id": "ls_e99271afe393",
+        "title": "Protect Lucy roadmap and build carefully toward post-30 tool readiness",
+        "stage": "20 long-term strategy",
+        "safe_excerpt": "Continue Lucy through the locked roadmap one accepted, tested, backed-up stage at a time. | Protect Lucy roadmap and build carefully toward post-30 tool readiness | 20 long-term strategy | draft"
+      },
+      {
+        "source": "smart_organizer.json",
+        "record_id": "so_b04ea4f6380d",
+        "title": "Stage 21 smart organizer checks before backup",
+        "stage": "21 smart organizer",
+        "safe_excerpt": "Keep Stage 21 focused on organizing status only, without actions or autonomy. | Stage 21 smart organizer checks before backup | 21 smart organizer | open"
+      },
+      {
+        "source": "safe_local_actions.json",
+        "record_id": "sa_c979c7a8ba31",
+        "title": "Stage 22 dry-run backup checklist proposal",
+        "stage": "22 safe local actions",
+        "safe_excerpt": "Prepare a dry-run checklist for Stage 22 tests, manual checks, clean restart, local backup, and Drive upload. | Stage 22 dry-run backup checklist proposal | 22 safe local actions | proposed"
+      },
+      {
+        "source": "external_app_bridge.json",
+        "record_id": "br_34cb6a4215ab",
+        "title": "Stage 23 dry-run external app bridge permission plan",
+        "stage": "23 external app bridge",
+        "safe_excerpt": "Prepare a dry-run permission-gated bridge plan without connecting to external apps. | Stage 23 dry-run external app bridge permission plan | 23 external app bridge | proposed"
+      },
+      {
+        "source": "proactive_awareness.json",
+        "record_id": "pa_02e95214ed57",
+        "title": "Stage 24 manual proactive awareness dry-run scan",
+        "stage": "24 proactive awareness",
+        "safe_excerpt": "Prepare a manual-only awareness scan that notices safe local project state without acting. | Stage 24 manual proactive awareness dry-run scan | 24 proactive awareness | observed"
+      }
+    ],
+    "match_count": 6,
+    "requires_approval": true,
+    "dry_run_only": true,
+    "raw_chat_logs_allowed": false,
+    "secrets_allowed": false,
+    "whole_computer_search_allowed": false,
+    "network_allowed": false,
+    "api_keys_allowed": false,
+    "background_monitoring_allowed": false,
+    "real_action_allowed": false,
+    "blocked_until": "Stage 25 accepted, backed up locally, uploaded to Drive, and Senin explicitly approves Stage 26.",
+    "not_implemented": [
+      "raw chat log recall",
+      "secret recall",
+      "whole computer search",
+      "browser recall",
+      "phone recall",
+      "external app recall",
+      "network access",
+      "API/provider keys",
+      "background monitoring",
+      "automatic notifications",
+      "judgment",
+      "adaptive communication",
+      "human-state awareness",
+      "time awareness",
+      "autonomy boundaries"
+    ]
+  }
+]

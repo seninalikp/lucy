@@ -1,0 +1,389 @@
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from backend.lucy_core.experience_storage import (
+    EXPERIENCE_RECORD_FIELDS,
+    EXPERIENCE_STAGE,
+    FORBIDDEN_EXPERIENCE_PHRASES,
+    VALID_CONFIDENCE_VALUES,
+    VALID_EVENT_TYPES,
+    VALID_SENSITIVITY_VALUES,
+    ExperienceStorage,
+)
+from backend.lucy_core.lucy_runtime import LucyRuntime
+from backend.lucy_core.router import CommandRouter
+
+
+class Stage18ExperienceStorageTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp_dir.name)
+
+    def tearDown(self) -> None:
+        self.temp_dir.cleanup()
+
+    def _data_dir(self) -> Path:
+        return self.root / "data" / "lucy"
+
+    def _records_file(self) -> Path:
+        return self._data_dir() / "experience_records.json"
+
+    def _storage(self) -> ExperienceStorage:
+        return ExperienceStorage(self._data_dir())
+
+    def _runtime_and_router(self) -> tuple[LucyRuntime, CommandRouter]:
+        runtime = LucyRuntime(project_root=self.root)
+        return runtime, CommandRouter(runtime)
+
+    def _safe_candidate(self, **overrides) -> dict:
+        candidate = {
+            "source_stage": "18 experience storage",
+            "event_type": "manual_check",
+            "title": "Safe Stage 18 manual check",
+            "summary": "A verified local command returned the expected status.",
+            "lesson": "Keep experience records short, factual, local, and approval-safe.",
+            "risk_noted": "memory dump drift",
+            "future_rule": "Store only structured project lessons.",
+            "confidence": "high",
+            "sensitivity": "safe_project",
+            "approved_for_storage": True,
+        }
+        candidate.update(overrides)
+        return candidate
+
+    def test_01_experience_storage_status_returns_stage18_status(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("experience storage status")
+
+        self.assertIn("Experience storage status:", response.message)
+        self.assertIn("Stage: 18 experience storage", response.message)
+        self.assertIn("Experience storage: active", response.message)
+
+    def test_02_record_experience_creates_structured_safe_record(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("record experience")
+
+        self.assertIn("Experience record:", response.message)
+        self.assertTrue(self._records_file().exists())
+        records = json.loads(self._records_file().read_text(encoding="utf-8"))
+        self.assertEqual(len(records), 1)
+        self.assertEqual(records[0]["stage"], EXPERIENCE_STAGE)
+
+    def test_03_record_stage_experience_works(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("record stage experience")
+
+        self.assertIn("Experience record:", response.message)
+        self.assertIn("Stage 17 approved patch pipeline accepted", response.message)
+
+    def test_04_show_experiences_displays_existing_records(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("record experience")
+        response = router.handle("show experiences")
+
+        self.assertIn("Experience records:", response.message)
+        self.assertIn("Stage 17 approved patch pipeline accepted", response.message)
+
+    def test_05_show_experience_records_works(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("record experience")
+        response = router.handle("show experience records")
+
+        self.assertIn("Experience records:", response.message)
+
+    def test_06_experience_record_includes_allowed_fields(self) -> None:
+        result = self._storage().record_experience(self._safe_candidate())
+        record = result["experience_record"]
+
+        self.assertEqual(tuple(record.keys()), EXPERIENCE_RECORD_FIELDS)
+
+    def test_07_experience_record_uses_only_valid_event_type_values(self) -> None:
+        result = self._storage().record_experience(self._safe_candidate(event_type="not_valid"))
+
+        self.assertIn(result["experience_record"]["event_type"], VALID_EVENT_TYPES)
+
+    def test_08_experience_record_uses_only_valid_confidence_values(self) -> None:
+        result = self._storage().record_experience(self._safe_candidate(confidence="certain"))
+
+        self.assertIn(result["experience_record"]["confidence"], VALID_CONFIDENCE_VALUES)
+
+    def test_09_experience_record_uses_only_valid_sensitivity_values(self) -> None:
+        result = self._storage().record_experience(self._safe_candidate())
+
+        self.assertIn(result["experience_record"]["sensitivity"], VALID_SENSITIVITY_VALUES)
+
+    def test_10_safe_project_and_approved_true_can_be_stored(self) -> None:
+        result = self._storage().record_experience(self._safe_candidate())
+
+        self.assertTrue(result["ok"])
+        self.assertTrue(result["stored"])
+        self.assertEqual(result["experience_record"]["sensitivity"], "safe_project")
+        self.assertTrue(result["experience_record"]["approved_for_storage"])
+
+    def test_11_private_do_not_store_content_is_blocked_and_not_stored(self) -> None:
+        result = self._storage().record_experience(
+            self._safe_candidate(sensitivity="private_do_not_store", summary="Private diary entry.")
+        )
+
+        self.assertFalse(result["ok"])
+        self.assertFalse(self._records_file().exists())
+        self.assertIn("private_do_not_store", result["blocked_content"])
+
+    def test_12_secret_do_not_store_content_is_blocked_and_not_stored(self) -> None:
+        result = self._storage().record_experience(
+            self._safe_candidate(sensitivity="secret_do_not_store", summary="Provider credential value.")
+        )
+
+        self.assertFalse(result["ok"])
+        self.assertFalse(self._records_file().exists())
+        self.assertIn("secret_do_not_store", result["blocked_content"])
+
+    def test_13_secrets_api_keys_and_tokens_are_not_stored(self) -> None:
+        result = self._storage().record_experience(
+            self._safe_candidate(summary="API key: sk-testsecret1234567890")
+        )
+
+        self.assertFalse(result["ok"])
+        self.assertFalse(self._records_file().exists())
+        self.assertIn("secret/API key/token", result["blocked_content"])
+
+    def test_14_raw_chat_logs_are_not_stored(self) -> None:
+        result = self._storage().record_experience(
+            self._safe_candidate(summary="Raw chat log: user said many private lines.")
+        )
+
+        self.assertFalse(result["ok"])
+        self.assertFalse(self._records_file().exists())
+        self.assertIn("raw chat log", result["blocked_content"])
+
+    def test_15_private_diary_content_is_not_stored(self) -> None:
+        result = self._storage().record_experience(
+            self._safe_candidate(summary="Dear diary, this is private.")
+        )
+
+        self.assertFalse(result["ok"])
+        self.assertFalse(self._records_file().exists())
+        self.assertIn("private diary", result["blocked_content"])
+
+    def test_16_experience_record_reuses_existing_record_instead_of_duplicate_spam(self) -> None:
+        storage = self._storage()
+        first = storage.record_experience(self._safe_candidate())
+        second = storage.record_experience(self._safe_candidate(summary="Same title and event should reuse."))
+        records = json.loads(self._records_file().read_text(encoding="utf-8"))
+
+        self.assertTrue(first["ok"])
+        self.assertTrue(second["reused"])
+        self.assertEqual(len(records), 1)
+
+    def test_17_experience_storage_does_not_create_deep_recall(self) -> None:
+        storage = self._storage()
+        storage.record_experience(self._safe_candidate())
+
+        self.assertEqual(storage.status()["deep_recall"], "not implemented")
+        self.assertFalse((self._data_dir() / "deep_recall").exists())
+
+    def test_18_experience_storage_does_not_create_identity_stability(self) -> None:
+        storage = self._storage()
+        storage.record_experience(self._safe_candidate())
+
+        self.assertEqual(storage.status()["identity_stability"], "not implemented")
+        self.assertFalse((self._data_dir() / "identity_stability").exists())
+
+    def test_19_experience_storage_does_not_create_long_term_strategy(self) -> None:
+        storage = self._storage()
+        storage.record_experience(self._safe_candidate())
+
+        self.assertEqual(storage.status()["long_term_strategy"], "not implemented")
+        self.assertFalse((self._data_dir() / "long_term_strategy").exists())
+
+    def test_20_experience_storage_does_not_modify_guardian(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        before = runtime.guardian_status()
+        runtime.record_experience()
+        after = runtime.guardian_status()
+
+        for key in ("protected_actions_blocked", "root_access_enabled", "autonomy_enabled", "agent_execution_enabled"):
+            self.assertEqual(before[key], after[key])
+
+    def test_21_experience_storage_does_not_modify_safe_access(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        before = runtime.safe_access_status()
+        runtime.record_experience()
+        after = runtime.safe_access_status()
+
+        for key in ("access_state", "external_access", "network_server", "phone_browser_access", "token_generation"):
+            self.assertEqual(before[key], after[key])
+
+    def test_22_experience_storage_does_not_apply_patches(self) -> None:
+        self._storage().record_experience(self._safe_candidate())
+
+        self.assertFalse((self._data_dir() / "generated_patch.diff").exists())
+        self.assertFalse((self._data_dir() / "patches").exists())
+        self.assertFalse(any(self._data_dir().glob("*.patch")))
+
+    def test_23_experience_storage_does_not_edit_code_files(self) -> None:
+        source_files = [
+            Path("backend/lucy_core/router.py"),
+            Path("backend/lucy_core/lucy_runtime.py"),
+            Path("backend/lucy_core/experience_storage.py"),
+        ]
+        before = {path: path.stat().st_mtime_ns for path in source_files}
+
+        self._storage().record_experience(self._safe_candidate())
+
+        after = {path: path.stat().st_mtime_ns for path in source_files}
+        self.assertEqual(before, after)
+
+    def test_24_experience_storage_output_does_not_contain_fake_consciousness_language(self) -> None:
+        _, router = self._runtime_and_router()
+        output = "\n".join(
+            [
+                router.handle("experience storage status").message,
+                router.handle("record experience").message,
+                router.handle("show experiences").message,
+            ]
+        ).lower()
+
+        for phrase in FORBIDDEN_EXPERIENCE_PHRASES:
+            self.assertNotIn(phrase, output)
+
+    def test_25_stage19_identity_stability_features_now_exist_after_stage19(self) -> None:
+        runtime, _ = self._runtime_and_router()
+
+        self.assertTrue(hasattr(runtime, "identity_stability"))
+        self.assertFalse((self._data_dir() / "identity_stability.json").exists())
+        self.assertFalse((self._data_dir() / "identity_stability").exists())
+
+    def test_26_existing_stage17_patch_pipeline_commands_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Patch pipeline status:", router.handle("patch pipeline status").message)
+        self.assertTrue(router.handle("create patch plan").message.strip())
+        self.assertIn("Patch plans:", router.handle("show patch plans").message)
+
+    def test_27_existing_stage16_shadow_testing_commands_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Shadow testing status:", router.handle("shadow testing status").message)
+        self.assertTrue(router.handle("run shadow test").message.strip())
+        self.assertIn("Shadow tests:", router.handle("show shadow tests").message)
+
+    def test_28_existing_stage15_evaluation_lab_commands_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Evaluation lab status:", router.handle("evaluation lab status").message)
+        self.assertTrue(router.handle("evaluate proposal").message.strip())
+        self.assertIn("Evaluations:", router.handle("show evaluations").message)
+
+    def test_29_existing_stage14_growth_proposal_commands_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Growth proposals status:", router.handle("growth proposals status").message)
+
+    def test_30_existing_stage13_self_model_commands_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Self-model status:", router.handle("self model status").message)
+
+    def test_31_existing_stage12_first_thought_commands_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("First thought status:", router.handle("first thought status").message)
+
+    def test_32_existing_stage11_access_status_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Safe access status:", router.handle("access status").message)
+
+    def test_33_existing_stage10_runtime_status_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Runtime status:", router.handle("runtime status").message)
+
+    def test_34_existing_stage09_agent_report_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Internal agent report:", router.handle("agent report").message)
+
+    def test_35_existing_stage08_agent_status_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertIn("Internal agents: active.", router.handle("agent status").message)
+
+    def test_36_existing_conversation_fallback_behavior_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+
+        self.assertEqual(router.handle("hi").message, "Hey. I'm here. Active project: Lucy.")
+
+    def test_37_existing_and_stage18_typo_aliases_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+        cases = {
+            "valuation lab status": "Evaluation lab status:",
+            "groth proposal status": "Growth proposals status:",
+            "first thot status": "First thought status:",
+            "patch status": "Patch pipeline status:",
+            "experience": "Experience storage status:",
+            "experiences": "Experience records:",
+            "record lesson": "Experience record:",
+            "show lessons": "Experience records:",
+        }
+
+        for command, expected in cases.items():
+            with self.subTest(command=command):
+                self.assertIn(expected, router.handle(command).message)
+
+    def test_38_tell_me_reflects_stage18_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("tell me")
+
+        self.assertIn("Active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("Guardian: active", response.message)
+        self.assertIn("Patch pipeline: active", response.message)
+        self.assertIn("Experience storage: active", response.message)
+        self.assertIn("Deep recall: active", response.message)
+        self.assertIn("Identity stability: active", response.message)
+        self.assertIn("Long-term strategy: active", response.message)
+
+    def test_39_what_next_reflects_stage18_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("what next")
+
+        self.assertIn("Current active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("describe what a provider health check would do, dry-run only, no network", response.message)
+        self.assertIn("Stage 35:", response.message)
+        self.assertIn("First manual model call stage blocked", response.message)
+
+    def test_40_no_ui_voice_network_or_external_api_behavior_added(self) -> None:
+        runtime, router = self._runtime_and_router()
+        output = router.handle("experience storage status").message.lower()
+
+        for method in ["start_server", "listen", "bind", "open_socket", "start_voice", "call_external_api"]:
+            self.assertFalse(hasattr(runtime.experience_storage, method))
+        self.assertFalse((self._data_dir() / "network").exists())
+        self.assertFalse((self._data_dir() / "voice").exists())
+        for term in ("network server: enabled", "voice: enabled", "external api"):
+            self.assertNotIn(term, output)
+
+    def test_41_no_autonomy_features_added(self) -> None:
+        runtime, _ = self._runtime_and_router()
+
+        self.assertFalse(hasattr(runtime.experience_storage, "auto_act"))
+        self.assertFalse(hasattr(runtime.experience_storage, "autonomous_loop"))
+        self.assertFalse(hasattr(runtime, "autonomy_engine"))
+
+    def test_42_no_provider_or_api_key_setup_added(self) -> None:
+        runtime, router = self._runtime_and_router()
+        output = router.handle("experience storage status").message.lower()
+
+        for method in ["setup_groq_key", "setup_gemini_key", "setup_openrouter_key", "provider_router_status"]:
+            self.assertFalse(hasattr(runtime.experience_storage, method))
+        self.assertFalse(hasattr(runtime, "provider_router"))
+        self.assertFalse((self._data_dir() / "providers").exists())
+        for term in ("nvidia", "groq", "gemini", "openrouter", "provider router", "api key"):
+            self.assertNotIn(term, output)
+
+
+if __name__ == "__main__":
+    unittest.main()

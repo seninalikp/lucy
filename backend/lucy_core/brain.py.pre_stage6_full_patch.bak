@@ -1,0 +1,148 @@
+"""
+brain.py
+Safe local brain/router foundation for Lucy.
+
+This keeps local fallback, response checking, and external-tool boundaries in
+front of any provider-backed answer.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+
+from backend.lucy_core.reasoning_policy import ReasoningPolicy, ReasoningRequest
+
+
+FORBIDDEN_OUTPUT_CLAIMS = [
+    "i am conscious",
+    "i am sentient",
+    "i am human",
+    "i am gemini",
+    "i am groq",
+    "as a large language model",
+    "as an ai language model",
+    "i have feelings",
+]
+
+SECRET_PATTERNS = [
+    r"api[_ -]?key\s*[:=]\s*['\"]?[A-Za-z0-9_\-]{16,}",
+    r"password\s*[:=]\s*\S+",
+    r"otp\s*[:=]\s*\d{4,8}",
+    r"sk-[A-Za-z0-9]{20,}",
+    r"-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----",
+    r"\b(?:\d[ -]*?){13,19}\b",
+]
+
+
+@dataclass
+class BrainResponse:
+    ok: bool
+    mode: str
+    text: str
+    warnings: list[str]
+
+
+class ResponseChecker:
+    def check(self, text: str) -> list[str]:
+        lowered = text.lower()
+        warnings: list[str] = []
+        for claim in FORBIDDEN_OUTPUT_CLAIMS:
+            if claim in lowered:
+                warnings.append(f"forbidden_claim:{claim}")
+        for pattern in SECRET_PATTERNS:
+            if re.search(pattern, text, re.IGNORECASE):
+                warnings.append(f"secret_pattern:{pattern}")
+        return warnings
+
+    def sanitize(self, text: str) -> BrainResponse:
+        warnings = self.check(text)
+        if warnings:
+            return BrainResponse(
+                ok=False,
+                mode="blocked_by_response_checker",
+                text="Response blocked by Lucy's response checker. It appeared to contain unsafe claims or secrets.",
+                warnings=warnings,
+            )
+        return BrainResponse(ok=True, mode="local_fallback", text=text, warnings=[])
+
+
+class LocalBrain:
+    def answer(self, prompt: str, project_summary: dict, memory_matches: list[dict]) -> str:
+        lowered = prompt.lower()
+        lines = ["Lucy local brain", "Mode: safe fallback", ""]
+
+        if any(word in lowered for word in ["status", "where are we", "what now"]):
+            lines.append(f"Active project: {project_summary.get('name', 'Lucy')}")
+            lines.append(f"Next action: {project_summary.get('next_action') or 'Not set.'}")
+            lines.append(f"Open tasks: {len(project_summary.get('open_tasks', []))}")
+            return "\n".join(lines)
+
+        if any(word in lowered for word in ["jarvis", "desktop", "voice", "agent"]):
+            lines.append("Closest safe path:")
+            lines.append("1. Stabilize local terminal Lucy.")
+            lines.append("2. Keep external API tools behind Lucy's local safety layer.")
+            lines.append("3. Add read-only desktop awareness.")
+            lines.append("4. Add permission-gated actions.")
+            lines.append("5. Add voice last, after the core is stable.")
+            return "\n".join(lines)
+
+        if memory_matches:
+            lines.append("Relevant memory:")
+            for item in memory_matches[:5]:
+                lines.append(f"- {item.get('fact', '')}")
+            lines.append("")
+
+        lines.append("I can reason locally in a limited way right now.")
+        lines.append("local commands are still available for memory, projects, tasks, reminders, files, approvals, health, and daily brief.")
+        lines.append("For deeper answers, Lucy can use configured external API tools when they are enabled.")
+        return "\n".join(lines)
+
+
+class BrainRouter:
+    def __init__(self) -> None:
+        self.local = LocalBrain()
+        self.checker = ResponseChecker()
+        self.reasoning_policy = ReasoningPolicy()
+
+    def status(self, external_enabled: bool = False) -> dict:
+        return {
+            "local_fallback": True,
+            "response_checker": True,
+            "external_api_enabled": external_enabled,
+            "external_api_modes": [] if external_enabled else ["off"],
+            "stage6_reasoning_router": True,
+            "reasoning_mode_default": "local_policy_only",
+            "chain_of_thought_output_allowed": False,
+            "note": (
+                "External API engines are tools only; Lucy identity and safety checks stay local."
+                if external_enabled
+                else "External API engines are tools only and are disabled in this reconstruction."
+            ),
+        }
+
+    def ask(self, prompt: str, project_summary: dict, memory_matches: list[dict]) -> BrainResponse:
+        raw = self.local.answer(prompt, project_summary, memory_matches)
+        return self.checker.sanitize(raw)
+
+    def route_request(self, user_text: str, runtime_context: dict | None = None) -> dict:
+        decision = self.reasoning_policy.decide(
+            ReasoningRequest(user_text=user_text, runtime_context=runtime_context or {})
+        )
+        return decision.to_dict()
+
+    def explain_route(self, user_text: str) -> dict:
+        decision = self.route_request(user_text)
+        return {
+            "user_text": user_text,
+            "route_decision": decision,
+            "summary": decision["reason"],
+            "required_context": decision["required_context"],
+            "safety_note": "Route explanation only. No tools executed and no online call made.",
+            "hidden_reasoning_output": False,
+        }
+
+    def brain_router_status(self, external_enabled: bool = False) -> dict:
+        status = self.status(external_enabled=external_enabled)
+        status["reasoning_policy"] = self.reasoning_policy.status()
+        return status

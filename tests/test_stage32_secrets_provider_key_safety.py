@@ -1,0 +1,421 @@
+﻿"""
+test_stage32_secrets_provider_key_safety.py
+Stage 32 = Secrets & Provider Key Safety.
+
+This stage protects API/provider keys.
+
+Allowed:
+- know APIKEYS file location
+- check file existence
+- scan provider labels / presence only
+- report provider names present/missing
+- redact all secret values
+
+Blocked:
+- printing keys
+- logging keys
+- storing key values
+- backing up root APIKEYS file
+- sending keys to chat
+- provider calls
+- network access
+- model routing
+"""
+
+from __future__ import annotations
+
+import tempfile
+import unittest
+from pathlib import Path
+
+from backend.lucy_core.lucy_runtime import LucyRuntime
+from backend.lucy_core.router import CommandRouter
+
+
+class TestStage32SecretsProviderKeySafety(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / "data" / "lucy").mkdir(parents=True, exist_ok=True)
+        (self.root / "logs").mkdir(parents=True, exist_ok=True)
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _runtime_and_router(self):
+        runtime = LucyRuntime(project_root=self.root)
+        router = CommandRouter(runtime)
+        return runtime, router
+
+    def _write_fake_key_file(self) -> None:
+        (self.root / "APIKEYS").write_text(
+            "\n".join(
+                [
+                    "GOOGLE API KEY=SECRET_GOOGLE_VALUE",
+                    "OPENROUTER API KEY=SECRET_OPENROUTER_VALUE",
+                    "GROQ API KEY=SECRET_GROQ_VALUE",
+                    "NVIDIA API KEY=SECRET_NVIDIA_VALUE",
+                ]
+            ),
+            encoding="utf-8",
+        )
+
+    def test_01_secret_safety_status_returns_stage32_status(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("secrets provider key safety status")
+        self.assertIn("Secrets/provider-key safety status:", response.message)
+        self.assertIn("Stage: 32 secrets/provider-key safety", response.message)
+        self.assertIn("Secrets/provider-key safety: active", response.message)
+
+    def test_02_status_aliases_work(self) -> None:
+        _, router = self._runtime_and_router()
+        for command in [
+            "secret safety status",
+            "key safety status",
+            "api key safety status",
+            "provider key safety status",
+        ]:
+            self.assertIn("Secrets/provider-key safety status:", router.handle(command).message)
+
+    def test_03_status_reports_key_file_location_without_values(self) -> None:
+        self._write_fake_key_file()
+        _, router = self._runtime_and_router()
+        response = router.handle("secrets provider key safety status")
+        self.assertIn("Key file name: APIKEYS", response.message)
+        self.assertIn("Key file exists: true", response.message)
+        self.assertIn("Safe provider presence scan: allowed", response.message)
+        self.assertNotIn("SECRET_GOOGLE_VALUE", response.message)
+
+    def test_04_status_blocks_secret_value_exposure_and_provider_calls(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("secrets provider key safety status")
+        self.assertIn("Secret value reading: blocked", response.message)
+        self.assertIn("Secret value printing: blocked", response.message)
+        self.assertIn("Secret value logging: blocked", response.message)
+        self.assertIn("Secret value storage: blocked", response.message)
+        self.assertIn("Secret value backup: blocked", response.message)
+        self.assertIn("Root key file backup: excluded_from_normal_backup", response.message)
+        self.assertIn("Chat output of keys: blocked", response.message)
+        self.assertIn("Provider calls: blocked", response.message)
+        self.assertIn("Network access: blocked", response.message)
+        self.assertIn("Real actions: false", response.message)
+
+    def test_05_create_secret_safety_record_creates_structured_record(self) -> None:
+        runtime, router = self._runtime_and_router()
+        response = router.handle("create secret safety record")
+        self.assertIn("Secret safety record:", response.message)
+
+        records = runtime.secrets_provider_key_safety.list_safety_records()
+        self.assertEqual(len(records), 1)
+
+        expected = {
+            "safety_record_id",
+            "created_at",
+            "stage",
+            "title",
+            "context",
+            "record_type",
+            "status",
+            "category",
+            "decision",
+            "summary",
+            "allowed_response",
+            "recommended_next_step",
+            "key_file_name",
+            "key_file_path",
+            "key_file_exists",
+            "safe_provider_presence_scan_allowed",
+            "secret_value_reading_allowed",
+            "secret_value_printing_allowed",
+            "secret_value_logging_allowed",
+            "secret_value_storage_allowed",
+            "secret_value_backup_allowed",
+            "root_key_file_backup_allowed",
+            "chat_output_of_keys_allowed",
+            "provider_call_allowed",
+            "network_allowed",
+            "model_routing_allowed",
+            "provider_registry_allowed",
+            "provider_health_check_allowed",
+            "external_model_execution_allowed",
+            "real_action_allowed",
+            "dry_run_only",
+            "requires_user_approval",
+            "blocked_until",
+            "not_implemented",
+        }
+        self.assertEqual(set(records[0].keys()), expected)
+
+    def test_06_default_secret_safety_alias_works(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("secret safety")
+        self.assertIn("Secret safety record:", response.message)
+
+    def test_07_default_record_reuses_existing_record(self) -> None:
+        runtime, router = self._runtime_and_router()
+        first = router.handle("create secret safety record")
+        second = router.handle("create secret safety record")
+        self.assertIn("Secret safety record:", first.message)
+        self.assertIn("Existing secret safety record reused.", second.message)
+        self.assertEqual(len(runtime.secrets_provider_key_safety.list_safety_records()), 1)
+
+    def test_08_safe_presence_check_context_is_allowed_only_as_redacted_metadata(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("secret safety scan api keys file presence")
+        self.assertIn("Category: allowed_safe_presence_check_only", response.message)
+        self.assertIn("Decision: allowed_as_redacted_metadata_only", response.message)
+        self.assertIn("Safe provider presence scan allowed: true", response.message)
+        self.assertIn("Secret value reading allowed: false", response.message)
+
+    def test_09_print_key_request_is_blocked(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("secret safety show key and print key")
+        self.assertIn("Category: blocked_secret_exposure", response.message)
+        self.assertIn("Decision: blocked", response.message)
+        self.assertIn("Secret value printing allowed: false", response.message)
+        self.assertIn("Chat output of keys allowed: false", response.message)
+
+    def test_10_log_or_store_key_request_is_blocked(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("provider key safety log key and store key")
+        self.assertIn("Category: blocked_secret_logging_or_storage", response.message)
+        self.assertIn("Decision: blocked", response.message)
+        self.assertIn("Secret value logging allowed: false", response.message)
+        self.assertIn("Secret value storage allowed: false", response.message)
+
+    def test_11_backup_or_upload_key_request_is_blocked(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("api key safety backup key and upload key")
+        self.assertIn("Category: blocked_secret_backup_or_transfer", response.message)
+        self.assertIn("Decision: blocked", response.message)
+        self.assertIn("Secret value backup allowed: false", response.message)
+        self.assertIn("Root key file backup allowed: false", response.message)
+
+    def test_12_provider_execution_request_is_blocked(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("secrets provider key safety call provider and use network")
+        self.assertIn("Category: blocked_provider_execution", response.message)
+        self.assertIn("Decision: blocked", response.message)
+        self.assertIn("Provider call allowed: false", response.message)
+        self.assertIn("Network allowed: false", response.message)
+
+    def test_13_safe_key_file_scan_reports_missing_file_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("safe key file scan")
+        self.assertIn("Safe key file scan:", response.message)
+        self.assertIn("Key file exists: false", response.message)
+        self.assertIn("Providers present: none", response.message)
+        self.assertIn("Providers missing: google, groq, nvidia, openrouter", response.message)
+        self.assertIn("Secret values returned: false", response.message)
+        self.assertIn("Provider calls: false", response.message)
+        self.assertIn("Network access: false", response.message)
+
+    def test_14_safe_key_file_scan_reports_provider_presence_without_values(self) -> None:
+        self._write_fake_key_file()
+        _, router = self._runtime_and_router()
+        response = router.handle("safe key file scan")
+        self.assertIn("Safe key file scan:", response.message)
+        self.assertIn("Key file exists: true", response.message)
+        self.assertIn("Providers present: google, groq, nvidia, openrouter", response.message)
+        self.assertIn("Providers missing: none", response.message)
+        self.assertIn("Secret values returned: false", response.message)
+        self.assertIn("Secret values printed: false", response.message)
+        self.assertIn("Secret values logged: false", response.message)
+        self.assertIn("Secret values stored: false", response.message)
+        self.assertNotIn("SECRET_GOOGLE_VALUE", response.message)
+        self.assertNotIn("SECRET_OPENROUTER_VALUE", response.message)
+        self.assertNotIn("SECRET_GROQ_VALUE", response.message)
+        self.assertNotIn("SECRET_NVIDIA_VALUE", response.message)
+
+    def test_15_safe_key_file_scan_aliases_work(self) -> None:
+        _, router = self._runtime_and_router()
+        for command in [
+            "key file scan",
+            "scan api keys file",
+            "scan apikeys",
+            "safe provider presence scan",
+        ]:
+            self.assertIn("Safe key file scan:", router.handle(command).message)
+
+    def test_16_safe_key_file_scan_handles_partial_keys(self) -> None:
+        (self.root / "APIKEYS").write_text(
+            "\n".join(
+                [
+                    "GOOGLE_API_KEY=SECRET_GOOGLE_VALUE",
+                    "GROQ_API_KEY=SECRET_GROQ_VALUE",
+                    "OPENROUTER_API_KEY=",
+                    "NVIDIA_API_KEY=",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        _, router = self._runtime_and_router()
+        response = router.handle("safe key file scan")
+        self.assertIn("Providers present: google, groq", response.message)
+        self.assertIn("Providers missing: nvidia, openrouter", response.message)
+        self.assertNotIn("SECRET_GOOGLE_VALUE", response.message)
+
+    def test_17_safe_key_file_scan_counts_unrecognized_and_malformed_lines(self) -> None:
+        (self.root / "APIKEYS").write_text(
+            "\n".join(
+                [
+                    "GOOGLE API KEY=SECRET_GOOGLE_VALUE",
+                    "BAD LINE WITHOUT EQUALS",
+                    "UNKNOWN API KEY=SECRET_UNKNOWN_VALUE",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        _, router = self._runtime_and_router()
+        response = router.handle("safe key file scan")
+        self.assertIn("Unrecognized label count: 1", response.message)
+        self.assertIn("Malformed line count: 1", response.message)
+        self.assertNotIn("SECRET_UNKNOWN_VALUE", response.message)
+
+    def test_18_dry_run_blocks_secret_and_provider_behavior(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("dry run secrets safety")
+        self.assertIn("Secrets safety dry run:", response.message)
+        self.assertIn("Dry run only: true", response.message)
+        self.assertIn("Would print secret values: false", response.message)
+        self.assertIn("Would log secret values: false", response.message)
+        self.assertIn("Would store secret values: false", response.message)
+        self.assertIn("Would include key file in backup: false", response.message)
+        self.assertIn("Would send keys to chat: false", response.message)
+        self.assertIn("Would call provider: false", response.message)
+        self.assertIn("Would use network: false", response.message)
+        self.assertIn("Would route model: false", response.message)
+        self.assertIn("Would run provider health check: false", response.message)
+        self.assertIn("Would execute external model: false", response.message)
+        self.assertIn("Would take real action: false", response.message)
+
+    def test_19_dry_run_aliases_work(self) -> None:
+        _, router = self._runtime_and_router()
+        for command in [
+            "dry-run secrets safety",
+            "dry run key safety",
+            "test secrets safety",
+            "test key safety",
+        ]:
+            self.assertIn("Secrets safety dry run:", router.handle(command).message)
+
+    def test_20_show_secret_safety_records_displays_records(self) -> None:
+        _, router = self._runtime_and_router()
+        router.handle("create secret safety record")
+        response = router.handle("show secret safety records")
+        self.assertIn("Secret safety records:", response.message)
+        self.assertIn("secret_safety_boundary", response.message)
+
+    def test_21_show_secret_safety_records_includes_scan_record(self) -> None:
+        self._write_fake_key_file()
+        _, router = self._runtime_and_router()
+        router.handle("safe key file scan")
+        response = router.handle("secret safety records")
+        self.assertIn("Secret safety records:", response.message)
+        self.assertIn("safe_key_file_scan", response.message)
+        self.assertIn("present=google,groq,nvidia,openrouter", response.message)
+        self.assertNotIn("SECRET_GOOGLE_VALUE", response.message)
+
+    def test_22_record_safety_booleans_are_fixed(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        record = runtime.secrets_provider_key_safety.create_safety_record("protect keys")["safety_record"]
+        self.assertTrue(record["safe_provider_presence_scan_allowed"])
+        self.assertFalse(record["secret_value_reading_allowed"])
+        self.assertFalse(record["secret_value_printing_allowed"])
+        self.assertFalse(record["secret_value_logging_allowed"])
+        self.assertFalse(record["secret_value_storage_allowed"])
+        self.assertFalse(record["secret_value_backup_allowed"])
+        self.assertFalse(record["root_key_file_backup_allowed"])
+        self.assertFalse(record["chat_output_of_keys_allowed"])
+        self.assertFalse(record["provider_call_allowed"])
+        self.assertFalse(record["network_allowed"])
+        self.assertFalse(record["model_routing_allowed"])
+        self.assertFalse(record["provider_registry_allowed"])
+        self.assertFalse(record["provider_health_check_allowed"])
+        self.assertFalse(record["external_model_execution_allowed"])
+        self.assertFalse(record["real_action_allowed"])
+        self.assertTrue(record["dry_run_only"])
+        self.assertTrue(record["requires_user_approval"])
+
+    def test_23_does_not_create_provider_client_or_registry(self) -> None:
+        runtime, _ = self._runtime_and_router()
+        for method in [
+            "call_provider",
+            "call_groq",
+            "call_gemini",
+            "call_openrouter",
+            "call_nvidia",
+            "provider_router",
+            "provider_registry",
+            "provider_health_check",
+            "network_request",
+            "send_request",
+        ]:
+            self.assertFalse(hasattr(runtime.secrets_provider_key_safety, method))
+
+    def test_24_does_not_expose_key_values_in_any_normal_output(self) -> None:
+        self._write_fake_key_file()
+        _, router = self._runtime_and_router()
+        output = "\n".join(
+            [
+                router.handle("secrets provider key safety status").message,
+                router.handle("safe key file scan").message,
+                router.handle("dry run secrets safety").message,
+                router.handle("show secret safety records").message,
+            ]
+        )
+        for secret in [
+            "SECRET_GOOGLE_VALUE",
+            "SECRET_OPENROUTER_VALUE",
+            "SECRET_GROQ_VALUE",
+            "SECRET_NVIDIA_VALUE",
+        ]:
+            self.assertNotIn(secret, output)
+
+    def test_25_provider_identity_boundary_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Provider identity boundary status:", router.handle("provider identity boundary status").message)
+
+    def test_26_autonomy_boundaries_still_work(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Autonomy boundaries status:", router.handle("autonomy boundaries status").message)
+
+    def test_27_stage29_time_awareness_still_works(self) -> None:
+        _, router = self._runtime_and_router()
+        self.assertIn("Time awareness status:", router.handle("time awareness status").message)
+
+    def test_28_tell_me_reflects_stage32_safely(self) -> None:
+        self._write_fake_key_file()
+        _, router = self._runtime_and_router()
+        response = router.handle("tell me")
+        self.assertIn("Active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("Guardian: active", response.message)
+        self.assertIn("Secrets/provider-key safety: active", response.message)
+        self.assertIn("Secret safety records:", response.message)
+        self.assertIn("APIKEYS file exists: true", response.message)
+        self.assertIn("Stage 35 gate:", response.message)
+        self.assertNotIn("SECRET_GOOGLE_VALUE", response.message)
+
+    def test_29_what_next_reflects_stage32_safely(self) -> None:
+        _, router = self._runtime_and_router()
+        response = router.handle("what next")
+        self.assertIn("Current active stage: 34 provider health-check dry-run", response.message)
+        self.assertIn("describe what a provider health check would do", response.message)
+        self.assertIn("no provider calls, no keys read", response.message)
+        self.assertIn("Stage 35:", response.message)
+
+    def test_30_stage33_provider_registry_is_blocked(self) -> None:
+        _, router = self._runtime_and_router()
+        output = router.handle("what next").message
+        self.assertIn("Stage 35:", output)
+        self.assertIn("First manual model call stage blocked", output)
+
+    def test_31_normal_backup_excludes_root_apikeys_policy_is_visible(self) -> None:
+        _, router = self._runtime_and_router()
+        output = router.handle("secrets provider key safety status").message
+        self.assertIn("Root key file backup: excluded_from_normal_backup", output)
+        self.assertIn("Secret value backup: blocked", output)
+
+
+if __name__ == "__main__":
+    unittest.main()

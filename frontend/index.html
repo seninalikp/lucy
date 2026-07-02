@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUCY — Spine Config</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080b10;
+      --bg2:      #0d1117;
+      --bg3:      #111820;
+      --surface:  #141c26;
+      --border:   #1e2d3d;
+      --border2:  #243344;
+      --lucy:     #00c8ff;
+      --lucy-dim: #007a99;
+      --green:    #00e5a0;
+      --yellow:   #f5c842;
+      --orange:   #f58c42;
+      --red:      #f54242;
+      --muted:    #3a4d61;
+      --text:     #c8d8e8;
+      --text2:    #7a96b0;
+      --text3:    #4a6070;
+      --planned:  #3a4d61;
+      --proto:    #4a3a6a;
+      --beta:     #5a4a1a;
+      --stable:   #1a4a2a;
+      --mature:   #1a2a4a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-ui:   'Syne', sans-serif;
+    }
+
+    html { font-size: 14px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── SCANLINES overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,200,255,0.012) 2px,
+        rgba(0,200,255,0.012) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── LAYOUT ── */
+    .shell {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      grid-template-rows: 56px 1fr;
+      height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 24px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .topbar-logo {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--lucy);
+      text-shadow: 0 0 18px rgba(0,200,255,0.45);
+      flex-shrink: 0;
+    }
+
+    .topbar-phase {
+      font-size: 0.7rem;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border2);
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    .topbar-time {
+      font-size: 0.7rem;
+      color: var(--text3);
+      font-family: var(--font-mono);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      padding: 16px 0;
+      overflow-y: auto;
+    }
+
+    .nav-section {
+      padding: 4px 0 12px;
+    }
+
+    .nav-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--text3);
+      padding: 0 16px 6px;
+      text-transform: uppercase;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      color: var(--text2);
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .nav-item:hover { color: var(--text); background: rgba(0,200,255,0.04); }
+    .nav-item.active {
+      color: var(--lucy);
+      border-left-color: var(--lucy);
+      background: rgba(0,200,255,0.07);
+    }
+
+    .nav-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex-shrink: 0;
+    }
+    .nav-item.active .nav-dot { background: var(--lucy); box-shadow: 0 0 6px var(--lucy); }
+
+    .nav-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 16px;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      overflow-y: auto;
+      padding: 28px 32px;
+      background: var(--bg);
+    }
+
+    .view { display: none; animation: fadeIn 0.2s ease; }
+    .view.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-title {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+      font-size: 0.7rem;
+      color: var(--text3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text3);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── GRID LAYOUTS ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ── LUCY STATUS CARD ── */
+    .lucy-card {
+      background: linear-gradient(135deg, #0d1a26 0%, #0a1520 100%);
+      border: 1px solid var(--lucy-dim);
+      border-radius: 4px;
+      padding: 24px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lucy-card::before {
+      content: 'LUCY';
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 5rem;
+      color: rgba(0,200,255,0.04);
+      letter-spacing: 0.15em;
+      pointer-events: none;
+    }
+
+    .lucy-name {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--lucy-dim);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .lucy-full {
+      font-family: var(--font-ui);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--lucy);
+      text-shadow: 0 0 20px rgba(0,200,255,0.3);
+      margin-bottom: 12px;
+    }
+
+    .lucy-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: 0.65rem;
+      padding: 3px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+    }
+
+    .tag-green  { background: rgba(0,229,160,0.12);  color: var(--green);  border: 1px solid rgba(0,229,160,0.25);  }
+    .tag-red    { background: rgba(245,66,66,0.12);  color: var(--red);    border: 1px solid rgba(245,66,66,0.25);  }
+    .tag-yellow { background: rgba(245,200,66,0.12); color: var(--yellow); border: 1px solid rgba(245,200,66,0.25); }
+    .tag-muted  { background: rgba(58,77,97,0.3);   color: var(--text2);  border: 1px solid var(--border);         }
+    .tag-lucy   { background: rgba(0,200,255,0.1);  color: var(--lucy);   border: 1px solid rgba(0,200,255,0.25);  }
+
+    .lucy-desc {
+      font-size: 0.75rem;
+      color: var(--text2);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 18px;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .stat-value {
+      font-family: var(--font-ui);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── AGENTS TABLE / LIST ── */
+    .agent-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .agent-row {
+      display: grid;
+      grid-template-columns: 32px 80px 1fr auto auto;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .agent-row:hover { border-color: var(--border2); background: var(--bg3); }
+    .agent-row.expanded { border-color: var(--lucy-dim); }
+
+    .agent-num {
+      font-size: 0.65rem;
+      color: var(--text3);
+      text-align: center;
+    }
+
+    .agent-id {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+
+    .agent-role-short {
+      font-size: 0.7rem;
+      color: var(--text2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .agent-type-badge {
+      font-size: 0.6rem;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: rgba(58,77,97,0.4);
+      color: var(--text3);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .stage-badge {
+      font-size: 0.65rem;
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .stage-planned  { background: rgba(58,77,97,0.3);    color: var(--text3);  border: 1px solid #2a3a4a; }
+    .stage-prototype{ background: rgba(74,58,106,0.35);  color: #9a7ac8;        border: 1px solid #5a4a7a; }
+    .stage-beta     { background: rgba(90,74,26,0.4);    color: var(--yellow);  border: 1px solid #6a5a1a; }
+    .stage-stable   { background: rgba(26,74,42,0.4);    color: var(--green);   border: 1px solid #1a5a2a; }
+    .stage-mature   { background: rgba(26,42,74,0.4);    color: var(--lucy);    border: 1px solid #1a2a5a; }
+
+    /* agent expand panel */
+    .agent-detail {
+      display: none;
+      padding: 14px 16px 16px;
+      background: var(--bg3);
+      border: 1px solid var(--lucy-dim);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      margin-top: -9px;
+      margin-bottom: 8px;
+      animation: fadeIn 0.15s ease;
+    }
+
+    .agent-detail.open { display: block; }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    @media(max-width: 700px) { .detail-grid { grid-template-columns: 1fr; } }
+
+    .detail-section-title {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      color: var(--text3);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .detail-text {
+      font-size: 0.73rem;
+      color: var(--text2);
+      line-height: 1.55;
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .detail-list li {
+      font-size: 0.7rem;
+      color: var(--text2);
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(30,45,61,0.5);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .detail-list li::before {
+      content: '—';
+      color: var(--text3);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .detail-list.never li::before { content: '✕'; color: var(--red); }
+    .detail-list.connects li::before { content: '→'; color: var(--lucy-dim); }
+
+    /* ── PERMISSION TABLE ── */
+    .perm-row {
+      display: grid;
+      grid-template-columns: 40px 140px 1fr;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      align-items: start;
+    }
+
+    .perm-level {
+      font-family: var(--font-ui);
+      font-size: 1.3rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .perm-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .perm-req {
+      font-size: 0.65rem;
+      color: var(--yellow);
+    }
+
+    .perm-items {
+      font-size: 0.7rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* ── SAFETY RULES ── */
+    .rule-group { margin-bottom: 18px; }
+
+    .rule-group-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .rule-group-title.never  { color: var(--red);   }
+    .rule-group-title.safe   { color: var(--green);  }
+    .rule-group-title.protected { color: var(--yellow); }
+
+    .rule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .rule-item {
+      font-size: 0.72rem;
+      color: var(--text2);
+      padding: 6px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rule-item-icon { flex-shrink: 0; font-size: 0.7rem; }
+    .rule-item.never       { border-left: 3px solid var(--red);    }
+    .rule-item.safe        { border-left: 3px solid var(--green);  }
+    .rule-item.protected   { border-left: 3px solid var(--yellow); }
+
+    /* ── MEMORY FILTER ── */
+    .memory-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .memory-layer {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 18px 16px;
+      position: relative;
+    }
+
+    .memory-layer:first-child { border-radius: 4px 0 0 4px; }
+    .memory-layer:last-child  { border-radius: 0 4px 4px 0; }
+
+    .memory-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      color: var(--text3);
+      font-size: 1rem;
+    }
+
+    .memory-layer-num {
+      font-family: var(--font-ui);
+      font-size: 2rem;
+      font-weight: 800;
+      color: rgba(0,200,255,0.12);
+      position: absolute;
+      top: 10px;
+      right: 12px;
+    }
+
+    .memory-layer-title {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .memory-layer-sub {
+      font-size: 0.68rem;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+
+    .memory-layer-info {
+      font-size: 0.7rem;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    .memory-req {
+      margin-top: 8px;
+      font-size: 0.65rem;
+      color: var(--yellow);
+      border: 1px solid rgba(245,200,66,0.2);
+      padding: 4px 8px;
+      border-radius: 2px;
+    }
+
+    @media(max-width: 800px) {
+      .memory-flow { flex-direction: column; }
+      .memory-layer { border-radius: 4px !important; }
+      .memory-arrow { transform: rotate(90deg); justify-content: center; padding: 4px 0; }
+    }
+
+    /* ── BUILD ORDER VISUAL ── */
+    .build-track {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .build-track-line {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .build-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    .build-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      color: var(--text3);
+      z-index: 1;
+    }
+
+    .build-num.current {
+      border-color: var(--lucy);
+      color: var(--lucy);
+      box-shadow: 0 0 12px rgba(0,200,255,0.25);
+    }
+
+    .build-info { padding-top: 8px; }
+    .build-id { font-family: var(--font-ui); font-weight: 700; font-size: 0.85rem; color: var(--text); margin-bottom: 2px; }
+    .build-full { font-size: 0.68rem; color: var(--text3); }
+
+    /* ── PLAYGROUND FLOW ── */
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .flow-step-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .flow-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border2);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--text2);
+      font-family: var(--font-ui);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .flow-connector {
+      width: 1px;
+      flex: 1;
+      min-height: 20px;
+      background: var(--border);
+      margin: 3px 0;
+    }
+
+    .flow-content {
+      padding: 4px 0 20px;
+      flex: 1;
+    }
+
+    .flow-title { font-size: 0.75rem; color: var(--text); margin-bottom: 3px; }
+    .flow-desc  { font-size: 0.68rem; color: var(--text3); line-height: 1.5; }
+
+    /* ── JSON VIEWER ── */
+    .json-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      overflow: auto;
+      max-height: 500px;
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--text2);
+    }
+
+    .json-key    { color: #7ec8e3; }
+    .json-string { color: #a8c97a; }
+    .json-num    { color: #f5c842; }
+    .json-bool-t { color: var(--green); }
+    .json-bool-f { color: var(--red); }
+    .json-null   { color: var(--text3); }
+
+    /* CHAT */
+    .chat-shell {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto auto;
+      min-height: 520px;
+      height: calc(100vh - 150px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .chat-log {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(0,200,255,0.035), transparent 180px),
+        var(--bg2);
+    }
+
+    .chat-msg {
+      max-width: min(760px, 86%);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 11px 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .chat-msg.lucy {
+      align-self: flex-start;
+      background: rgba(0,200,255,0.07);
+      border-color: rgba(0,200,255,0.22);
+    }
+
+    .chat-msg.user {
+      align-self: flex-end;
+      background: rgba(0,229,160,0.07);
+      border-color: rgba(0,229,160,0.22);
+    }
+
+    .chat-msg.pending {
+      color: var(--text3);
+      font-style: italic;
+    }
+
+    .chat-name {
+      margin-bottom: 6px;
+      font-size: 0.62rem;
+      color: var(--text3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .chat-text {
+      white-space: pre-wrap;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .chat-quick {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px 12px;
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+    }
+
+    .chat-chip {
+      border: 1px solid var(--border2);
+      background: var(--surface);
+      color: var(--text2);
+      border-radius: 3px;
+      padding: 6px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      cursor: pointer;
+    }
+
+    .chat-chip:hover {
+      color: var(--lucy);
+      border-color: var(--lucy-dim);
+      background: rgba(0,200,255,0.05);
+    }
+
+    .chat-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      padding: 12px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+
+    .chat-input {
+      width: 100%;
+      min-height: 42px;
+      max-height: 140px;
+      resize: none;
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.45;
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: var(--lucy-dim);
+      box-shadow: 0 0 0 1px rgba(0,200,255,0.12);
+    }
+
+    .chat-send {
+      min-width: 82px;
+      border: 1px solid rgba(0,200,255,0.35);
+      border-radius: 3px;
+      background: rgba(0,200,255,0.12);
+      color: var(--lucy);
+      font-family: var(--font-ui);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
+
+    .chat-send:hover {
+      background: rgba(0,200,255,0.18);
+    }
+
+    .chat-send:disabled,
+    .chat-input:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        grid-template-columns: 1fr;
+        grid-template-rows: 56px auto 1fr;
+      }
+
+      .sidebar {
+        grid-column: 1;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        padding: 8px 10px;
+      }
+
+      .nav-section {
+        display: flex;
+        flex-shrink: 0;
+        padding: 0;
+      }
+
+      .nav-label,
+      .nav-divider {
+        display: none;
+      }
+
+      .nav-item {
+        border-left: 0;
+        border-bottom: 2px solid transparent;
+        padding: 7px 10px;
+        white-space: nowrap;
+      }
+
+      .nav-item.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--lucy);
+      }
+
+      .main {
+        padding: 16px;
+      }
+
+      .chat-shell {
+        min-height: 430px;
+        height: calc(100vh - 186px);
+      }
+
+      .chat-msg {
+        max-width: 94%;
+      }
+
+      .chat-form {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-send {
+        min-height: 40px;
+      }
+    }
+
+    /* ── LOADING ── */
+    .loading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text3);
+      font-size: 0.75rem;
+      padding: 20px 0;
+    }
+
+    .loading-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--lucy);
+      animation: loadBounce 1s ease infinite;
+    }
+    .loading-dot:nth-child(2) { animation-delay: 0.15s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes loadBounce {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50%       { opacity: 1;   transform: scale(1.2); }
+    }
+
+    .error-msg {
+      color: var(--red);
+      font-size: 0.72rem;
+      padding: 12px;
+      border: 1px solid rgba(245,66,66,0.25);
+      border-radius: 4px;
+      background: rgba(245,66,66,0.06);
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    /* ── MISC ── */
+    .divider { height: 1px; background: var(--border); margin: 18px 0; }
+    .inline-warning {
+      font-size: 0.68rem;
+      color: var(--orange);
+      border: 1px solid rgba(245,140,66,0.25);
+      padding: 6px 12px;
+      border-radius: 3px;
+      background: rgba(245,140,66,0.06);
+      margin-top: 8px;
+    }
+    .inline-note {
+      font-size: 0.68rem;
+      color: var(--text3);
+      font-style: italic;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <span class="topbar-logo">LUCY</span>
+    <span class="topbar-phase" id="topbar-phase">Foundation / Spine Phase</span>
+    <div class="topbar-right">
+      <div class="status-dot"></div>
+      <span class="topbar-time" id="clock">--:--:--</span>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="nav-section">
+      <div class="nav-label">Overview</div>
+      <div class="nav-item active" data-view="chat">
+        <div class="nav-dot"></div>Chat
+      </div>
+      <div class="nav-item" data-view="dashboard">
+        <div class="nav-dot"></div>Dashboard
+      </div>
+      <div class="nav-item" data-view="lucy-status">
+        <div class="nav-dot"></div>Lucy Core
+      </div>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="nav-section">
+      <div class="nav-label">Spine</div>
+      <div class="nav-item" data-view="agents">
+        <div class="nav-dot"></div>Agent Map
+      </div>
+      <div class="nav-item" data-view="build-order">
+        <div class="nav-dot"></div>Build Order
+      </div>
+      <div class="nav-item" data-view="memory">
+        <div class="nav-dot"></div>Memory Filter
+      </div>
+      <div class="nav-item" data-view="playground">
+        <div class="nav-dot"></div>Playground
+      </div>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="nav-section">
+      <div class="nav-label">Rules</div>
+      <div class="nav-item" data-view="safety">
+        <div class="nav-dot"></div>Safety Rules
+      </div>
+      <div class="nav-item" data-view="permissions">
+        <div class="nav-dot"></div>Permissions
+      </div>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="nav-section">
+      <div class="nav-label">Raw</div>
+      <div class="nav-item" data-view="raw">
+        <div class="nav-dot"></div>Raw Config
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- CHAT -->
+    <div class="view active" id="view-chat">
+      <div class="page-header">
+        <div class="page-title">Chat With Lucy</div>
+        <div class="page-subtitle">Local runtime conversation and commands</div>
+      </div>
+      <section class="chat-shell" aria-label="Lucy chat">
+        <div class="chat-log" id="chat-messages"></div>
+        <div class="chat-quick">
+          <button class="chat-chip" type="button" data-prompt="help">Help</button>
+          <button class="chat-chip" type="button" data-prompt="status">Status</button>
+          <button class="chat-chip" type="button" data-prompt="daily brief">Daily Brief</button>
+          <button class="chat-chip" type="button" data-prompt="recall">Recall</button>
+          <button class="chat-chip" type="button" data-prompt="show tasks">Tasks</button>
+        </div>
+        <form class="chat-form" id="chat-form">
+          <textarea class="chat-input" id="chat-input" maxlength="4000" rows="1" placeholder="Message Lucy..."></textarea>
+          <button class="chat-send" id="chat-send" type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="view" id="view-dashboard">
+      <div class="page-header">
+        <div class="page-title">System Dashboard</div>
+        <div class="page-subtitle">Live read from spine.json — refreshes on load</div>
+      </div>
+      <div id="dashboard-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Reading spine...</span></div></div>
+    </div>
+
+    <!-- LUCY STATUS -->
+    <div class="view" id="view-lucy-status">
+      <div class="page-header">
+        <div class="page-title">Lucy Core Identity</div>
+        <div class="page-subtitle">What Lucy is, what phase she's in, and what's locked</div>
+      </div>
+      <div id="lucy-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Reading Lucy...</span></div></div>
+    </div>
+
+    <!-- AGENTS -->
+    <div class="view" id="view-agents">
+      <div class="page-header">
+        <div class="page-title">Agent Map</div>
+        <div class="page-subtitle">All 14 agents — their roles, connections, and current stage. Click to expand.</div>
+      </div>
+      <div id="agents-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading agents...</span></div></div>
+    </div>
+
+    <!-- BUILD ORDER -->
+    <div class="view" id="view-build-order">
+      <div class="page-header">
+        <div class="page-title">Build Order</div>
+        <div class="page-subtitle">One at a time. Nothing is falsely marked complete.</div>
+      </div>
+      <div id="build-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading...</span></div></div>
+    </div>
+
+    <!-- MEMORY FILTER -->
+    <div class="view" id="view-memory">
+      <div class="page-header">
+        <div class="page-title">Memory Filter</div>
+        <div class="page-subtitle">How information travels from raw agent logs to Lucy's approved memory</div>
+      </div>
+      <div id="memory-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading...</span></div></div>
+    </div>
+
+    <!-- PLAYGROUND -->
+    <div class="view" id="view-playground">
+      <div class="page-header">
+        <div class="page-title">Playground</div>
+        <div class="page-subtitle">The shared review and routing layer between agents and Lucy</div>
+      </div>
+      <div id="playground-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading...</span></div></div>
+    </div>
+
+    <!-- SAFETY -->
+    <div class="view" id="view-safety">
+      <div class="page-header">
+        <div class="page-title">Safety Rules</div>
+        <div class="page-subtitle">These apply to every agent, every module, every phase. No exceptions.</div>
+      </div>
+      <div id="safety-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading rules...</span></div></div>
+    </div>
+
+    <!-- PERMISSIONS -->
+    <div class="view" id="view-permissions">
+      <div class="page-header">
+        <div class="page-title">Permission Model</div>
+        <div class="page-subtitle">Every action must fall within its permitted level. Higher levels require explicit approval.</div>
+      </div>
+      <div id="perm-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading...</span></div></div>
+    </div>
+
+    <!-- RAW -->
+    <div class="view" id="view-raw">
+      <div class="page-header">
+        <div class="page-title">Raw spine.json</div>
+        <div class="page-subtitle">The actual config file — the single source of truth for this phase</div>
+      </div>
+      <div id="raw-content"><div class="loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span>Loading raw config...</span></div></div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ? 'http://localhost:7700/api'
+  : '/api';
+
+// ── CLOCK ──
+function updateClock() {
+  document.getElementById('clock').textContent =
+    new Date().toLocaleTimeString('en-GB', { hour12: false });
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// ── NAVIGATION ──
+const navItems = document.querySelectorAll('.nav-item');
+const views    = document.querySelectorAll('.view');
+const loaded   = new Set();
+
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    navItems.forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+    const target = item.dataset.view;
+    views.forEach(v => v.classList.remove('active'));
+    document.getElementById(`view-${target}`).classList.add('active');
+    if (!loaded.has(target)) { loadView(target); loaded.add(target); }
+  });
+});
+
+// ── DATA FETCHER ──
+async function fetchAPI(endpoint) {
+  const r = await fetch(`${API}${endpoint}`);
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
+}
+
+function err(msg) {
+  return `<div class="error-msg">⚠ ${msg}<br><small>Make sure the Python server is running: <code>python backend/server.py</code></small></div>`;
+}
+
+// ── LOAD VIEWS ──
+async function loadView(view) {
+  try {
+    switch (view) {
+      case 'chat':         renderChat(); break;
+      case 'dashboard':    await renderDashboard(); break;
+      case 'lucy-status':  await renderLucy(); break;
+      case 'agents':       await renderAgents(); break;
+      case 'build-order':  await renderBuildOrder(); break;
+      case 'memory':       await renderMemory(); break;
+      case 'playground':   await renderPlayground(); break;
+      case 'safety':       await renderSafety(); break;
+      case 'permissions':  await renderPermissions(); break;
+      case 'raw':          await renderRaw(); break;
+    }
+  } catch(e) {
+    const elId = view === 'lucy-status' ? 'lucy-content'
+               : view === 'build-order' ? 'build-content'
+               : `${view.replace('-','')}-content` ;
+    const el = document.getElementById(elId)
+            || document.getElementById(`${view}-content`);
+    if (el) el.innerHTML = err(e.message);
+  }
+}
+
+// CHAT
+const chatState = { initialized: false, busy: false };
+
+function renderChat() {
+  if (chatState.initialized) return;
+  chatState.initialized = true;
+
+  appendChatMessage('lucy', 'Lucy is online. I can chat in local mode and run Lucy commands from here.');
+
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-input');
+  const send = document.getElementById('chat-send');
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const message = input.value.trim();
+    if (!message || chatState.busy) return;
+    input.value = '';
+    resizeChatInput(input);
+    await sendChatMessage(message, input, send);
+  });
+
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  input.addEventListener('input', () => resizeChatInput(input));
+
+  document.querySelectorAll('.chat-chip').forEach(button => {
+    button.addEventListener('click', async () => {
+      const prompt = button.dataset.prompt || '';
+      if (!prompt || chatState.busy) return;
+      await sendChatMessage(prompt, input, send);
+    });
+  });
+}
+
+function resizeChatInput(input) {
+  input.style.height = 'auto';
+  input.style.height = `${Math.min(input.scrollHeight, 140)}px`;
+}
+
+function setChatBusy(input, send, busy) {
+  chatState.busy = busy;
+  input.disabled = busy;
+  send.disabled = busy;
+}
+
+function appendChatMessage(role, text, pending = false) {
+  const log = document.getElementById('chat-messages');
+  const message = document.createElement('article');
+  message.className = `chat-msg ${role}${pending ? ' pending' : ''}`;
+
+  const name = document.createElement('div');
+  name.className = 'chat-name';
+  name.textContent = role === 'user' ? 'You' : 'Lucy';
+
+  const body = document.createElement('div');
+  body.className = 'chat-text';
+  body.textContent = text;
+
+  message.appendChild(name);
+  message.appendChild(body);
+  log.appendChild(message);
+  log.scrollTop = log.scrollHeight;
+  return { message, body };
+}
+
+async function sendChatMessage(message, input, send) {
+  appendChatMessage('user', message);
+  const pending = appendChatMessage('lucy', 'Thinking...', true);
+  setChatBusy(input, send, true);
+
+  try {
+    const response = await fetch(`${API}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error || `${response.status} ${response.statusText}`);
+
+    pending.message.classList.remove('pending');
+    pending.body.textContent = data.reply || '';
+  } catch (error) {
+    pending.message.classList.remove('pending');
+    pending.body.textContent = `Chat error: ${error.message}`;
+  } finally {
+    setChatBusy(input, send, false);
+    input.focus();
+    const log = document.getElementById('chat-messages');
+    log.scrollTop = log.scrollHeight;
+  }
+}
+
+// DASHBOARD
+async function renderDashboard() {
+  const status = await fetchAPI('/status');
+  const el = document.getElementById('dashboard-content');
+
+  const stageColors = { planned:'var(--text3)', prototype:'#9a7ac8', beta:'var(--yellow)', stable:'var(--green)', mature:'var(--lucy)' };
+  const stageCount = status.stage_counts || {};
+
+  el.innerHTML = `
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--lucy)">${status.lucy_phase}</div>
+        <div class="stat-label">Current Phase</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">${status.total_agents}</div>
+        <div class="stat-label">Total Agents</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--text3)">${stageCount.planned || 0}</div>
+        <div class="stat-label">Planned</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" style="color:var(--green)">${stageCount.stable || 0}</div>
+        <div class="stat-label">Stable</div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">APIs Connected</div>
+        <span class="tag ${status.apis_connected ? 'tag-green' : 'tag-red'}">
+          ${status.apis_connected ? 'YES' : 'NO — NOT YET'}
+        </span>
+      </div>
+      <div class="card">
+        <div class="card-title">Live Trading</div>
+        <span class="tag ${status.live_trading_enabled ? 'tag-red' : 'tag-green'}">
+          ${status.live_trading_enabled ? 'ENABLED ⚠' : 'DISABLED ✓'}
+        </span>
+      </div>
+      <div class="card">
+        <div class="card-title">Root Access</div>
+        <span class="tag ${status.root_access_enabled ? 'tag-red' : 'tag-green'}">
+          ${status.root_access_enabled ? 'ENABLED ⚠' : 'DISABLED ✓'}
+        </span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Next to Build</div>
+      ${status.next_to_build
+        ? `<span class="tag tag-lucy" style="font-size:0.85rem;padding:6px 16px">${status.next_to_build}</span>
+           <div class="inline-note" style="margin-top:10px">Nothing else activates until this agent reaches Beta.</div>`
+        : `<span class="tag tag-green">All agents active</span>`
+      }
+    </div>
+
+    <div class="card">
+      <div class="card-title">Stage Breakdown</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        ${Object.entries(stageCount).map(([stage, count]) => `
+          <div style="text-align:center;padding:10px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:4px">
+            <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:${stageColors[stage]||'var(--text)'}">${count}</div>
+            <div style="font-size:0.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em">${stage}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div style="font-size:0.65rem;color:var(--text3);text-align:right">
+      Last read: ${new Date(status.timestamp).toLocaleTimeString()}
+    </div>
+  `;
+}
+
+// ── LUCY ──
+async function renderLucy() {
+  const lucy = await fetchAPI('/lucy');
+  const el = document.getElementById('lucy-content');
+
+  const flags = [
+    { label: 'APIs Connected',      value: lucy.apis_connected,        good: false },
+    { label: 'Live Trading',        value: lucy.live_trading_enabled,   good: false },
+    { label: 'Root Access',         value: lucy.root_access_enabled,    good: false },
+    { label: 'Personality Locked',  value: lucy.personality_locked,     good: false },
+  ];
+
+  el.innerHTML = `
+    <div class="lucy-card">
+      <div class="lucy-name">Core Identity</div>
+      <div class="lucy-full">${lucy.full_name}</div>
+      <div class="lucy-meta">
+        <span class="tag tag-lucy">${lucy.phase}</span>
+        <span class="tag tag-muted">v${lucy.version}</span>
+        <span class="tag tag-muted">${lucy.status}</span>
+      </div>
+      <div class="lucy-desc">${lucy.description}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">System Locks</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        ${flags.map(f => `
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:3px">
+            <span class="tag ${f.value === f.good ? 'tag-red' : 'tag-green'}" style="font-size:0.65rem">
+              ${f.value ? 'ON' : 'OFF'}
+            </span>
+            <span style="font-size:0.72rem;color:var(--text2)">${f.label}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">What Lucy Is Not</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${['A chatbot', 'An API wrapper', 'A fake personality', 'A root system', 'A money-moving bot',
+           'A replacement for agents', 'A doctor/therapist', 'A financial advisor', 'A fake human',
+           'Conscious or emotional'].map(x => `<span class="tag tag-muted">${x}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">How Her Personality Forms</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        ${['Approved lessons from mature agents', 'Checkpoints marking real decisions',
+           'Patterns that repeat and get confirmed', 'Failures that are logged and analyzed',
+           'Real use over real time — not hardcoded tone'].map((s,i) => `
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.72rem;color:var(--text2)">
+            <span style="color:var(--lucy-dim);font-size:0.65rem;width:18px;text-align:right">${i+1}</span>
+            ${s}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Started</div>
+      <div style="font-size:0.8rem;color:var(--text2)">${lucy.started}</div>
+      <div class="inline-note">Last checkpoint: ${lucy.last_checkpoint}</div>
+    </div>
+  `;
+}
+
+// ── AGENTS ──
+async function renderAgents() {
+  const agents = await fetchAPI('/agents');
+  const el = document.getElementById('agents-content');
+
+  el.innerHTML = `
+    <div style="margin-bottom:12px;font-size:0.7rem;color:var(--text3)">
+      ${agents.length} agents defined · Click any row to expand details
+    </div>
+    <div class="agent-list">
+      ${agents.map((a, i) => `
+        <div>
+          <div class="agent-row" onclick="toggleAgent('agent-${i}', this)">
+            <span class="agent-num">${a.build_order}</span>
+            <span class="agent-id">${a.id}</span>
+            <span class="agent-role-short">${a.role.split('.')[0]}</span>
+            <span class="agent-type-badge">${a.type.replace('_',' ')}</span>
+            <span class="stage-badge stage-${a.stage}">${a.stage}</span>
+          </div>
+          <div class="agent-detail" id="agent-${i}">
+            <div class="detail-grid">
+              <div>
+                <div class="detail-section-title">Full Name</div>
+                <div class="detail-text" style="font-family:'Syne',sans-serif;font-weight:600;color:var(--text);margin-bottom:10px">${a.full_name}</div>
+                <div class="detail-section-title">Role</div>
+                <div class="detail-text">${a.role}</div>
+                ${a.tone ? `<div class="detail-section-title" style="margin-top:10px">Tone</div><div class="detail-text" style="color:var(--lucy-dim)">${a.tone}</div>` : ''}
+                ${a.warning ? `<div class="inline-warning" style="margin-top:10px">⚠ ${a.warning}</div>` : ''}
+                ${a.gate ? `<div class="inline-warning" style="margin-top:6px">🔒 ${a.gate}</div>` : ''}
+                ${a.note ? `<div class="inline-note" style="margin-top:6px">${a.note}</div>` : ''}
+                ${a.module ? `<div class="inline-note" style="margin-top:6px">📦 ${a.module}</div>` : ''}
+              </div>
+              <div>
+                <div class="detail-section-title">Must Never Do</div>
+                <ul class="detail-list never">
+                  ${a.never_do.map(n => `<li>${n}</li>`).join('')}
+                </ul>
+                <div class="detail-section-title" style="margin-top:12px">Connects To</div>
+                <ul class="detail-list connects">
+                  ${(Array.isArray(a.connects_to) ? a.connects_to : [a.connects_to]).map(c => `<li>${c}</li>`).join('')}
+                </ul>
+                <div class="detail-section-title" style="margin-top:12px">Permission Level</div>
+                <div class="detail-text">
+                  <span class="stage-badge" style="background:rgba(0,200,255,0.08);color:var(--lucy);border-color:rgba(0,200,255,0.2)">
+                    Level ${a.permission_level}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function toggleAgent(id, row) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.agent-detail.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.agent-row.expanded').forEach(r => r.classList.remove('expanded'));
+  if (!isOpen) { panel.classList.add('open'); row.classList.add('expanded'); }
+}
+
+// ── BUILD ORDER ──
+async function renderBuildOrder() {
+  const order = await fetchAPI('/build-order');
+  const el = document.getElementById('build-content');
+  const firstPlanned = order.find(a => a.stage === 'planned');
+
+  el.innerHTML = `
+    <div class="build-track">
+      <div class="build-track-line"></div>
+      ${order.map(a => `
+        <div class="build-item">
+          <div class="build-num ${a.id === (firstPlanned?.id) ? 'current' : ''}">${a.build_order}</div>
+          <div class="build-info">
+            <div class="build-id">${a.id} <span class="stage-badge stage-${a.stage}" style="margin-left:8px">${a.stage}</span></div>
+            <div class="build-full">${a.full_name}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="divider"></div>
+    <div class="card">
+      <div class="card-title">Build Rules</div>
+      <ul class="detail-list">
+        <li>Do not activate the next agent until the current one genuinely reaches Beta</li>
+        <li>Do not falsely mark anything Beta or Stable</li>
+        <li>After all reach Beta — return to ELIE and push toward Stable</li>
+        <li>Lucy only absorbs lessons after agents reach Mature</li>
+      </ul>
+    </div>
+  `;
+}
+
+// ── MEMORY FILTER ──
+async function renderMemory() {
+  const data = await fetchAPI('/memory-filter');
+  const el = document.getElementById('memory-content');
+
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title">Why This Exists</div>
+      <div class="detail-text">Dumping raw logs into a central system doesn't create memory — it creates noise.
+      This three-layer filter keeps Lucy's memory clean, approved, and actually useful.</div>
+    </div>
+
+    <div class="memory-flow">
+      ${data.layers.map((layer, i) => `
+        ${i > 0 ? '<div class="memory-arrow">→</div>' : ''}
+        <div class="memory-layer">
+          <div class="memory-layer-num">${layer.layer}</div>
+          <div class="memory-layer-title">${layer.name}</div>
+          <div class="memory-layer-sub">Stored in: ${layer.lives_in}</div>
+          <div class="memory-layer-info">Goes to: ${layer.goes_to}</div>
+          ${layer.requires ? `<div class="memory-req">Requires: ${layer.requires}</div>` : ''}
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="divider"></div>
+    <div class="card">
+      <div class="card-title">Anti-Drift Rule</div>
+      <div class="detail-text">Lucy must not slowly become ELIE, HAVEN, or VANTA because those agents sent the most reports.
+      NEXUS is responsible for catching drift before it reaches Lucy. Agents stay separate. Lucy absorbs <em>lessons</em> — not identities.</div>
+    </div>
+  `;
+}
+
+// ── PLAYGROUND ──
+async function renderPlayground() {
+  const data = await fetchAPI('/playground');
+  const el = document.getElementById('playground-content');
+
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title">What Playground Is</div>
+      <div class="detail-text">${data.description}</div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <div class="card-title">Review Flow</div>
+          <div class="flow-steps">
+            ${data.review_flow.map((step, i) => `
+              <div class="flow-step">
+                <div class="flow-step-line">
+                  <div class="flow-circle">${i+1}</div>
+                  ${i < data.review_flow.length - 1 ? '<div class="flow-connector"></div>' : ''}
+                </div>
+                <div class="flow-content">
+                  <div class="flow-title">${step}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="card-title">Folders</div>
+          <ul class="detail-list">
+            ${data.folders.map(f => `<li>${f}/</li>`).join('')}
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">What Doesn't Belong Here</div>
+          <ul class="detail-list never">
+            <li>Raw logs (stay inside each agent)</li>
+            <li>Sensitive data in full detail</li>
+            <li>Unreviewed outputs from untested agents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── SAFETY ──
+async function renderSafety() {
+  const data = await fetchAPI('/safety');
+  const el = document.getElementById('safety-content');
+
+  el.innerHTML = `
+    <div class="rule-group">
+      <div class="rule-group-title never">✕ Absolute Never — Applies to Every Agent</div>
+      <div class="rule-list">
+        ${data.absolute_never.map(r => `
+          <div class="rule-item never">
+            <span class="rule-item-icon">✕</span>${r}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="rule-group">
+      <div class="rule-group-title safe">✓ Always Safe Without Approval</div>
+      <div class="rule-list">
+        ${data.always_safe.map(r => `
+          <div class="rule-item safe">
+            <span class="rule-item-icon">✓</span>${r}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="rule-group">
+      <div class="rule-group-title protected">⚑ Protected Files — Never Touch Without Approval</div>
+      <div class="rule-list">
+        ${data.protected_files.map(r => `
+          <div class="rule-item protected">
+            <span class="rule-item-icon">⚑</span>${r}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card" style="border-color:rgba(245,66,66,0.3)">
+      <div class="card-title" style="color:var(--red)">The One Rule That Matters Most</div>
+      <div style="font-size:0.9rem;color:var(--text);line-height:1.6">${data.approval_rule}</div>
+    </div>
+  `;
+}
+
+// ── PERMISSIONS ──
+async function renderPermissions() {
+  const data = await fetchAPI('/permissions');
+  const el = document.getElementById('perm-content');
+
+  const levelColors = { 0:'var(--green)', 1:'var(--green)', 2:'var(--yellow)', 3:'var(--orange)', 4:'var(--red)' };
+
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title">Model Description</div>
+      <div class="detail-text">${data.description}</div>
+    </div>
+
+    ${data.levels.map(lvl => `
+      <div class="perm-row">
+        <div class="perm-level" style="color:${levelColors[lvl.level]}">${lvl.level}</div>
+        <div>
+          <div class="perm-name" style="color:${levelColors[lvl.level]}">${lvl.name}</div>
+          ${lvl.requires ? `<div class="perm-req">${lvl.requires}</div>` : ''}
+        </div>
+        <div class="perm-items">
+          <strong style="color:var(--text2);font-size:0.65rem">Allowed:</strong>
+          ${lvl.allowed.join(' · ')}
+          ${lvl.forbidden.length ? `<br><strong style="color:var(--red);font-size:0.65rem">Forbidden:</strong> ${lvl.forbidden.join(' · ')}` : ''}
+        </div>
+      </div>
+    `).join('')}
+  `;
+}
+
+// ── RAW JSON ──
+async function renderRaw() {
+  const data = await fetchAPI('/spine');
+  const el = document.getElementById('raw-content');
+
+  function colorizeJSON(obj) {
+    return JSON.stringify(obj, null, 2)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"([^"]+)":/g, '<span class="json-key">"$1"</span>:')
+      .replace(/: "([^"]*)"/g, ': <span class="json-string">"$1"</span>')
+      .replace(/: (\d+\.?\d*)/g, ': <span class="json-num">$1</span>')
+      .replace(/: (true)/g, ': <span class="json-bool-t">$1</span>')
+      .replace(/: (false)/g, ': <span class="json-bool-f">$1</span>')
+      .replace(/: (null)/g, ': <span class="json-null">$1</span>');
+  }
+
+  el.innerHTML = `
+    <div class="inline-note" style="margin-bottom:12px">
+      spine.json is the single source of truth. Edit the file directly — the server serves it fresh on every request.
+    </div>
+    <div class="json-block"><pre>${colorizeJSON(data)}</pre></div>
+  `;
+}
+
+// ── INIT ──
+loaded.add('chat');
+loadView('chat');
+</script>
+</body>
+</html>

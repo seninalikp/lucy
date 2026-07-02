@@ -1,0 +1,27 @@
+{
+  "stage": "34 provider health-check dry-run",
+  "created_at": "2026-07-02T13:09:58.190713+00:00",
+  "mode": "dry_run_only",
+  "dry_runs": [],
+  "blocked": {
+    "real_provider_calls": true,
+    "network_access": true,
+    "api_key_file_reading": true,
+    "secret_value_loading": true,
+    "provider_reachability_ping": true,
+    "provider_authentication_test": true,
+    "model_routing": true,
+    "external_model_execution": true
+  },
+  "not_implemented": [
+    "real provider calls",
+    "network access",
+    "API key reading",
+    "secret value loading",
+    "provider reachability ping",
+    "provider authentication test",
+    "model routing",
+    "external model execution",
+    "provider output ingestion"
+  ]
+}

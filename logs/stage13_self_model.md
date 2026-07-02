@@ -1,0 +1,52 @@
+# Stage 13 Self-Model Checkpoint
+
+- Date/time: 2026-06-08 03:00:47 +05:30
+- Active stage: 13 = self-model
+- Files changed:
+  - backend/lucy_core/self_model.py
+  - backend/lucy_core/lucy_runtime.py
+  - backend/lucy_core/router.py
+  - tests/test_stage10_persistent_local_runtime.py
+  - tests/test_stage11_safe_access.py
+  - tests/test_stage12_first_thought.py
+  - tests/test_stage13_self_model.py
+  - data/lucy/self_model.json
+  - logs/stage13_self_model.md
+- Tests run:
+  - python -m unittest discover -s tests -v
+  - python -m unittest tests/test_stage13_self_model.py -v
+  - python -m unittest discover -s tests -v
+- Test result:
+  - Baseline suite: Ran 272 tests OK.
+  - Stage 13 focused suite: Ran 20 tests OK.
+  - Full suite after Stage 13 patch: Ran 292 tests OK.
+- Manual checks:
+  - self model status
+  - self model
+  - what are you
+  - what can you do
+  - what can you not do
+  - what is your current stage
+  - what are your limits
+  - first thought status
+  - first thought readiness
+  - show first thought
+  - access status
+  - runtime status
+  - agent status
+  - agent report
+  - hi
+  - tell me
+  - what next
+- What improved:
+  - Lucy can report a small factual self-model from fixed facts and verified local state.
+  - The self-model includes verified foundations from Stages 07-12.
+  - The self-model reports current capabilities, limits, blocked claims, blocked actions, Guardian status, safe access, runtime, agents, and first thought status.
+  - The self-model writes a small local JSON snapshot using only allowed fields.
+- What was intentionally NOT implemented:
+  - Stage 14 growth proposals.
+  - Stage 15 evaluation lab.
+  - Experience storage.
+  - UI, voice, network, external APIs, daemon, or autonomy behavior.
+  - Fake consciousness language.
+- Next locked stage: 14 = growth proposals
