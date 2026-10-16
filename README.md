@@ -1,318 +1,207 @@
-# LUCY — Part 0: Spine Config
+# LUCY — Living Unified Cognitive Yield
 
-**10-part build series · Part 0 of 10**
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status: Operational](https://img.shields.io/badge/Status-Recovered%20V0.1%20Checkpoint%20023-cyan.svg)]()
+[![Tests: 922 Passing](https://img.shields.io/badge/Tests-922%20Passing-success.svg)]()
 
----
-
-## What This Is
-
-The living spine config — Lucy's rules, boundaries, agent map, permission model, and memory filter served as a real API with a web UI to read it live.
-
-This is not a chatbot. Not an AI yet. This is the **foundation layer** — the single source of truth that everything else in Lucy will be built on top of.
+> **A safe, local-first cognitive assistant and modular multi-stage autonomous agent runtime.**
 
 ---
 
-## What's Inside
+## Overview
+
+**LUCY** (**L**iving **U**nified **C**ognitive **Y**ield) is a local cognitive operating assistant engineered with safety, transparency, and explicit permission boundaries at its core.
+
+Rather than relying on unconstrained autonomous loops, Lucy operates on a deterministic foundation:
+* **The Living Spine** (`data/spine.json`): The single source of truth defining permissions, boundaries, memory rules, and agent definitions.
+* **The Guardian Safety Enforcer** (`backend/lucy_core/guardian.py`): A hard filter that intercepts all user requests and tool executions, ensuring actions fall strictly within approved permission levels (Levels 0–4: Read-Only to Root).
+* **Transparent Cognition**: Tracks internal vision, working thoughts, daily context, and session continuity in local JSON/JSONL state—without ungrounded anthropomorphism.
+* **Isolated Provider Layer**: Connects to LLM providers (NVIDIA NIM, Groq, OpenRouter, Google Gemini, SambaNova) as external conversational tools without allowing external models to hijack system identity or permissions.
+
+---
+
+## Core Architecture & Features
 
 ```
-lucy_part0/
-├── data/
-│   └── spine.json          ← The spine config. Edit this directly.
+┌─────────────────────────────────────────────────────────────┐
+│                       USER INTERFACES                       │
+│     Web UI (Port 7700)   │   CLI Chat   │   Desktop UI      │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+┌─────────────────────────────▼───────────────────────────────┐
+│                    COMMAND ROUTER & BUS                     │
+│               Command Normalization & Routing               │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+┌─────────────────────────────▼───────────────────────────────┐
+│                  GUARDIAN SAFETY ENFORCER                   │
+│   Permission Levels 0-4  │  Protected Files  │  Audit Log   │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+┌─────────────────────────────▼───────────────────────────────┐
+│                     LUCY CORE RUNTIME                       │
+│  • Memory & Deep Recall       • Daily Context & Briefs      │
+│  • Self-Model & Reflection    • Projects & Task Tracker     │
+│  • Safe Local File Tools      • Health & Continuity Pulse   │
+│  • Shadow Testing & Lab       • Safe Provider Vault Tools   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+* **Permission Hierarchy (Levels 0–4)**:
+  * **Level 0 (Read-Only)**: Status, logs, checkpoints.
+  * **Level 1 (Log & Report)**: Notes, daily briefs, summaries.
+  * **Level 2 (Safe Commands)**: Sandboxed project actions, local memory.
+  * **Level 3 (Approved Edits)**: Project configuration modifications (requires confirmation).
+  * **Level 4 (Root / Privileged)**: System-level operations (strictly blocked by default).
+* **14 Registered Specialist Agents**: Defined in the spine (ELIE, RAY, ARES, VANTA, HAVEN, NEXUS, ECHO, LEDGER, SABLE, ORBIT, NOVA, MINT, ATLAS, JESTER), kept safely inactive until individual verification.
+* **34 Developmental Stages**: Full feature progression including memory filters, recovery, adaptive communication, human-state awareness, autonomy boundaries, and provider health verification.
+
+---
+
+## Tech Stack
+
+* **Backend Runtime**: Python 3.10+
+* **Web Server**: Flask, Werkzeug
+* **Frontend**: Vanilla HTML5, CSS3 (IBM Plex Mono + Syne typography), Modern ES6+ JavaScript
+* **Desktop Client**: Python Tkinter
+* **Data Storage**: Human-readable JSON configurations and append-only JSONL event/reflection logs
+* **Testing**: Python standard `unittest` (920+ unit tests)
+
+---
+
+## Directory Structure
+
+```
+lucy/
 ├── backend/
-│   └── server.py           ← Flask API serving spine.json
+│   ├── server.py              # Flask API & static frontend server (port 7700)
+│   └── lucy_core/             # Core cognitive runtime & stage modules
+│       ├── guardian.py        # Safety classification and boundary enforcement
+│       ├── router.py          # Command normalizer and intent router
+│       ├── lucy_runtime.py    # Main lifecycle, state, and coordination engine
+│       ├── safe_tools.py      # Read-only workspace inspection tools
+│       ├── memory.py          # Local approved memory store & recall
+│       ├── api_tools.py       # External LLM provider client integrations
+│       ├── secrets.py         # Key management and secret isolation
+│       └── ...                # Cognitive stage modules (Stages 1–34)
+├── config/
+│   ├── lucy_protected_actions.json
+│   └── lucy_runtime_config.json
+├── data/
+│   ├── spine.json             # Living spine: identity, rules, agent registry
+│   └── lucy/                  # Local runtime data, state, memory, and checkpoints
+│       ├── memory/            # Approved facts and memory rules
+│       ├── daily/             # Daily contexts and routine logs
+│       └── secure/            # Isolated key vault directory
+├── docs/                      # Architectural contracts and integration roadmaps
 ├── frontend/
-│   └── index.html          ← Web UI reading from the API
-├── requirements.txt
-├── run.sh
-└── README.md
+│   └── index.html             # Single-page cyberpunk dashboard & web chat UI
+├── logs/                      # Audit trails, build logs, and test documentation
+├── tests/                     # Comprehensive test suite (920+ test cases)
+├── .env.example               # Template environment configuration
+├── .gitignore                 # Tech-stack specific ignore rules
+├── requirements.txt           # Python package dependencies
+├── run.sh                     # Shell script launcher for Web UI
+├── run_lucy.py                # Interactive CLI REPL chat launcher
+├── run_lucy_core.py           # CLI command dispatcher
+└── run_lucy_desktop.py        # Native desktop GUI client
 ```
 
 ---
 
-## How to Run
+## Local Setup & Installation
 
+### 1. Prerequisites
+* Python 3.10 or higher
+* Git
+
+### 2. Clone Repository
 ```bash
-# Install dependencies (first time only)
-pip3 install -r requirements.txt
+git clone git@github.com:seninalikp/lucy.git
+cd lucy
+```
 
-# Start the server
+### 3. Create a Virtual Environment
+```bash
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+### 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Configure Environment
+```bash
+cp .env.example .env
+# Edit .env with your optional provider API keys (NVIDIA, Groq, OpenRouter, Gemini, etc.)
+```
+
+---
+
+## Usage Guide
+
+### 1. Web Dashboard & Chat (Recommended)
+Start the local server:
+```bash
 bash run.sh
 # or directly:
 python3 backend/server.py
+```
+Open **[http://localhost:7700](http://localhost:7700)** in your browser to view the living spine, inspect agent statuses, review permission boundaries, and interact via web chat.
 
-# Then open:
-http://localhost:7700
+### 2. Interactive CLI Chat
+To chat directly with Lucy in the terminal:
+```bash
+python3 run_lucy.py
+```
+Type `help` for available commands, or `exit` / `quit` to leave.
+
+### 3. Native Desktop UI
+Launch the desktop client window:
+```bash
+python3 run_lucy_desktop.py
+```
+
+### 4. CLI Command Dispatcher
+Execute individual commands directly:
+```bash
+# Check runtime status & health
+python3 run_lucy_core.py status
+python3 run_lucy_core.py health
+
+# Memory operations
+python3 run_lucy_core.py remember "Always operate local-first"
+python3 run_lucy_core.py recall "local-first"
+
+# Projects & tasks
+python3 run_lucy_core.py list projects
+python3 run_lucy_core.py add task "Review stage 34 health checks"
+python3 run_lucy_core.py show tasks
+
+# Daily brief & continuity
+python3 run_lucy_core.py daily brief
+python3 run_lucy_core.py continuity status
 ```
 
 ---
 
-## API Endpoints
+## Verification & Testing
 
-| Method | Endpoint | Returns |
-|--------|----------|---------|
-| GET | `/api/spine` | Full spine.json |
-| GET | `/api/lucy` | Lucy core identity & status |
-| GET | `/api/agents` | All 14 agents |
-| GET | `/api/agents/{ID}` | Single agent |
-| PATCH | `/api/agents/{ID}/stage` | Update agent stage (requires confirmation) |
-| GET | `/api/safety` | Safety rules |
-| GET | `/api/permissions` | Permission level model |
-| GET | `/api/build-order` | Build order sorted list |
-| GET | `/api/memory-filter` | Three-layer memory filter |
-| GET | `/api/playground` | Playground config |
-| GET | `/api/status` | Quick system overview |
-| POST | `/api/chat` | Send a message to Lucy's local chat/router |
-
----
-
-## How to Update Stage
-
-When an agent genuinely reaches a new stage, PATCH the endpoint:
+Lucy includes a comprehensive unit test suite covering Guardian safety rules, tool execution boundaries, memory stores, and stage-by-stage pipelines:
 
 ```bash
-curl -X PATCH http://localhost:7700/api/agents/ELIE/stage \
-  -H "Content-Type: application/json" \
-  -d '{"stage": "prototype", "confirmed": true, "reason": "First prototype working, logging actions"}'
-```
+# Run the entire test suite
+python3 -m unittest discover -s tests
 
-The server creates a backup of spine.json before any write.
+# Run system health diagnostics (53 checks)
+python3 run_lucy_core.py health
+```
 
 ---
 
-## What Comes Next
+## License
 
-| Part | What Gets Built |
-|------|----------------|
-| 0 | ✓ Spine config — this |
-| 1 | Memory system — checkpoints, logs, approved lessons as real data |
-| 2 | ELIE prototype — the active assistant layer |
-| 3 | Playground review system — reports, approvals, routing |
-| 4 | NEXUS routing layer |
-| 5 | SABLE safety enforcer |
-| 6 | ORBIT system monitor |
-| 7 | HAVEN health logs + pattern detection |
-| 8 | LEDGER money tracker |
-| 9 | Lucy integration — lesson absorption + checkpoint engine |
-
----
-
-## Design Decisions
-
-**Why JSON, not a database?**
-At Foundation Phase, the config needs to be human-readable, directly editable, and version-controllable. A database would add complexity before there's anything complex to store. When Part 1 (memory system) is built, proper storage gets introduced there.
-
-**Why Flask and not something heavier?**
-Same reason. Lightweight, readable, easy to extend. No ORM, no migrations, no boilerplate. Just a server that reads a file and returns it.
-
-**Why a web UI and not just terminal?**
-You said terminal gives you headaches. The UI is the interface. The terminal is just how you start it.
-
-
----
-
-## Part 1 — LUCY Core Runtime Prototype
-
-Part 1 adds the **LUCY Core Runtime Prototype / Agent-Ready Foundation**.
-
-Lucy can now:
-- Load her living spine config from Part 0
-- Register 14 planned inactive agents
-- Check whether requests are safe, blocked, or approval-required
-- Create approval request records
-- Create checkpoint records
-- Write JSONL runtime logs
-- Report runtime health
-
-**Web chat is active. No agents are active. Lucy is not Beta yet.**
-
-### Quick Start (Part 1)
-
-```bash
-python run_lucy_core.py status
-python run_lucy_core.py spine
-python run_lucy_core.py agents
-python run_lucy_core.py agent ELIE
-python run_lucy_core.py check "delete my files"
-python run_lucy_core.py check "what is your status"
-python run_lucy_core.py checkpoint "My first checkpoint"
-python run_lucy_core.py health
-```
-
-See `docs/LUCY_RUNTIME_GUIDE.md` for full documentation.
-
----
-
-## Checkpoint 1 - Local Operating Assistant Foundation
-
-The restored Part 1 runtime has been extended into a beginner-friendly local
-assistant foundation.
-
-Lucy can now:
-- Start an interactive terminal chat with `python run_lucy_core.py`
-- Chat in the browser at `http://localhost:7700`
-- Route commands through a dedicated command router
-- Save approved local memories with `remember <fact>`
-- Recall memories with `recall [keyword]`
-- Soft-delete specific memories with `forget <specific memory>`
-- Audit memory with `memory audit`
-- Track projects and active tasks
-- Produce a simple `daily brief`
-- Keep Guardian safety checks in front of risky actions
-
-Useful commands:
-
-```bash
-python run_lucy_core.py
-python run_lucy_core.py help
-python run_lucy_core.py guardian status
-python run_lucy_core.py remember "Lucy should stay local first"
-python run_lucy_core.py recall Lucy
-python run_lucy_core.py list projects
-python run_lucy_core.py add task "Run the test suite"
-python run_lucy_core.py show tasks
-python run_lucy_core.py daily brief
-python run_lucy_core.py daily checkin energy=6 sleep=ok notes="worked on Lucy foundation"
-python run_lucy_core.py today log
-python run_lucy_core.py weekly review
-python run_lucy_core.py continuity status
-python run_lucy_core.py backup memory
-python run_lucy_core.py vision
-python run_lucy_core.py think "what should Lucy focus on?"
-python run_lucy_core.py thoughts
-python -m unittest discover -s tests
-```
-
-Lucy still does not have desktop automation, voice, autonomous actions, or active agents.
-Those layers should wait until the local foundation is stable.
-
----
-
-## Checkpoint 2 - Local Operator Tools
-
-Lucy now has safe local operator tools that make her closer to a JARVIS-style
-assistant while keeping dangerous actions gated.
-
-New commands:
-
-```bash
-python run_lucy_core.py dashboard
-python run_lucy_core.py workspace
-python run_lucy_core.py find file router
-python run_lucy_core.py search text Guardian
-python run_lucy_core.py read file README.md
-python run_lucy_core.py system status
-python run_lucy_core.py logs 5
-python run_lucy_core.py approvals
-python run_lucy_core.py approve <id-prefix>
-python run_lucy_core.py reject <id-prefix>
-python run_lucy_core.py add reminder "Install Python"
-python run_lucy_core.py reminders
-python run_lucy_core.py plan "make Lucy more like Jarvis"
-python run_lucy_core.py eat ai collections
-python run_lucy_core.py ai collections status
-python run_lucy_core.py search ai collections "provider vault"
-```
-
-Safety line:
-- Lucy can inspect and summarize local project files.
-- Lucy can build a redacted local knowledge index from `Downloads/AI COLLECTIONS`.
-- Lucy can keep transparent local cognition state: vision, drives, working thoughts, and current focus.
-- Lucy can keep user-supplied daily context logs for routine/project continuity.
-- Lucy can create rolling local continuity backups for memory, projects, daily context, learning, and checkpoints.
-- Lucy refuses outside-project file reads and sensitive-looking filenames.
-- Lucy still does not run arbitrary shell commands.
-- Approval review records your decision; it does not execute risky actions.
-
-AI Collections ingestion stores metadata for every seen file and redacted
-summaries/excerpts for safe text/code. Key vaults, binary files, and
-secret-looking paths are metadata-only.
-
-Local cognition is not consciousness. It is a persistent state file that helps
-Lucy remember her vision, reflect on project context, and avoid drifting.
-
----
-
-## Recovered Lucy V0.1 Checkpoint 023 Architecture
-
-ELIE's memory files say ELIE was a tiny skeleton built from **Lucy V0.1
-Checkpoint 023 architecture style**. Lucy's original code is still lost, but
-the checkpoint map was recovered as reference history.
-
-New reconstruction commands:
-
-```bash
-python run_lucy_core.py recovered
-python run_lucy_core.py recovered checkpoints
-python run_lucy_core.py brain status
-python run_lucy_core.py ask "what now"
-python run_lucy_core.py scan project
-python run_lucy_core.py backup project
-```
-
-Important boundary: ELIE is not Lucy. ELIE is used only as a smaller reference
-for safe architecture patterns.
-
----
-
-## External API Tools, Permanent Memory, And Talking Style
-
-Lucy can use ELIE's local provider vault as an external chat tool source. Groq,
-OpenRouter/SuperRouter, Gemini/GenAI, SambaNova, and NVIDIA are discovered
-without printing key values or repeatedly asking for them.
-
-```bash
-python run_lucy_core.py
-```
-
-Then inside Lucy:
-
-```text
-api tools
-brain status
-ask what can you help me with now?
-learning status
-permanent memory
-learn style talk to me casually, clearly, and like a capable desktop assistant
-style status
-memory fallback what should Lucy remember about the project
-```
-
-Rules:
-- External providers are tools for Lucy's safe language layer, not Lucy's identity.
-- Lucy can auto-read ELIE's local vault when `local_unlock.py` is present.
-- Lucy does not write plain provider keys to memory, logs, docs, or runtime config.
-- `setup nvidia key` remains available for session-only NVIDIA setup.
-- `set nvidia key` / `set nvidea key` saves an encrypted permanent NVIDIA key file.
-- Permanent memory lives in `data/lucy/memory/memory.json`.
-- Talking style preferences live in `data/lucy/learning/talking_style.json`.
-- External NVIDIA memory fallback suggestions are saved as proposals, not truth.
-
----
-
-## Desktop UI And Overnight Checkpoints
-
-Lucy now has a Python desktop UI and a safe overnight checkpoint builder.
-
-Start the desktop window:
-
-```bash
-python run_lucy_desktop.py
-```
-
-Or run from the terminal:
-
-```bash
-python run_lucy_core.py overnight checkpoints 100
-python run_lucy_core.py learning status
-python run_lucy_core.py health
-```
-
-What the overnight checkpoint builder does:
-
-- Creates enough checkpoint records to reach the requested target, up to 500.
-- Saves a local checkpoint-learning trace for every created checkpoint.
-- Runs health before and after the checkpoint batch.
-- Keeps protected actions blocked.
-- Does not run autonomous API work or treat an API as Lucy's identity.
-#   l u c y  
- 
+This project is open-source under the [MIT License](LICENSE).

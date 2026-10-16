@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage20_long_term_strategy.py
 Stage 20 = long-term strategy.
 """
@@ -9,7 +9,6 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from backend.lucy_core.long_term_strategy import LongTermStrategy
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
 
@@ -212,7 +211,7 @@ class TestStage20LongTermStrategy(unittest.TestCase):
         runtime, router = self._runtime_and_router()
         output = router.handle("create long-term strategy").message.lower()
         self.assertFalse(hasattr(runtime.long_term_strategy, "run_autonomously"))
-        self.assertIn("Autonomy allowed: false", router.handle("create long-term strategy").message)
+        self.assertIn("autonomy allowed: false", output)
 
     def test_28_no_fake_consciousness_language_in_normal_output(self) -> None:
         _, router = self._runtime_and_router()

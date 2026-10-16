@@ -558,19 +558,28 @@ class SafeFileToolbox:
         if not allowed.ok:
             allowed.action = "file_validation"
             return allowed
-        lowered_name = path.name.lower()
-        lowered_full = str(path).replace("\\", "/").lower()
-        if any(part.startswith(".") for part in path.parts if part not in {path.anchor, ""}):
-            return self._blocked("file_validation", "Hidden paths are skipped by policy.", path)
-        if any(name.lower() in SKIP_DIR_NAMES for name in path.parts):
-            return self._blocked("file_validation", "System/cache/sensitive folders are skipped by policy.", path)
-        if path.suffix.lower() in BLOCKED_EXTENSIONS:
-            return self._blocked("file_validation", f"Blocked extension: {path.suffix.lower()}", path)
-        if path.suffix.lower() not in ALLOWED_EXTENSIONS:
-            return self._blocked("file_validation", f"Extension is not allowed: {path.suffix.lower() or '(none)'}", path)
+        resolved_path = _resolve(path)
+        folder_root = _resolve(allowed.data["folder"]["path"]) if allowed.data and "folder" in allowed.data else None
+        try:
+            rel_path = resolved_path.relative_to(folder_root) if folder_root else resolved_path
+            check_parts = rel_path.parts
+            lowered_full = str(rel_path).replace("\\", "/").lower()
+        except ValueError:
+            check_parts = [p for p in resolved_path.parts if p not in {resolved_path.anchor, ""}]
+            lowered_full = str(resolved_path).replace("\\", "/").lower()
+
+        lowered_name = resolved_path.name.lower()
+        if any(part.startswith(".") for part in check_parts):
+            return self._blocked("file_validation", "Hidden paths are skipped by policy.", resolved_path)
+        if any(name.lower() in SKIP_DIR_NAMES for name in check_parts):
+            return self._blocked("file_validation", "System/cache/sensitive folders are skipped by policy.", resolved_path)
+        if resolved_path.suffix.lower() in BLOCKED_EXTENSIONS:
+            return self._blocked("file_validation", f"Blocked extension: {resolved_path.suffix.lower()}", resolved_path)
+        if resolved_path.suffix.lower() not in ALLOWED_EXTENSIONS:
+            return self._blocked("file_validation", f"Extension is not allowed: {resolved_path.suffix.lower() or '(none)'}", resolved_path)
         if any(pattern in lowered_name or pattern in lowered_full for pattern in SENSITIVE_PATTERNS):
-            return self._blocked("file_validation", "Sensitive filename pattern is blocked.", path)
-        return SafeToolResult(True, "file_validation", "File path is safe.", path=str(path))
+            return self._blocked("file_validation", "Sensitive filename pattern is blocked.", resolved_path)
+        return SafeToolResult(True, "file_validation", "File path is safe.", path=str(resolved_path))
 
     def _selected_folders(self, folder_id: str | None) -> list[dict] | SafeToolResult:
         if folder_id:

@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage25_deep_recall.py
 Stage 25 = deep recall.
 
@@ -14,7 +14,6 @@ from pathlib import Path
 
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
-from backend.lucy_core.deep_recall import DeepRecall
 
 
 class TestStage25DeepRecall(unittest.TestCase):

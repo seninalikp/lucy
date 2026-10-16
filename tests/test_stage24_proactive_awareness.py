@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage24_proactive_awareness.py
 Stage 24 = proactive awareness.
 
@@ -13,7 +13,6 @@ from pathlib import Path
 
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
-from backend.lucy_core.proactive_awareness import ProactiveAwareness
 
 
 class TestStage24ProactiveAwareness(unittest.TestCase):

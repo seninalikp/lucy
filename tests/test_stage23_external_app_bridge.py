@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage23_external_app_bridge.py
 Stage 23 = external app bridge.
 
@@ -13,7 +13,6 @@ from pathlib import Path
 
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
-from backend.lucy_core.external_app_bridge import ExternalAppBridge
 
 
 class TestStage23ExternalAppBridge(unittest.TestCase):

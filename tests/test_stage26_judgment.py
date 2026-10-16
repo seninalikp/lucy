@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage26_judgment.py
 Stage 26 = judgment.
 
@@ -14,7 +14,6 @@ from pathlib import Path
 
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
-from backend.lucy_core.judgment import Judgment
 
 
 class TestStage26Judgment(unittest.TestCase):

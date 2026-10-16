@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage21_smart_organizer.py
 Stage 21 = smart organizer.
 """
@@ -11,7 +11,6 @@ from pathlib import Path
 
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
-from backend.lucy_core.smart_organizer import SmartOrganizer
 
 
 class TestStage21SmartOrganizer(unittest.TestCase):

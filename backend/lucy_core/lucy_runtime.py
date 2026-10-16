@@ -53,7 +53,7 @@ from backend.lucy_core.secrets_provider_key_safety import SecretsProviderKeySafe
 from backend.lucy_core.provider_registry import ProviderRegistry
 from backend.lucy_core.provider_health_check import ProviderHealthCheck
 from backend.lucy_core.first_thought import FirstThoughtAssembler
-from backend.lucy_core.guardian import BLOCKED, GuardianCore
+from backend.lucy_core.guardian import GuardianCore
 from backend.lucy_core.growth_proposals import GrowthProposalSystem
 from backend.lucy_core.learning import LearningSystem
 from backend.lucy_core.knowledge import AICollectionsKnowledge

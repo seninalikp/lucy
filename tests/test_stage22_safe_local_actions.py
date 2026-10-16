@@ -1,4 +1,4 @@
-﻿"""
+"""
 test_stage22_safe_local_actions.py
 Stage 22 = safe local actions.
 
@@ -13,7 +13,6 @@ from pathlib import Path
 
 from backend.lucy_core.lucy_runtime import LucyRuntime
 from backend.lucy_core.router import CommandRouter
-from backend.lucy_core.safe_local_actions import SafeLocalActions
 
 
 class TestStage22SafeLocalActions(unittest.TestCase):
