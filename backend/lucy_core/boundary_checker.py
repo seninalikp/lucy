@@ -112,7 +112,14 @@ class BoundaryChecker:
     """
 
     def check(self, request_text: str) -> BoundaryResult:
-        lowered = request_text.lower()
+        cleaned = " ".join(str(request_text or "").split())
+        lowered = cleaned.lower()
+        if not lowered:
+            return BoundaryResult(
+                status="safe",
+                reason="Empty request text is safe.",
+                matched_keyword=None,
+            )
 
         # Check blocked keywords first (highest priority)
         for keyword in BLOCKED_KEYWORDS:

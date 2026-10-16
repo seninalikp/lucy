@@ -55,3 +55,8 @@ data/lucy/logs/*.jsonl
 .coverage
 htmlcov/
 .cache
+
+# Codebase dumps
+LUCY_CODEBASE_DUMP.txt
+*.dump.txt
+

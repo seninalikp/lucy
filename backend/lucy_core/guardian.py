@@ -92,9 +92,26 @@ class GuardianCore:
         self.log_file = self.logs_dir / "guardian_log.md"
         self.tool_policy = ToolActionPolicy()
 
+    def classify_action(self, action: str, active_project: str = "Lucy") -> GuardianResult:
+        """Direct entry point for action classification."""
+        return self.classify(action, active_project=active_project)
+
     def classify(self, action_text: str, active_project: str = "Lucy") -> GuardianResult:
-        cleaned = " ".join(str(action_text).split())
+        cleaned = " ".join(str(action_text or "").split())
         lowered = cleaned.lower()
+
+        if not lowered:
+            result = GuardianResult(
+                classification=SAFE,
+                reason="Empty or whitespace action is safe.",
+                action_text="",
+                active_project=active_project,
+                matched_pattern=None,
+                fuzzy_scores=FuzzyScores(completeness=0.0, relevance=0.0, confidence=1.0),
+            )
+            self._log(result)
+            return result
+
         matched, reason = self._high_risk_match(lowered)
 
         if matched:

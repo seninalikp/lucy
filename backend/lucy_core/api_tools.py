@@ -25,12 +25,14 @@ NVIDIA_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completi
 DEFAULT_NVIDIA_MODEL = "nvidia/llama-3.1-nemotron-nano-8b-v1"
 
 OPENAI_COMPATIBLE_ENDPOINTS = {
+    "nvidia": NVIDIA_CHAT_COMPLETIONS_URL,
     "groq": "https://api.groq.com/openai/v1/chat/completions",
     "openrouter": "https://openrouter.ai/api/v1/chat/completions",
     "sambanova": "https://api.sambanova.ai/v1/chat/completions",
 }
 
 DEFAULT_MODELS = {
+    "nvidia": DEFAULT_NVIDIA_MODEL,
     "groq": "llama-3.1-8b-instant",
     "openrouter": "openrouter/auto",
     "sambanova": "Meta-Llama-3.3-70B-Instruct",
@@ -547,3 +549,23 @@ class ExternalToolRouter:
             "reason": "No external provider answered.",
             "attempts": attempts,
         }
+
+
+class ExternalChatClient:
+    """Convenience client wrapping external LLM provider calls with safe offline fallbacks."""
+
+    def __init__(self, key_source: ProviderKeySource | None = None, timeout: int = 30) -> None:
+        if key_source is not None:
+            self.router = ExternalToolRouter(project_root=key_source.project_root, elie_root=key_source.elie_root)
+        else:
+            self.router = ExternalToolRouter()
+        self.timeout = timeout
+
+    def ask(self, provider: str, prompt: str, system_prompt: str = "") -> dict:
+        return self.router.chat_tool.ask(
+            provider, prompt, system_prompt or "You are a helpful assistant.", timeout=self.timeout
+        )
+
+    def chat(self, prompt: str, system_prompt: str = "", provider: str = "auto") -> dict:
+        return self.router.chat(prompt, system_prompt or "You are a helpful assistant.", provider=provider)
+

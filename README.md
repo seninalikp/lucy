@@ -1,207 +1,220 @@
 # LUCY — Living Unified Cognitive Yield
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status: Operational](https://img.shields.io/badge/Status-Recovered%20V0.1%20Checkpoint%20023-cyan.svg)]()
-[![Tests: 922 Passing](https://img.shields.io/badge/Tests-922%20Passing-success.svg)]()
+> **Offline-first, deterministic, safety-gated cognitive operating assistant and modular multi-agent runtime foundation.**
 
-> **A safe, local-first cognitive assistant and modular multi-stage autonomous agent runtime.**
+![Python](https://img.shields.io/badge/Python-3.10%2B-00c8ff?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.0%2B-00e5a0?style=flat-square&logo=flask&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-922%20Passing-00e5a0?style=flat-square)
+![Mode](https://img.shields.io/badge/Runtime-Safe%20Local%20First-f5c842?style=flat-square)
+![License](https://img.shields.io/badge/Status-Core%20Prototype%20v0.1.0-purple?style=flat-square)
 
 ---
 
 ## Overview
 
-**LUCY** (**L**iving **U**nified **C**ognitive **Y**ield) is a local cognitive operating assistant engineered with safety, transparency, and explicit permission boundaries at its core.
+**LUCY** (*Living Unified Cognitive Yield*) is a local-first cognitive architecture designed around **strict human agency, transparent local state, and deterministic safety boundaries**. 
 
-Rather than relying on unconstrained autonomous loops, Lucy operates on a deterministic foundation:
-* **The Living Spine** (`data/spine.json`): The single source of truth defining permissions, boundaries, memory rules, and agent definitions.
-* **The Guardian Safety Enforcer** (`backend/lucy_core/guardian.py`): A hard filter that intercepts all user requests and tool executions, ensuring actions fall strictly within approved permission levels (Levels 0–4: Read-Only to Root).
-* **Transparent Cognition**: Tracks internal vision, working thoughts, daily context, and session continuity in local JSON/JSONL state—without ungrounded anthropomorphism.
-* **Isolated Provider Layer**: Connects to LLM providers (NVIDIA NIM, Groq, OpenRouter, Google Gemini, SambaNova) as external conversational tools without allowing external models to hijack system identity or permissions.
+Unlike opaque cloud wrappers or unconstrained autonomous loops, LUCY operates on a living spine configuration (`data/spine.json`) enforced by a deterministic **Guardian** gate (`backend/lucy_core/guardian.py`). Every command, file read, memory mutation, and agent orchestration step is evaluated against a 5-tier permission model before execution.
 
----
-
-## Core Architecture & Features
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                       USER INTERFACES                       │
-│     Web UI (Port 7700)   │   CLI Chat   │   Desktop UI      │
-└─────────────────────────────┬───────────────────────────────┘
-                              │
-┌─────────────────────────────▼───────────────────────────────┐
-│                    COMMAND ROUTER & BUS                     │
-│               Command Normalization & Routing               │
-└─────────────────────────────┬───────────────────────────────┘
-                              │
-┌─────────────────────────────▼───────────────────────────────┐
-│                  GUARDIAN SAFETY ENFORCER                   │
-│   Permission Levels 0-4  │  Protected Files  │  Audit Log   │
-└─────────────────────────────┬───────────────────────────────┘
-                              │
-┌─────────────────────────────▼───────────────────────────────┐
-│                     LUCY CORE RUNTIME                       │
-│  • Memory & Deep Recall       • Daily Context & Briefs      │
-│  • Self-Model & Reflection    • Projects & Task Tracker     │
-│  • Safe Local File Tools      • Health & Continuity Pulse   │
-│  • Shadow Testing & Lab       • Safe Provider Vault Tools   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-* **Permission Hierarchy (Levels 0–4)**:
-  * **Level 0 (Read-Only)**: Status, logs, checkpoints.
-  * **Level 1 (Log & Report)**: Notes, daily briefs, summaries.
-  * **Level 2 (Safe Commands)**: Sandboxed project actions, local memory.
-  * **Level 3 (Approved Edits)**: Project configuration modifications (requires confirmation).
-  * **Level 4 (Root / Privileged)**: System-level operations (strictly blocked by default).
-* **14 Registered Specialist Agents**: Defined in the spine (ELIE, RAY, ARES, VANTA, HAVEN, NEXUS, ECHO, LEDGER, SABLE, ORBIT, NOVA, MINT, ATLAS, JESTER), kept safely inactive until individual verification.
-* **34 Developmental Stages**: Full feature progression including memory filters, recovery, adaptive communication, human-state awareness, autonomy boundaries, and provider health verification.
+### Core Design Principles
+- **Transparent Local Cognition (Not Consciousness):** All working thoughts, drives, focus states, and memory lessons are stored in human-readable local JSON stores (`data/lucy/`).
+- **Deterministic Safety Gates (`GuardianCore`):** Hard-blocks silent file deletions, credential access, root shell execution, unauthorized financial/trading actions, and autonomous self-upgrades.
+- **Sandboxed Workspace Awareness (`SafeFileToolbox`):** Read-only inspection restricted strictly to user-approved directories with automatic extension and sensitive-pattern filtering.
+- **Multi-Provider LLM Isolation:** Supports optional external reasoning via **Groq**, **Google Gemini**, **NVIDIA NIM**, **OpenRouter**, and **SambaNova** with strict provider-identity boundaries and offline fallback.
 
 ---
 
-## Tech Stack
+## System Architecture
 
-* **Backend Runtime**: Python 3.10+
-* **Web Server**: Flask, Werkzeug
-* **Frontend**: Vanilla HTML5, CSS3 (IBM Plex Mono + Syne typography), Modern ES6+ JavaScript
-* **Desktop Client**: Python Tkinter
-* **Data Storage**: Human-readable JSON configurations and append-only JSONL event/reflection logs
-* **Testing**: Python standard `unittest` (920+ unit tests)
+```text
+                        ┌──────────────────────────────┐
+                        │        data/spine.json       │
+                        │ (Permissions, Rules, Agents) │
+                        └──────────────┬───────────────┘
+                                       │
+       ┌───────────────────────────────┼───────────────────────────────┐
+       ▼                               ▼                               ▼
+┌─────────────┐                 ┌─────────────┐                 ┌─────────────┐
+│  Web UI /   │                 │  CLI REPL   │                 │  Native UI  │
+│  REST API   │                 │  & Runner   │                 │  (Tkinter)  │
+│ (Port 7700) │                 │(run_lucy.py)│                 │ (Desktop)   │
+└──────┬──────┘                 └──────┬──────┘                 └──────┬──────┘
+       └───────────────────────────────┼───────────────────────────────┘
+                                       ▼
+                        ┌──────────────────────────────┐
+                        │        CommandRouter         │
+                        │  (Intent & Command Dispatch) │
+                        └──────────────┬───────────────┘
+                                       ▼
+                        ┌──────────────────────────────┐
+                        │        GuardianCore          │
+                        │ (Levels 0-4 Safety Gate)     │
+                        └──────────────┬───────────────┘
+                                       ▼
+                        ┌──────────────────────────────┐
+                        │         LucyRuntime          │
+                        │  Stages 1–34 Core Subsystems │
+                        └──────────────┬───────────────┘
+         ┌──────────────────┬──────────┴───────────┬──────────────────┐
+         ▼                  ▼                      ▼                  ▼
+  ┌─────────────┐    ┌─────────────┐        ┌─────────────┐    ┌─────────────┐
+  │ Memory &    │    │ Safe File   │        │ Cognition & │    │ Sub-Agents  │
+  │ Deep Recall │    │ Toolbox     │        │ Daily Brief │    │ & LLM APIs  │
+  └─────────────┘    └─────────────┘        └─────────────┘    └─────────────┘
+```
+
+---
+
+## Permission Model (Levels 0–4)
+
+Every action executed by LUCY or its sub-agents is governed by `data/spine.json`:
+
+| Level | Name | Scope & Allowed Actions | Restrictions & Approval |
+| :--- | :--- | :--- | :--- |
+| **Level 0** | **Read-Only** | View status, read reports, logs, and checkpoints | Cannot write or execute anything |
+| **Level 1** | **Log & Report** | Write logs, markdown notes, reports, and templates | Cannot delete files, edit configs, or run commands |
+| **Level 2** | **Safe User Commands** | Run sandboxed scripts, create folders, manage project files | Cannot touch OS files, install global packages, or read secrets |
+| **Level 3** | **Approved Project Edits** | Edit project configs, apply approved patches, update agent stages | Requires **explicit approval per action** |
+| **Level 4** | **Root / Privileged** | System-level commands, OS config changes | Disabled by default; requires **explicit typed confirmation every time** |
+
+---
+
+## Planned 14-Agent Ecosystem
+
+LUCY's spine orchestrates 4 core internal sub-agents (`Safety`, `Memory`, `Reasoning`, `Learning`) and defines the roadmap for 14 specialized domain agents:
+
+| Order | ID | Full Name | Role |
+| :---: | :--- | :--- | :--- |
+| 1 | **ELIE** | Executive Liaison Intelligence Engine | Primary executive synthesis & task coordination |
+| 2 | **RAY** | Reactive Automation Yield | Local workflow & task automation |
+| 3 | **ARES** | Autonomous Research & Extraction System | Deep research, synthesis, and knowledge extraction |
+| 4 | **VANTA** | Volatility Analysis & Tactical Allocation Agent | Risk modeling and analytical simulation |
+| 5 | **HAVEN** | Health, Alignment, Vitality & Emotional Navigation | Daily energy, sleep, and routine alignment |
+| 6 | **NEXUS** | Networked Exchange & Cross-agent Understanding | Inter-agent bus and context routing |
+| 7 | **ECHO** | Experience Capture & Human Observation | Session reflection and communication adaptation |
+| 8 | **LEDGER** | Life Economics, Debt & Growth Expense Recorder | Resource and budget tracking |
+| 9 | **SABLE** | Security Analysis & Boundary Logic Engine | Threat modeling and boundary auditing |
+| 10 | **ORBIT** | Operational Relay & Background Intelligence Tracker | Continuity pulses and scheduled reminders |
+| 11 | **NOVA** | Navigation, Opportunity & Vision Assistant | Long-term strategy and project milestones |
+| 12 | **MINT** | Managed Investment & Net-worth Tracker | Portfolio and asset analytics |
+| 13 | **ATLAS** | Adaptive Transformation & Life Architecture System | Systems organization and structural planning |
+| 14 | **JESTER** | Judgment, Error-Spotting & Tactical Evaluation | Red-teaming, shadow testing, and assumption checking |
 
 ---
 
 ## Directory Structure
 
-```
+```text
 lucy/
 ├── backend/
-│   ├── server.py              # Flask API & static frontend server (port 7700)
-│   └── lucy_core/             # Core cognitive runtime & stage modules
-│       ├── guardian.py        # Safety classification and boundary enforcement
-│       ├── router.py          # Command normalizer and intent router
-│       ├── lucy_runtime.py    # Main lifecycle, state, and coordination engine
-│       ├── safe_tools.py      # Read-only workspace inspection tools
-│       ├── memory.py          # Local approved memory store & recall
-│       ├── api_tools.py       # External LLM provider client integrations
-│       ├── secrets.py         # Key management and secret isolation
-│       └── ...                # Cognitive stage modules (Stages 1–34)
+│   ├── server.py                  # Flask REST API & Spine Config Server (Port 7700)
+│   └── lucy_core/                 # Core Runtime Modules (Stages 1–34)
+│       ├── lucy_runtime.py        # Main lifecycle & subsystem orchestrator
+│       ├── router.py              # Command normalization & intent dispatcher
+│       ├── guardian.py            # Deterministic safety classifier & audit logger
+│       ├── memory.py              # Approved local facts store & recall engine
+│       ├── cognition.py           # Transparent local cognition state
+│       ├── daily_context.py       # Daily check-ins, energy/sleep tracking & briefs
+│       ├── safe_tools.py          # Read-only approved folder & file toolbox
+│       ├── secrets.py             # Session & encrypted secret manager
+│       ├── api_tools.py           # External LLM clients (Groq, Gemini, NVIDIA, etc.)
+│       └── sub_agents/            # Core safety, memory, reasoning & learning agents
 ├── config/
-│   ├── lucy_protected_actions.json
-│   └── lucy_runtime_config.json
+│   ├── lucy_runtime_config.json   # Runtime feature flags & mode locks
+│   └── lucy_protected_actions.json# Hard-blocked & approval-gated action definitions
 ├── data/
-│   ├── spine.json             # Living spine: identity, rules, agent registry
-│   └── lucy/                  # Local runtime data, state, memory, and checkpoints
-│       ├── memory/            # Approved facts and memory rules
-│       ├── daily/             # Daily contexts and routine logs
-│       └── secure/            # Isolated key vault directory
-├── docs/                      # Architectural contracts and integration roadmaps
+│   ├── spine.json                 # Master Living Spine configuration
+│   └── lucy/                      # Local JSON state stores (memory, daily, checkpoints)
+├── docs/                          # Architecture guides, roadmaps & manual test plans
 ├── frontend/
-│   └── index.html             # Single-page cyberpunk dashboard & web chat UI
-├── logs/                      # Audit trails, build logs, and test documentation
-├── tests/                     # Comprehensive test suite (920+ test cases)
-├── .env.example               # Template environment configuration
-├── .gitignore                 # Tech-stack specific ignore rules
-├── requirements.txt           # Python package dependencies
-├── run.sh                     # Shell script launcher for Web UI
-├── run_lucy.py                # Interactive CLI REPL chat launcher
-├── run_lucy_core.py           # CLI command dispatcher
-└── run_lucy_desktop.py        # Native desktop GUI client
+│   └── index.html                 # Single-page Cyber/Mono Cognitive Web Dashboard
+├── tests/                         # 70+ unittest suites (922 tests covering Stages 1–34)
+├── run.sh                         # Quick-start launcher for the Web Server
+├── run_lucy.py                    # Interactive CLI chat REPL
+├── run_lucy_core.py               # CLI command dispatcher & Part 1 runner
+└── run_lucy_desktop.py            # Native Tkinter desktop interface
 ```
 
 ---
 
-## Local Setup & Installation
+## Quick Start & Installation
 
-### 1. Prerequisites
-* Python 3.10 or higher
-* Git
-
-### 2. Clone Repository
+### 1. Clone & Set Up Environment
 ```bash
-git clone git@github.com:seninalikp/lucy.git
+git clone https://github.com/seninalikp/lucy.git
 cd lucy
-```
 
-### 3. Create a Virtual Environment
-```bash
 python3 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
-
-### 4. Install Dependencies
-```bash
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 5. Configure Environment
+### 2. Configure Environment (Optional)
+LUCY runs 100% offline out of the box. To enable external LLM providers, copy `.env.example` to `.env` and add your keys:
 ```bash
 cp .env.example .env
-# Edit .env with your optional provider API keys (NVIDIA, Groq, OpenRouter, Gemini, etc.)
 ```
+Supported environment variables in `.env`:
+- `LUCY_PORT=7700`
+- `LUCY_API_ORDER=groq,gemini,nvidia,openrouter,sambanova`
+- `GROQ_API_KEY`, `GEMINI_API_KEY`, `NVIDIA_API_KEY`, `OPENROUTER_API_KEY`, `SAMBANOVA_API_KEY`
 
 ---
 
-## Usage Guide
+## Running LUCY
 
-### 1. Web Dashboard & Chat (Recommended)
-Start the local server:
+### Option A: Web Dashboard & REST API (Port 7700)
 ```bash
-bash run.sh
-# or directly:
+./run.sh
+# Or directly:
 python3 backend/server.py
 ```
-Open **[http://localhost:7700](http://localhost:7700)** in your browser to view the living spine, inspect agent statuses, review permission boundaries, and interact via web chat.
+Open **`http://localhost:7700`** in your browser to inspect the Spine configuration, view agent stages, review safety rules, and chat with LUCY.
 
-### 2. Interactive CLI Chat
-To chat directly with Lucy in the terminal:
+### Option B: Interactive CLI REPL
 ```bash
 python3 run_lucy.py
 ```
-Type `help` for available commands, or `exit` / `quit` to leave.
+Example commands inside the REPL:
+- `status` — View full runtime, memory, and safety status
+- `remember <fact>` — Store an approved fact in local memory
+- `recall <keyword>` — Search local memory
+- `daily brief` — View latest energy, sleep, and routine check-in
+- `help` — List all available runtime commands
+- `exit` — Trigger graceful shutdown
 
-### 3. Native Desktop UI
-Launch the desktop client window:
+### Option C: Single-Command CLI Execution
+```bash
+python3 run_lucy_core.py status
+```
+
+### Option D: Native Desktop Window (Tkinter)
 ```bash
 python3 run_lucy_desktop.py
 ```
 
-### 4. CLI Command Dispatcher
-Execute individual commands directly:
+---
+
+## Running the Test Suite
+
+LUCY includes a comprehensive standard-library `unittest` suite covering all 34 developmental stages:
+
 ```bash
-# Check runtime status & health
-python3 run_lucy_core.py status
-python3 run_lucy_core.py health
-
-# Memory operations
-python3 run_lucy_core.py remember "Always operate local-first"
-python3 run_lucy_core.py recall "local-first"
-
-# Projects & tasks
-python3 run_lucy_core.py list projects
-python3 run_lucy_core.py add task "Review stage 34 health checks"
-python3 run_lucy_core.py show tasks
-
-# Daily brief & continuity
-python3 run_lucy_core.py daily brief
-python3 run_lucy_core.py continuity status
+python3 -m unittest discover -s tests -v
 ```
 
 ---
 
-## Verification & Testing
+## REST API Endpoints (`backend/server.py`)
 
-Lucy includes a comprehensive unit test suite covering Guardian safety rules, tool execution boundaries, memory stores, and stage-by-stage pipelines:
-
-```bash
-# Run the entire test suite
-python3 -m unittest discover -s tests
-
-# Run system health diagnostics (53 checks)
-python3 run_lucy_core.py health
-```
-
----
-
-## License
-
-This project is open-source under the [MIT License](LICENSE).
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/status` | High-level runtime status, version, and agent stage counts |
+| `GET` | `/api/spine` | Full `data/spine.json` configuration |
+| `GET` | `/api/lucy` | Core LUCY metadata and capability locks |
+| `GET` | `/api/agents` | List all 14 planned agents and their metadata |
+| `GET` | `/api/agents/<id>` | Detailed configuration for a specific agent |
+| `PATCH` | `/api/agents/<id>/stage` | Update an agent's stage (requires `{"confirmed": true}`) |
+| `GET` | `/api/safety` | Active safety rules (`absolute_never`, `always_safe`, `protected_files`) |
+| `GET` | `/api/permissions` | Permission Levels 0–4 specification |
+| `POST` | `/api/chat` | Send a command or chat message (`{"message": "..."}`) to `CommandRouter` |
