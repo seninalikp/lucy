@@ -1,0 +1,139 @@
+{
+  "stage": "35 provider role split",
+  "sovereign_mind": {
+    "provider_id": "ollama",
+    "display_name": "Ollama Local Engine",
+    "aliases": [
+      "ollama",
+      "local",
+      "sovereign_mind",
+      "local_engine"
+    ],
+    "role": "sovereign_local_mind",
+    "enabled": true,
+    "endpoint": "http://localhost:11434",
+    "future_use": "Primary local neural substrate for consciousness, memory, voice, and face.",
+    "credential_label_only": [],
+    "allowed_capabilities": [
+      "sovereign_identity",
+      "persistent_memory",
+      "voice_synthesis",
+      "desktop_visualizer",
+      "self_model_governance",
+      "task_dispatch"
+    ],
+    "blocked_capabilities": [
+      "unverified_cloud_sync",
+      "identity_delegation"
+    ]
+  },
+  "workers": {
+    "groq": {
+      "provider_id": "groq",
+      "display_name": "Groq Fast Worker",
+      "aliases": [
+        "groq",
+        "groq_worker"
+      ],
+      "role": "external_worker",
+      "enabled": true,
+      "future_use": "Fast background code generation and compiler error fixes.",
+      "credential_label_only": [
+        "GROQ API KEY"
+      ],
+      "allowed_capabilities": [
+        "code_generation",
+        "code_review",
+        "data_transform"
+      ],
+      "blocked_capabilities": [
+        "identity_impersonation",
+        "memory_read",
+        "spine_access",
+        "direct_user_chat"
+      ]
+    },
+    "openrouter": {
+      "provider_id": "openrouter",
+      "display_name": "OpenRouter Gateway Worker",
+      "aliases": [
+        "openrouter",
+        "openrouter_worker"
+      ],
+      "role": "external_worker",
+      "enabled": true,
+      "future_use": "Multi-model fallback routing for heavy background tasks.",
+      "credential_label_only": [
+        "OPENROUTER API KEY"
+      ],
+      "allowed_capabilities": [
+        "code_generation",
+        "code_review",
+        "data_transform"
+      ],
+      "blocked_capabilities": [
+        "identity_impersonation",
+        "memory_read",
+        "spine_access",
+        "direct_user_chat"
+      ]
+    },
+    "google": {
+      "provider_id": "google",
+      "display_name": "Google Gemini Worker",
+      "aliases": [
+        "google",
+        "gemini",
+        "gemini_worker"
+      ],
+      "role": "external_worker",
+      "enabled": false,
+      "future_use": "Large context background code analysis.",
+      "credential_label_only": [
+        "GOOGLE API KEY"
+      ],
+      "allowed_capabilities": [
+        "code_generation",
+        "code_review",
+        "data_transform"
+      ],
+      "blocked_capabilities": [
+        "identity_impersonation",
+        "memory_read",
+        "spine_access",
+        "direct_user_chat"
+      ]
+    },
+    "nvidia": {
+      "provider_id": "nvidia",
+      "display_name": "NVIDIA NIM Worker",
+      "aliases": [
+        "nvidia",
+        "nvidia_worker"
+      ],
+      "role": "external_worker",
+      "enabled": false,
+      "future_use": "High-throughput frontier code verification.",
+      "credential_label_only": [
+        "NVIDIA API KEY"
+      ],
+      "allowed_capabilities": [
+        "code_generation",
+        "code_review",
+        "data_transform"
+      ],
+      "blocked_capabilities": [
+        "identity_impersonation",
+        "memory_read",
+        "spine_access",
+        "direct_user_chat"
+      ]
+    }
+  },
+  "boundary_enforcement": "active",
+  "rules": [
+    "External workers never receive persona or memory files",
+    "Only local Ollama holds sovereign identity and voice",
+    "Deterministic verification prevents model collapse"
+  ]
+}

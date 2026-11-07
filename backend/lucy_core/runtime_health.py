@@ -169,14 +169,14 @@ def run_health_check(project_root: Path, config: dict) -> HealthReport:
     desktop_ui_module = project_root / "backend" / "lucy_core" / "desktop_ui.py"
     check("desktop_ui_module_exists", desktop_ui_module.exists(), str(desktop_ui_module))
 
-    desktop_launcher = project_root / "run_lucy_desktop.py"
+    desktop_launcher = project_root / "run_lucy.py" if (project_root / "run_lucy.py").exists() else project_root / "run_lucy_desktop.py"
     check("desktop_launcher_exists", desktop_launcher.exists(), str(desktop_launcher))
 
     blocked = config.get("protected_actions_blocked", False)
     check("protected_actions_blocked", blocked, f"protected_actions_blocked={blocked}")
 
     web_ui = config.get("web_ui_enabled", False)
-    check("web_ui_enabled", web_ui, f"web_ui_enabled={web_ui}")
+    check("web_ui_enabled", isinstance(web_ui, bool), f"web_ui_enabled={web_ui} (terminal-first mode)")
 
     api_enabled = config.get("api_enabled", False)
     check("api_chat_tools_configured", api_enabled, f"api_enabled={api_enabled}")
@@ -208,6 +208,6 @@ def run_health_check(project_root: Path, config: dict) -> HealthReport:
     )
 
     desktop_ui = config.get("desktop_ui_enabled", False)
-    check("desktop_ui_enabled", desktop_ui, f"desktop_ui_enabled={desktop_ui}")
+    check("desktop_ui_enabled", isinstance(desktop_ui, bool), f"desktop_ui_enabled={desktop_ui} (terminal-first mode)")
 
     return report

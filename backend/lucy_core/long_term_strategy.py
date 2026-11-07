@@ -1,4 +1,4 @@
-﻿"""
+"""
 long_term_strategy.py
 Stage 20 = long-term strategy.
 

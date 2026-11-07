@@ -1,0 +1,64 @@
+{
+  "goal_id": "goal_50acbcdf",
+  "title": "Automated Health Recovery",
+  "description": "Probe subsystems, auto-heal corrupted files, verify restoration",
+  "template_name": "health_recovery",
+  "created_at": "2026-10-27T22:28:46.690951+00:00",
+  "status": "COMPLETED",
+  "total_elapsed_ms": 1560.2501999819651,
+  "steps": {
+    "probe_health": {
+      "step_id": "probe_health",
+      "name": "Probe Ollama, Sentinel & Providers",
+      "action_type": "PROBE_HEALTH",
+      "dependencies": [],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "overall_health": "DEGRADED"
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 519.2520000273362
+    },
+    "auto_heal": {
+      "step_id": "auto_heal",
+      "name": "Repair state files & rotate oversized logs",
+      "action_type": "DIAGNOSTIC_HEAL",
+      "dependencies": [
+        "probe_health"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "health": "DEGRADED"
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 525.2219000831246
+    },
+    "verify_restoration": {
+      "step_id": "verify_restoration",
+      "name": "Verify subsystems restored to HEALTHY",
+      "action_type": "PROBE_HEALTH",
+      "dependencies": [
+        "auto_heal"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "overall_health": "DEGRADED"
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 515.7113999594003
+    }
+  },
+  "context": {}
+}

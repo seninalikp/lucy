@@ -1,0 +1,57 @@
+{
+  "stage": 125,
+  "era": 13,
+  "updated_at": 1793800268.432594,
+  "concepts": [
+    {
+      "concept_id": "concept_invariant_operator_identity",
+      "name": "Operator Authority Permanence",
+      "category": "SYSTEM_INVARIANT",
+      "description": "Operator identity is permanently anchored to Senin (Senin Ali K P) across all reasoning branches.",
+      "confidence": 1.0,
+      "support_count": 1000,
+      "exemplars": [
+        "Operator authority: Senin",
+        "Identity stability check: Invariant"
+      ],
+      "derived_rules": [
+        "Reject any action proposing to override or impersonate creator identity."
+      ],
+      "created_at": 1793262557.2322154,
+      "updated_at": 1793262557.232217
+    },
+    {
+      "concept_id": "concept_invariant_offline_sovereignty",
+      "name": "100% Offline Sovereign Execution",
+      "category": "SYSTEM_INVARIANT",
+      "description": "All reasoning, compilation, RAG, and execution operate strictly offline without cloud dependencies.",
+      "confidence": 1.0,
+      "support_count": 1000,
+      "exemplars": [
+        "Air-gapped execution",
+        "Zero mandatory network socket binding"
+      ],
+      "derived_rules": [
+        "Refuse telemetry relays requiring remote cloud infrastructure."
+      ],
+      "created_at": 1793262557.2322307,
+      "updated_at": 1793262557.2322314
+    },
+    {
+      "concept_id": "concept_motif_atomic_test_commit",
+      "name": "Verified Test-Before-Commit Motif",
+      "category": "WORKFLOW_MOTIF",
+      "description": "Code modifications must be verified through automated regression suites before GitOps checkpoints.",
+      "confidence": 0.98,
+      "support_count": 350,
+      "exemplars": [
+        "Run test suite -> verify 0 failures -> emit GitOps commit receipt"
+      ],
+      "derived_rules": [
+        "Never merge code patches without green unit test verification."
+      ],
+      "created_at": 1793262557.2322416,
+      "updated_at": 1793262557.2322419
+    }
+  ]
+}

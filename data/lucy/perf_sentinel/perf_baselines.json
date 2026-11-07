@@ -1,0 +1,95 @@
+{
+  "payload": {
+    "version": "1.0",
+    "creator": "Senin",
+    "operator": "Senin Ali K P",
+    "baselines": {
+      "ast_mutation": {
+        "name": "ast_mutation",
+        "iterations": 100,
+        "total_duration_sec": 0.05,
+        "avg_latency_ms": 0.5,
+        "min_latency_ms": 0.35,
+        "max_latency_ms": 1.2,
+        "p95_latency_ms": 0.85,
+        "ops_per_sec": 2000.0,
+        "memory_delta_kb": 12.5,
+        "peak_memory_kb": 45.0,
+        "timestamp": 1793265761.6767771,
+        "metadata": {
+          "seeded": true,
+          "operator": "Senin Ali K P"
+        }
+      },
+      "constraint_solver": {
+        "name": "constraint_solver",
+        "iterations": 50,
+        "total_duration_sec": 0.04,
+        "avg_latency_ms": 0.8,
+        "min_latency_ms": 0.6,
+        "max_latency_ms": 1.8,
+        "p95_latency_ms": 1.2,
+        "ops_per_sec": 1250.0,
+        "memory_delta_kb": 8.0,
+        "peak_memory_kb": 30.0,
+        "timestamp": 1793265761.6767771,
+        "metadata": {
+          "seeded": true,
+          "operator": "Senin Ali K P"
+        }
+      },
+      "bytecode_inspector": {
+        "name": "bytecode_inspector",
+        "iterations": 100,
+        "total_duration_sec": 0.03,
+        "avg_latency_ms": 0.3,
+        "min_latency_ms": 0.2,
+        "max_latency_ms": 0.9,
+        "p95_latency_ms": 0.6,
+        "ops_per_sec": 3333.3,
+        "memory_delta_kb": 5.0,
+        "peak_memory_kb": 20.0,
+        "timestamp": 1793265761.6767771,
+        "metadata": {
+          "seeded": true,
+          "operator": "Senin Ali K P"
+        }
+      },
+      "wheel_builder": {
+        "name": "wheel_builder",
+        "iterations": 20,
+        "total_duration_sec": 0.1,
+        "avg_latency_ms": 5.0,
+        "min_latency_ms": 4.0,
+        "max_latency_ms": 8.0,
+        "p95_latency_ms": 6.5,
+        "ops_per_sec": 200.0,
+        "memory_delta_kb": 64.0,
+        "peak_memory_kb": 128.0,
+        "timestamp": 1793265761.6767771,
+        "metadata": {
+          "seeded": true,
+          "operator": "Senin Ali K P"
+        }
+      },
+      "router_dispatch": {
+        "name": "router_dispatch",
+        "iterations": 500,
+        "total_duration_sec": 0.02,
+        "avg_latency_ms": 0.04,
+        "min_latency_ms": 0.02,
+        "max_latency_ms": 0.15,
+        "p95_latency_ms": 0.08,
+        "ops_per_sec": 25000.0,
+        "memory_delta_kb": 2.0,
+        "peak_memory_kb": 10.0,
+        "timestamp": 1793265761.6767771,
+        "metadata": {
+          "seeded": true,
+          "operator": "Senin Ali K P"
+        }
+      }
+    }
+  },
+  "hmac_signature": "15a9130acfd71f22685c87106ce08fd7851583b711738a9fbcbd05462a2fcee5"
+}

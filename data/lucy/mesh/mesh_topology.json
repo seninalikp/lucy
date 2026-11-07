@@ -1,0 +1,33 @@
+{
+  "vector_clock": 9,
+  "peers": {
+    "node_f76c79e1": {
+      "node_id": "node_f76c79e1",
+      "device_name": "Senin-ThinkPad",
+      "device_type": "laptop",
+      "creator": "Senin",
+      "public_key": "ec362f543490ebb461454b4e285602aa1d749c178dc659d9a70087f4894f0381",
+      "ip_address": "192.168.1.105",
+      "port": 42024,
+      "status": "SYNCED",
+      "vector_clock": 8,
+      "last_seen": 1793278672.8931386,
+      "synced_items_count": 0,
+      "metadata": {}
+    },
+    "node_70efcb26": {
+      "node_id": "node_70efcb26",
+      "device_name": "Senin-Mobile",
+      "device_type": "mobile",
+      "creator": "Senin",
+      "public_key": "15e565c5b24c31008c074c435633a38d0f8779d78fd8e49cee24ce095231aa32",
+      "ip_address": "192.168.1.112",
+      "port": 42024,
+      "status": "SYNCED",
+      "vector_clock": 9,
+      "last_seen": 1793278672.8948066,
+      "synced_items_count": 0,
+      "metadata": {}
+    }
+  }
+}

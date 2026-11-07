@@ -1,0 +1,75 @@
+{
+  "stage": 128,
+  "era": 13,
+  "total_sweeps": 121,
+  "total_adjustments": 3,
+  "policies": [
+    {
+      "name": "RETRY_BUDGET",
+      "current_value": 3.0,
+      "min_bound": 1.0,
+      "max_bound": 10.0,
+      "default_value": 3.0,
+      "category": "execution",
+      "description": "Max autonomous retry attempts before triggering backoff",
+      "total_adjustments": 0,
+      "is_locked": false
+    },
+    {
+      "name": "SANDBOX_STRICTNESS",
+      "current_value": 4.0,
+      "min_bound": 2.0,
+      "max_bound": 5.0,
+      "default_value": 4.0,
+      "category": "security",
+      "description": "Isolation barrier level (higher = stricter syscall filters)",
+      "total_adjustments": 0,
+      "is_locked": true
+    },
+    {
+      "name": "EXPLORATION_RATIO",
+      "current_value": 0.35,
+      "min_bound": 0.05,
+      "max_bound": 0.5,
+      "default_value": 0.2,
+      "category": "reasoning",
+      "description": "Epsilon exploration probability for counterfactual branching",
+      "total_adjustments": 3,
+      "is_locked": false
+    },
+    {
+      "name": "COMPRESSION_THRESHOLD",
+      "current_value": 0.8,
+      "min_bound": 0.5,
+      "max_bound": 0.95,
+      "default_value": 0.8,
+      "category": "memory",
+      "description": "Token context utilization trigger for sliding compaction",
+      "total_adjustments": 0,
+      "is_locked": false
+    },
+    {
+      "name": "VERIFICATION_RIGOR",
+      "current_value": 2.0,
+      "min_bound": 1.0,
+      "max_bound": 3.0,
+      "default_value": 2.0,
+      "category": "verification",
+      "description": "Oracle proof tier (1=Heuristic, 2=Deterministic, 3=Formal)",
+      "total_adjustments": 0,
+      "is_locked": false
+    },
+    {
+      "name": "THERMAL_SENSITIVITY",
+      "current_value": 1.0,
+      "min_bound": 0.7,
+      "max_bound": 1.3,
+      "default_value": 1.0,
+      "category": "hardware",
+      "description": "Throttle trigger sensitivity multiplier relative to baseline",
+      "total_adjustments": 0,
+      "is_locked": false
+    }
+  ],
+  "updated_at": 1793799888.7721782
+}

@@ -1,4 +1,4 @@
-﻿"""
+"""
 safe_local_actions.py
 Stage 22 = safe local actions.
 

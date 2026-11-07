@@ -190,3 +190,32 @@ class SafeToolbox:
             except json.JSONDecodeError:
                 result.append({"raw": line})
         return result
+
+    def create_folder(self, raw_path: str) -> dict:
+        """Create a directory safely inside the project workspace."""
+        clean_path = str(raw_path or "").strip().strip("'\"")
+        if not clean_path:
+            return {"ok": False, "error": "Folder path cannot be empty."}
+        try:
+            target_path = self._resolve_inside_project(clean_path)
+            if self._is_sensitive_name(target_path):
+                return {
+                    "ok": False,
+                    "error": f"Folder name contains restricted keyword: {clean_path}",
+                }
+            created = False
+            if not target_path.exists():
+                target_path.mkdir(parents=True, exist_ok=True)
+                created = True
+            return {
+                "ok": True,
+                "created": created,
+                "already_existed": not created,
+                "path": str(target_path).replace("\\", "/"),
+                "relative_path": str(target_path.relative_to(self.project_root)).replace("\\", "/"),
+            }
+        except ValueError as ve:
+            return {"ok": False, "error": str(ve)}
+        except Exception as exc:
+            return {"ok": False, "error": f"Could not create folder: {exc}"}
+

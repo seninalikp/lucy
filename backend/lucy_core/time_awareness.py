@@ -1,4 +1,4 @@
-﻿"""
+"""
 time_awareness.py
 Stage 29 = time awareness.
 

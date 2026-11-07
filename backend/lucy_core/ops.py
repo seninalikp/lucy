@@ -72,7 +72,8 @@ class SafeOps:
             "checks": [],
             "suggestions": [],
         }
-        for required in ["run_lucy_core.py", "backend/lucy_core/lucy_runtime.py", "backend/lucy_core/router.py"]:
+        launcher = "run_lucy.py" if (self.project_root / "run_lucy.py").exists() else "run_lucy_core.py"
+        for required in [launcher, "backend/lucy_core/lucy_runtime.py", "backend/lucy_core/router.py"]:
             path = self.project_root / required
             report["checks"].append({"name": required, "exists": path.exists()})
 

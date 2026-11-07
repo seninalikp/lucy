@@ -1,0 +1,155 @@
+{
+  "stage": 113,
+  "era": 12,
+  "updated_at": 1793258498.1322222,
+  "summary": {
+    "total_files": 342,
+    "total_lines": 88228,
+    "total_symbols": 4665,
+    "language_breakdown": {
+      "python": {
+        "files": 342,
+        "lines": 88228,
+        "symbols": 4665
+      },
+      "typescript": {
+        "files": 0,
+        "lines": 0,
+        "symbols": 0
+      },
+      "javascript": {
+        "files": 0,
+        "lines": 0,
+        "symbols": 0
+      },
+      "go": {
+        "files": 0,
+        "lines": 0,
+        "symbols": 0
+      },
+      "rust": {
+        "files": 0,
+        "lines": 0,
+        "symbols": 0
+      },
+      "cpp": {
+        "files": 0,
+        "lines": 0,
+        "symbols": 0
+      }
+    },
+    "cross_language_bridges": [
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/ambient_hud_overlay.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/ast_polyglot_engine.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/ast_polyglot_engine.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/centennial_master_seal.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/code_synthesis.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/fact_state_verifier.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/hardware_telemetry_optimizer.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/kernel_supervisor.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/live_workspace_context.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/lucy_runtime.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/mutation_fuzzer.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/operator_toolkit.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/operator_toolkit.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/red_team_simulator.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "backend/lucy_core/secrets.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/terminal_sentinel.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/test_triage.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "backend/lucy_core/web_verifier.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "scratch/wire_stage76_runtime.py",
+        "description": "Subprocess execution of external toolchain."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "tests/test_stage108_red_team_simulator.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "FFI (Python -> C)",
+        "file": "tests/test_stage113_ast_polyglot_engine.py",
+        "description": "Foreign Function Interface bindings detected."
+      },
+      {
+        "bridge_type": "Process IPC (Python -> Polyglot CLI)",
+        "file": "tests/test_stage113_ast_polyglot_engine.py",
+        "description": "Subprocess execution of external toolchain."
+      }
+    ],
+    "scan_timestamp": 1793258496.8444333
+  }
+}

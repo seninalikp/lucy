@@ -1,0 +1,3995 @@
+[
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-11-04T13:50:30.410511+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 36.412
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-11-04T13:50:01.527360+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 28.788
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T02:59:04.264916+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "FAILED_EXECUTION",
+    "source": "local_ollama_writer",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "tokenize_and_count",
+        "main"
+      ],
+      "classes": [],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": false,
+      "returncode": 1,
+      "stdout": "Usage: python generated_tool.py <file_path>",
+      "stderr": "",
+      "error": ""
+    },
+    "promoted": false,
+    "final_path": null,
+    "badge": "[CODE_VERIFIED: FAILED_EXECUTION | Returncode: 1]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py"
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T02:58:31.376119+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "local_ollama_writer",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "uptime_calc",
+        "main"
+      ],
+      "classes": [],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "Uptime: 86399.0 seconds\nTest Uptime: 86399.0 seconds (Expected: 86400)",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": true,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 32.855
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T02:10:21.677762+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 5.407
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T02:10:15.767134+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.888
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:46:30.965762+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.059
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:46:28.221598+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 2.722
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:41:06.455144+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.805
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:41:03.342277+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.092
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:35:19.528476+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.29
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:35:16.149161+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.36
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:29:34.658368+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.955
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:29:31.953281+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 2.683
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:24:24.940482+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.694
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:24:22.215046+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 2.695
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:17:25.648548+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 4.612
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:17:20.524443+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.097
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:11:40.509635+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 4.354
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:11:36.875004+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.615
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:06:31.023190+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.658
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:06:27.578849+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.424
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:02:35.159048+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.286
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T01:02:30.692628+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 4.444
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:54:53.155067+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.174
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:54:49.414564+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.72
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:44:32.584416+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 6.184
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:44:25.585136+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 6.979
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:28:02.497691+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.219
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:27:58.638524+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.837
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:22:26.792216+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.175
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:22:23.720233+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.051
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:16:35.188732+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.957
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:16:29.550775+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.618
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:10:07.821486+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.117
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:10:00.916724+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 6.879
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:03:23.791555+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 5.889
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-29T00:03:14.902941+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 8.868
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:28:20.703519+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 5.21
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:28:16.581022+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 4.101
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:22:48.154794+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.837
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:22:41.876672+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 6.258
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:14:33.467493+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.12
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:14:30.135163+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.312
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:06:45.834297+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.04
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T14:06:41.468537+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 4.343
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:57:06.309665+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.615
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:57:02.731655+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.555
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:53:10.889596+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 5.317
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:53:07.744672+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.123
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:45:32.929688+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.036
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:45:29.471158+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 3.437
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:36:21.731707+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.795
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:36:16.449359+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.262
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:19:18.592482+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 5.247
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T13:19:11.130551+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 7.416
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:57:37.343707+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.505
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:57:34.600234+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 2.705
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:54:41.119420+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 2.091
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:54:38.136682+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 2.944
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:45:18.437220+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 15.375
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:45:04.443690+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 13.96
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:29:01.318557+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 6.768
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:28:54.860927+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 6.417
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:25:57.434693+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 6.319
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:25:51.149549+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 6.243
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:23:11.118888+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.998
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:23:10.190114+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.886
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:11:57.480819+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 6.725
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:11:51.682267+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.756
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:03:14.308247+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 13.852
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T10:02:59.227038+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 15.041
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:50:32.061602+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 8.35
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:50:17.186781+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 14.83
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:45:19.902030+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 10.044
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:45:14.597233+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.249
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:40:56.244944+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 7.802
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:40:50.782472+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 5.422
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:30:26.722060+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 3.099
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:30:20.104914+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 6.569
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:25:24.991282+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 5.052
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:25:14.621820+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 10.328
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:12:23.565602+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.245
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:12:23.282247+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.255
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:10:04.892195+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.246
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:10:04.630790+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.241
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:00:12.258370+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.244
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T09:00:11.985216+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.243
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T08:58:05.412911+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.232
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T08:58:05.130709+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.245
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T08:13:32.187140+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.242
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T08:13:31.921411+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.243
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:59:07.774431+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.25
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:59:07.506140+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.243
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:57:21.676831+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.244
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:57:21.412835+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.241
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:49:00.138616+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.254
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:48:59.842740+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.26
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:41:31.728244+00:00",
+    "instruction": "create a token counter in python",
+    "filename": "generated_tool.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "GeneratedTool"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[generated_tool.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\generated_tool.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: generated_tool.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\generated_tool.py",
+    "duration_seconds": 0.245
+  },
+  {
+    "stage": "40 code synthesis and terminal verification pipeline",
+    "timestamp": "2026-10-28T07:41:31.439506+00:00",
+    "instruction": "Build an uptime calculator",
+    "filename": "uptime_calc.py",
+    "status": "PROMOTED",
+    "source": "deterministic_template_fallback",
+    "ast": {
+      "ast_passed": true,
+      "syntax_valid": true,
+      "functions": [
+        "main",
+        "__init__",
+        "run"
+      ],
+      "classes": [
+        "UptimeCalc"
+      ],
+      "dangerous_calls": [],
+      "error": null
+    },
+    "compile": {
+      "compile_passed": true,
+      "compiled_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+      "error": null
+    },
+    "execution": {
+      "execution_passed": true,
+      "returncode": 0,
+      "stdout": "[uptime_calc.py] Status: success",
+      "stderr": "",
+      "error": null
+    },
+    "promoted": true,
+    "final_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\promoted_tools\\uptime_calc.py",
+    "badge": "[CODE_VERIFIED: PASS | AST: OK | COMPILE: OK | EXEC: OK | PROMOTED: uptime_calc.py]",
+    "lora_queue_admitted": false,
+    "staged_path": "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\sandbox\\staging\\uptime_calc.py",
+    "duration_seconds": 0.258
+  }
+]

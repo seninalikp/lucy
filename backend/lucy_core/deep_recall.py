@@ -1,4 +1,4 @@
-﻿"""
+"""
 deep_recall.py
 Stage 25 = deep recall.
 

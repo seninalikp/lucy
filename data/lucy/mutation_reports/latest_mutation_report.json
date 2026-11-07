@@ -1,0 +1,10 @@
+{
+  "target_file": "mutation_fuzzer.py",
+  "total_mutants": 10,
+  "killed_mutants": 0,
+  "survived_mutants": 10,
+  "mutation_score": 0.0,
+  "mutants_count": 10,
+  "elapsed_ms": 3427.28,
+  "created_at": 1793245016.0426934
+}

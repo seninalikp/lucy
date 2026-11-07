@@ -1,0 +1,159 @@
+{
+  "version": "2.0.0",
+  "stage": "63 semantic memory contradiction and conflict resolver",
+  "created_at": "2026-10-28T10:06:47.633116+00:00",
+  "updated_at": "2026-10-28T10:10:59.623795+00:00",
+  "nodes": [
+    {
+      "id": "mnode_0001",
+      "fact": "my primary focus is zero hallucinations",
+      "content": "my primary focus is zero hallucinations",
+      "normalized": "my primary focus is zero hallucinations",
+      "category": "auto_extracted",
+      "source": "conversation",
+      "slot_key": "slot:primary_focus",
+      "slot_value": "zero hallucinations",
+      "tokens": [
+        "primary",
+        "focus",
+        "zero",
+        "hallucinations"
+      ],
+      "pinned": false,
+      "status": "superseded",
+      "active": false,
+      "deleted": false,
+      "supersedes": [],
+      "superseded_by": "mnode_0003",
+      "access_count": 1,
+      "created_at": "2026-10-28T10:06:47.633300+00:00",
+      "updated_at": "2026-10-28T10:06:47.633300+00:00",
+      "superseded_at": "2026-10-28T10:10:51.003450+00:00",
+      "supersession_reason": "slot_override:slot:primary_focus (zero hallucinations -> prototype drift)"
+    },
+    {
+      "id": "mnode_0002",
+      "fact": "that my main stack is Python and Flask.",
+      "content": "that my main stack is Python and Flask.",
+      "normalized": "that my main stack is python and flask",
+      "category": "general",
+      "source": "user",
+      "slot_key": "slot:stack",
+      "slot_value": "python and flask",
+      "tokens": [
+        "main",
+        "stack",
+        "python",
+        "flask"
+      ],
+      "pinned": false,
+      "status": "active",
+      "active": true,
+      "deleted": false,
+      "supersedes": [],
+      "superseded_by": null,
+      "access_count": 1,
+      "created_at": "2026-10-28T10:07:01.914628+00:00",
+      "updated_at": "2026-10-28T10:07:01.914628+00:00"
+    },
+    {
+      "id": "mnode_0003",
+      "fact": "that my primary focus is Prototype Drift.",
+      "content": "that my primary focus is Prototype Drift.",
+      "normalized": "that my primary focus is prototype drift",
+      "category": "general",
+      "source": "user",
+      "slot_key": "slot:primary_focus",
+      "slot_value": "prototype drift",
+      "tokens": [
+        "primary",
+        "focus",
+        "prototype",
+        "drift"
+      ],
+      "pinned": false,
+      "status": "superseded",
+      "active": false,
+      "deleted": false,
+      "supersedes": [
+        "mnode_0001"
+      ],
+      "superseded_by": "mnode_0004",
+      "access_count": 1,
+      "created_at": "2026-10-28T10:10:51.003450+00:00",
+      "updated_at": "2026-10-28T10:10:51.003450+00:00",
+      "superseded_at": "2026-10-28T10:10:51.046131+00:00",
+      "supersession_reason": "slot_override:slot:primary_focus (prototype drift -> lucy sovereign terminal)"
+    },
+    {
+      "id": "mnode_0004",
+      "fact": "that my primary focus is Lucy Sovereign Terminal.",
+      "content": "that my primary focus is Lucy Sovereign Terminal.",
+      "normalized": "that my primary focus is lucy sovereign terminal",
+      "category": "general",
+      "source": "user",
+      "slot_key": "slot:primary_focus",
+      "slot_value": "lucy sovereign terminal",
+      "tokens": [
+        "primary",
+        "focus",
+        "lucy",
+        "sovereign",
+        "terminal"
+      ],
+      "pinned": false,
+      "status": "active",
+      "active": true,
+      "deleted": false,
+      "supersedes": [
+        "mnode_0003"
+      ],
+      "superseded_by": null,
+      "access_count": 1,
+      "created_at": "2026-10-28T10:10:51.046131+00:00",
+      "updated_at": "2026-10-28T10:10:51.046131+00:00"
+    },
+    {
+      "id": "mnode_0005",
+      "fact": "that my favorite editor is Neovim.",
+      "content": "that my favorite editor is Neovim.",
+      "normalized": "that my favorite editor is neovim",
+      "category": "general",
+      "source": "user",
+      "slot_key": "slot:editor",
+      "slot_value": "neovim",
+      "tokens": [
+        "favorite",
+        "editor",
+        "neovim"
+      ],
+      "pinned": false,
+      "status": "active",
+      "active": true,
+      "deleted": false,
+      "supersedes": [],
+      "superseded_by": null,
+      "access_count": 1,
+      "created_at": "2026-10-28T10:10:59.623767+00:00",
+      "updated_at": "2026-10-28T10:10:59.623767+00:00"
+    }
+  ],
+  "conflicts_resolved": [
+    {
+      "timestamp": "2026-10-28T10:10:51.003450+00:00",
+      "old_node_id": "mnode_0001",
+      "old_fact": "my primary focus is zero hallucinations",
+      "new_node_id": "mnode_0003",
+      "new_fact": "that my primary focus is Prototype Drift.",
+      "reason": "slot_override:slot:primary_focus (zero hallucinations -> prototype drift)"
+    },
+    {
+      "timestamp": "2026-10-28T10:10:51.046131+00:00",
+      "old_node_id": "mnode_0003",
+      "old_fact": "that my primary focus is Prototype Drift.",
+      "new_node_id": "mnode_0004",
+      "new_fact": "that my primary focus is Lucy Sovereign Terminal.",
+      "reason": "slot_override:slot:primary_focus (prototype drift -> lucy sovereign terminal)"
+    }
+  ]
+}

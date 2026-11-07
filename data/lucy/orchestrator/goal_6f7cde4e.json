@@ -1,0 +1,129 @@
+{
+  "goal_id": "goal_6f7cde4e",
+  "title": "Night Operational Audit & Alignment",
+  "description": "Autonomous system audit, log hygiene, LoRA check, and snapshot",
+  "template_name": "night_audit",
+  "created_at": "2026-10-28T07:57:55.118344+00:00",
+  "status": "COMPLETED",
+  "total_elapsed_ms": 1680.0889999140054,
+  "steps": {
+    "telemetry": {
+      "step_id": "telemetry",
+      "name": "Collect system hardware telemetry",
+      "action_type": "SYSTEM_TELEMETRY",
+      "dependencies": [],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "ram_load": 61
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 0.1292000524699688
+    },
+    "sentinel_scan": {
+      "step_id": "sentinel_scan",
+      "name": "Scan workspace for modified files & errors",
+      "action_type": "SENTINEL_SCAN",
+      "dependencies": [
+        "telemetry"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "files_tracked": 7455
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 1154.6818000497296
+    },
+    "self_diagnostics": {
+      "step_id": "self_diagnostics",
+      "name": "Audit state files & clean log bloat",
+      "action_type": "DIAGNOSTIC_HEAL",
+      "dependencies": [
+        "sentinel_scan"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "health": "DEGRADED"
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 519.2668000236154
+    },
+    "lora_alignment": {
+      "step_id": "lora_alignment",
+      "name": "Verify personal LoRA dataset alignment",
+      "action_type": "LORA_ALIGNMENT",
+      "dependencies": [
+        "self_diagnostics"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "passed": true
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 0.006500049494206905
+    },
+    "state_snapshot": {
+      "step_id": "state_snapshot",
+      "name": "Snapshot state files to .bak backups",
+      "action_type": "SNAPSHOT_BACKUP",
+      "dependencies": [
+        "lora_alignment"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "backed_up": 8
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 5.920400028117001
+    }
+  },
+  "context": {
+    "telemetry": {
+      "stage": "47 windows operator toolkit",
+      "timestamp": "2026-10-28T07:57:55.118507+00:00",
+      "os": {
+        "system": "Windows",
+        "release": "11",
+        "version": "10.0.26200",
+        "machine": "AMD64",
+        "cpu_cores": 12
+      },
+      "disk": {
+        "drive": "C:\\",
+        "total_gb": 475.86,
+        "used_gb": 285.93,
+        "free_gb": 189.93,
+        "percent_free": 39.9
+      },
+      "ram": {
+        "memory_load_percent": 61,
+        "total_mb": 15771,
+        "available_mb": 6000,
+        "used_mb": 9772
+      },
+      "power": {
+        "ac_line_status": "Plugged In (AC)",
+        "battery_percent": "60%"
+      }
+    }
+  }
+}

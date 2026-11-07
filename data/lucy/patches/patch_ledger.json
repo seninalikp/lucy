@@ -1,0 +1,14 @@
+{
+  "patch_20261029_091419_sample_calc_": {
+    "patch_id": "patch_20261029_091419_sample_calc_",
+    "target_file": "sample_calc_test.py",
+    "error_signature": "ZeroDivisionError: division by zero",
+    "diff": "--- a/sample_calc_test.py\n+++ b/sample_calc_test.py\n@@ -1,2 +1,2 @@\n def ratio(a, b):\n-    return a / b\n+    return (a / b if b != 0 else 0)\n",
+    "status": "ROLLED_BACK",
+    "applied_at": 1793245459.6278858,
+    "rolled_back_at": 1793245459.7069519,
+    "verified": true,
+    "original_content": "def ratio(a, b):\n    return a / b\n",
+    "patched_content": "def ratio(a, b):\n    return (a / b if b != 0 else 0)\n"
+  }
+}

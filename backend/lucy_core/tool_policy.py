@@ -8,6 +8,7 @@ network services.
 
 from __future__ import annotations
 
+import re
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
@@ -143,6 +144,12 @@ class ToolActionPolicy:
         combined = " ".join(
             value for value in [action, target_lower, str(metadata.get("hint", "")).lower()] if value
         )
+        # Strip user profile folder prefix from target path so usernames like 'admin' or 'root'
+        # do not falsely trigger execution/admin blocking on normal files.
+        target_exec = re.sub(r"/(?:users|home)/[^/]+", "", target_lower)
+        combined_exec = " ".join(
+            value for value in [action, target_exec, str(metadata.get("hint", "")).lower()] if value
+        )
 
         if metadata.get("outside_approved"):
             return self._blocked(
@@ -167,7 +174,7 @@ class ToolActionPolicy:
         if self._contains_any(combined, self.NETWORK_PATTERNS):
             return self._blocked(NETWORK_BLOCKED, "Network, upload, email, and message actions are blocked.", risk_level="high")
 
-        if self._contains_any(combined, self.EXECUTION_PATTERNS):
+        if self._contains_any(combined_exec, self.EXECUTION_PATTERNS):
             return self._blocked(EXECUTION_BLOCKED, "Execution, shell, root, and admin actions are blocked.", risk_level="high")
 
         if action in {"add_approved_folder", "remove_approved_folder"}:

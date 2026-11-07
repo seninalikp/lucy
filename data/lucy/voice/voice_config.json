@@ -1,0 +1,11 @@
+{
+  "profile": {
+    "name": "Lucy-Companion",
+    "pitch": 1.0,
+    "speed": 1.0,
+    "volume": 0.95,
+    "language": "en-US"
+  },
+  "energy_threshold": 0.05,
+  "silence_window_ms": 400
+}

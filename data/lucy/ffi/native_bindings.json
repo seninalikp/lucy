@@ -1,0 +1,44 @@
+{
+  "stage": 135,
+  "era": 14,
+  "total_calls": 0,
+  "bindings": [
+    {
+      "symbol_name": "strlen",
+      "library_name": "msvcrt",
+      "restype": "size_t",
+      "argtypes": [
+        "char_p"
+      ],
+      "is_live_loaded": true,
+      "total_calls": 0,
+      "last_invoked": 0.0,
+      "description": "Calculates string length"
+    },
+    {
+      "symbol_name": "abs",
+      "library_name": "msvcrt",
+      "restype": "int",
+      "argtypes": [
+        "int"
+      ],
+      "is_live_loaded": true,
+      "total_calls": 0,
+      "last_invoked": 0.0,
+      "description": "Computes absolute value of integer"
+    },
+    {
+      "symbol_name": "puts",
+      "library_name": "msvcrt",
+      "restype": "int",
+      "argtypes": [
+        "char_p"
+      ],
+      "is_live_loaded": true,
+      "total_calls": 0,
+      "last_invoked": 0.0,
+      "description": "Outputs string to stdout"
+    }
+  ],
+  "updated_at": 1793265114.8623514
+}

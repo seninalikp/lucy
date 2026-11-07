@@ -21,8 +21,9 @@ def _now() -> str:
 
 
 class ProjectTracker:
-    def __init__(self, lucy_data_dir: Path) -> None:
+    def __init__(self, lucy_data_dir: Path, receipt_ledger: Any = None) -> None:
         self.lucy_data_dir = lucy_data_dir
+        self.receipt_ledger = receipt_ledger
         self.lucy_data_dir.mkdir(parents=True, exist_ok=True)
         self.projects_file = self.lucy_data_dir / "projects.json"
         self._ensure_file()
@@ -163,6 +164,13 @@ class ProjectTracker:
         project["next_action"] = cleaned
         project["updated_at"] = _now()
         self._write(data)
+        if hasattr(self, "receipt_ledger") and self.receipt_ledger is not None:
+            self.receipt_ledger.issue_receipt(
+                action_category="task_mutation",
+                operation="add_task",
+                target=task["id"],
+                verified_outcome=f"Added task: {task['text']}",
+            )
         return {"added": True, "project": project["name"], "task": task}
 
     def complete_task(self, selector: str, project_name: str | None = None) -> dict:
@@ -195,6 +203,13 @@ class ProjectTracker:
         remaining = [task for task in project.get("tasks", []) if task.get("status") == "open"]
         project["next_action"] = remaining[0]["text"] if remaining else "Review project status and choose the next step."
         self._write(data)
+        if hasattr(self, "receipt_ledger") and self.receipt_ledger is not None:
+            self.receipt_ledger.issue_receipt(
+                action_category="task_mutation",
+                operation="complete_task",
+                target=selected["id"],
+                verified_outcome=f"Completed task: {selected['text']}",
+            )
         return {"completed": True, "project": project["name"], "task": selected}
 
     def show_tasks(self, project_name: str | None = None, include_done: bool = False) -> dict:
@@ -204,6 +219,14 @@ class ProjectTracker:
         if not include_done:
             tasks = [task for task in tasks if task.get("status") == "open"]
         return {"project": project["name"], "tasks": tasks}
+
+    def list_tasks(self, project_name: str | None = None, include_done: bool = True) -> list[dict]:
+        data = self._read()
+        project = self._get_project(data, project_name)
+        tasks = project.get("tasks", [])
+        if not include_done:
+            return [task for task in tasks if task.get("status") == "open"]
+        return list(tasks)
 
     def summary(self, project_name: str | None = None) -> dict:
         data = self._read()

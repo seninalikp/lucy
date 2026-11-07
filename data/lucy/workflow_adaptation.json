@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "correction_rules": [
+    "Never output truncated code or placeholder comments when writing implementation files.",
+    "Never claim a file or task was modified without executing the underlying tool.",
+    "User Correction Guardrail: Instead of SQLite, use PostgreSQL for relational storage."
+  ],
+  "macros": {
+    "morning": [
+      "status",
+      "workspace pulse"
+    ],
+    "checkup": [
+      "health",
+      "verify workspace",
+      "schedules"
+    ]
+  },
+  "recent_command_chain": [],
+  "updated_at": "2026-10-28T10:10:59.664039+00:00"
+}

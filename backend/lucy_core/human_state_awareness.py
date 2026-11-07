@@ -1,4 +1,4 @@
-﻿"""
+"""
 human_state_awareness.py
 Stage 28 = human-state awareness.
 

@@ -1,6 +1,7 @@
 """
 cli.py
 Terminal interface for Lucy Core Runtime.
+Stage 50 = High-Performance Terminal REPL & Custom Command Palette.
 """
 
 from __future__ import annotations
@@ -8,31 +9,16 @@ from __future__ import annotations
 import sys
 
 from backend.lucy_core.router import CommandRouter
+from backend.lucy_core.terminal_repl import TerminalREPL
 
 
 def run_chat(router: CommandRouter) -> None:
-    print()
-    try:
-        print(router.runtime.startup_wake_message())
-    except Exception:
-        print("LUCY is online.")
-    print("Local mode: memory, projects, guardian checks, logs, and checkpoints.")
-    print("Type 'help' for commands or 'exit' to stop.")
-    print()
-
-    while True:
-        try:
-            raw = input("lucy> ")
-        except (EOFError, KeyboardInterrupt):
-            print()
-            print("Lucy shutting down cleanly.")
-            return
-
-        response = router.handle(raw)
-        if response.message:
-            print(response.message)
-        if response.should_exit:
-            return
+    repl = getattr(router.runtime, "terminal_repl", None)
+    if repl is None:
+        repl = TerminalREPL(runtime=router.runtime, router=router)
+    else:
+        repl.router = router
+    repl.run_interactive()
 
 
 def run_cli(runtime) -> None:
@@ -49,9 +35,16 @@ def run_cli(runtime) -> None:
             run_chat(router)
             return
 
-        response = router.handle(" ".join(args))
-        if response.message:
-            print(response.message)
+        repl = getattr(runtime, "terminal_repl", None)
+        if repl is not None:
+            repl.router = router
+            res = repl.execute_one(" ".join(args))
+            if res.get("output"):
+                print(res["output"])
+        else:
+            response = router.handle(" ".join(args))
+            if response.message:
+                print(response.message)
     finally:
         try:
             if not runtime.session_state.status().get("graceful_shutdown"):

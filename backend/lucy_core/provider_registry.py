@@ -1,4 +1,4 @@
-﻿"""
+"""
 provider_registry.py
 Stage 33 = Provider Registry.
 

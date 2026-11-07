@@ -202,6 +202,10 @@ class MemorySystem:
         self._write(data)
         return {"saved": True, "memory": record}
 
+    def active_memories(self, limit: int = 50) -> list[dict]:
+        """Returns list of all currently active approved memory facts."""
+        return self.recall(limit=limit)
+
     def recall(self, query: str = "", limit: int = 8) -> list[dict]:
         """Return active memories, ranked by simple keyword overlap."""
         data = self._read()

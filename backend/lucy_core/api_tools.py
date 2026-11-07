@@ -25,14 +25,12 @@ NVIDIA_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completi
 DEFAULT_NVIDIA_MODEL = "nvidia/llama-3.1-nemotron-nano-8b-v1"
 
 OPENAI_COMPATIBLE_ENDPOINTS = {
-    "nvidia": NVIDIA_CHAT_COMPLETIONS_URL,
     "groq": "https://api.groq.com/openai/v1/chat/completions",
     "openrouter": "https://openrouter.ai/api/v1/chat/completions",
     "sambanova": "https://api.sambanova.ai/v1/chat/completions",
 }
 
 DEFAULT_MODELS = {
-    "nvidia": DEFAULT_NVIDIA_MODEL,
     "groq": "llama-3.1-8b-instant",
     "openrouter": "openrouter/auto",
     "sambanova": "Meta-Llama-3.3-70B-Instruct",
@@ -112,6 +110,10 @@ class ProviderKeySource:
             candidates.append(Path(configured))
 
         home = Path.home()
+        if self.project_root:
+            candidates.append(self.project_root.parent / "AI COLLECTIONS" / "ELIE")
+            candidates.append(self.project_root.parent / "AI COLLECTIONS" / "AI COLLECTIONS" / "ELIE")
+        candidates.append(home / "Desktop" / "senin" / "LUCY" / "AI COLLECTIONS" / "ELIE")
         candidates.extend(
             [
                 home / "Downloads" / "AI COLLECTIONS" / "AI COLLECTIONS" / "ELIE",
@@ -145,6 +147,7 @@ class ProviderKeySource:
             or self._from_lucy_dpapi(provider)
             or self._from_elie_vault(provider)
             or self._from_elie_loose_files(provider)
+            or self._from_multi_provider_pool(provider)
             or KeyLookup("", "missing")
         )
         if lookup.value:
@@ -153,6 +156,19 @@ class ProviderKeySource:
 
     def available(self, provider: str) -> bool:
         return bool(self.get(provider).value)
+
+    def _from_multi_provider_pool(self, provider: str) -> KeyLookup | None:
+        if self.project_root is None:
+            return None
+        try:
+            from backend.lucy_core.multi_provider_pool import MultiProviderPool
+            pool = MultiProviderPool(lucy_data=self.project_root / "data" / "lucy")
+            raw_key, managed = pool.get_active_key(provider)
+            if raw_key and managed:
+                return KeyLookup(raw_key, f"multi_provider_pool:{provider}#{managed.index}")
+        except Exception:
+            pass
+        return None
 
     def _from_environment(self, provider: str) -> KeyLookup | None:
         for env_var in PROVIDER_ENV_NAMES.get(provider, []):
@@ -394,17 +410,17 @@ class ExternalChatTool:
             "key_source": lookup.source if lookup.value else "missing",
         }
 
-    def ask(self, provider: str, prompt: str, system_prompt: str, timeout: int = 45) -> dict:
+    def ask(self, provider: str, prompt: str, system_prompt: str, timeout: int = 45, messages: list[dict] | None = None) -> dict:
         provider = provider.lower().strip()
         lookup = self.key_source.get(provider)
         if not lookup.value:
             return {"ok": False, "provider": provider, "reason": f"{provider} key not found"}
 
         if provider == "gemini":
-            return self._ask_gemini(prompt, system_prompt, lookup, timeout)
+            return self._ask_gemini(prompt, system_prompt, lookup, timeout, messages=messages)
 
         if provider in OPENAI_COMPATIBLE_ENDPOINTS:
-            return self._ask_openai_compatible(provider, prompt, system_prompt, lookup, timeout)
+            return self._ask_openai_compatible(provider, prompt, system_prompt, lookup, timeout, messages=messages)
 
         return {"ok": False, "provider": provider, "reason": f"Unknown provider: {provider}"}
 
@@ -412,13 +428,14 @@ class ExternalChatTool:
         env_name = f"LUCY_{provider.upper()}_MODEL"
         return os.environ.get(env_name) or os.environ.get(f"{provider.upper()}_MODEL") or DEFAULT_MODELS[provider]
 
-    def _ask_openai_compatible(self, provider: str, prompt: str, system_prompt: str, lookup: KeyLookup, timeout: int) -> dict:
+    def _ask_openai_compatible(self, provider: str, prompt: str, system_prompt: str, lookup: KeyLookup, timeout: int, messages: list[dict] | None = None) -> dict:
+        msg_payload = messages if messages else [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt},
+        ]
         payload = {
             "model": self._model_for(provider),
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt},
-            ],
+            "messages": msg_payload,
             "temperature": 0.35,
             "max_tokens": 900,
             "stream": False,
@@ -455,21 +472,44 @@ class ExternalChatTool:
         except Exception as exc:
             return {"ok": False, "provider": provider, "reason": _redact(str(exc))}
 
-    def _ask_gemini(self, prompt: str, system_prompt: str, lookup: KeyLookup, timeout: int) -> dict:
+    def _ask_gemini(
+        self,
+        prompt: str,
+        system_prompt: str,
+        lookup: KeyLookup,
+        timeout: int,
+        messages: list[dict] | None = None,
+    ) -> dict:
         model = self._model_for("gemini")
-        payload = {
-            "contents": [
-                {
-                    "parts": [
-                        {"text": system_prompt + "\n\n" + prompt},
-                    ]
-                }
-            ],
-            "generationConfig": {
-                "temperature": 0.35,
-                "maxOutputTokens": 900,
-            },
-        }
+        contents = []
+        sys_instruction = system_prompt
+
+        if messages:
+            for msg in messages:
+                role = msg.get("role", "user")
+                content = str(msg.get("content", "")).strip()
+                if not content:
+                    continue
+                if role == "system":
+                    sys_instruction = content
+                elif role == "assistant":
+                    contents.append({"role": "model", "parts": [{"text": content}]})
+                else:
+                    contents.append({"role": "user", "parts": [{"text": content}]})
+
+        if not contents:
+            contents = [{"role": "user", "parts": [{"text": f"{sys_instruction}\n\n{prompt}"}]}]
+            payload = {
+                "contents": contents,
+                "generationConfig": {"temperature": 0.35, "maxOutputTokens": 900},
+            }
+        else:
+            payload = {
+                "systemInstruction": {"parts": [{"text": sys_instruction}]},
+                "contents": contents,
+                "generationConfig": {"temperature": 0.35, "maxOutputTokens": 900},
+            }
+
         request = urllib.request.Request(
             f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
             data=json.dumps(payload).encode("utf-8"),
@@ -499,7 +539,6 @@ class ExternalChatTool:
         except Exception as exc:
             return {"ok": False, "provider": "gemini", "reason": _redact(str(exc))}
 
-
 class ExternalToolRouter:
     def __init__(self, project_root: Path | None = None, elie_root: Path | None = None) -> None:
         self.key_source = ProviderKeySource(project_root=project_root, elie_root=elie_root)
@@ -524,7 +563,7 @@ class ExternalToolRouter:
             "elie_key_source": self.key_source.elie_status(),
         }
 
-    def chat(self, prompt: str, system_prompt: str, provider: str = "auto") -> dict:
+    def chat(self, prompt: str, system_prompt: str, provider: str = "auto", messages: list[dict] | None = None) -> dict:
         provider = provider.lower().strip()
         providers = self.provider_order() if provider in {"", "auto"} else [provider]
         providers = ["openrouter" if item == "superrouter" else item for item in providers]
@@ -534,7 +573,7 @@ class ExternalToolRouter:
             if name not in DEFAULT_PROVIDER_ORDER:
                 attempts.append({"provider": name, "ok": False, "reason": "unsupported"})
                 continue
-            result = self.chat_tool.ask(name, prompt, system_prompt)
+            result = self.chat_tool.ask(name, prompt, system_prompt, messages=messages)
             attempts.append({
                 "provider": name,
                 "ok": result.get("ok", False),
@@ -549,23 +588,3 @@ class ExternalToolRouter:
             "reason": "No external provider answered.",
             "attempts": attempts,
         }
-
-
-class ExternalChatClient:
-    """Convenience client wrapping external LLM provider calls with safe offline fallbacks."""
-
-    def __init__(self, key_source: ProviderKeySource | None = None, timeout: int = 30) -> None:
-        if key_source is not None:
-            self.router = ExternalToolRouter(project_root=key_source.project_root, elie_root=key_source.elie_root)
-        else:
-            self.router = ExternalToolRouter()
-        self.timeout = timeout
-
-    def ask(self, provider: str, prompt: str, system_prompt: str = "") -> dict:
-        return self.router.chat_tool.ask(
-            provider, prompt, system_prompt or "You are a helpful assistant.", timeout=self.timeout
-        )
-
-    def chat(self, prompt: str, system_prompt: str = "", provider: str = "auto") -> dict:
-        return self.router.chat(prompt, system_prompt or "You are a helpful assistant.", provider=provider)
-

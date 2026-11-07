@@ -1,0 +1,57 @@
+{
+  "stage": 126,
+  "era": 13,
+  "total_budget": 4096,
+  "total_used": 250,
+  "hardware_mode": "balanced",
+  "slices": [
+    {
+      "slice_name": "SYSTEM_CORE_PROMPT",
+      "priority": 1,
+      "allocated_tokens": 614,
+      "used_tokens": 0,
+      "utilization_pct": 0.0,
+      "compaction_count": 0,
+      "is_immutable": true
+    },
+    {
+      "slice_name": "OPERATOR_DIALOGUE",
+      "priority": 2,
+      "allocated_tokens": 1024,
+      "used_tokens": 0,
+      "utilization_pct": 0.0,
+      "compaction_count": 0,
+      "is_immutable": false
+    },
+    {
+      "slice_name": "RETRIEVAL_RAG_KG",
+      "priority": 3,
+      "allocated_tokens": 1228,
+      "used_tokens": 0,
+      "utilization_pct": 0.0,
+      "compaction_count": 0,
+      "is_immutable": false
+    },
+    {
+      "slice_name": "SCRATCHPAD_REASONING",
+      "priority": 4,
+      "allocated_tokens": 819,
+      "used_tokens": 250,
+      "utilization_pct": 30.5,
+      "compaction_count": 0,
+      "is_immutable": false
+    },
+    {
+      "slice_name": "RESPONSE_BUFFER",
+      "priority": 5,
+      "allocated_tokens": 409,
+      "used_tokens": 0,
+      "utilization_pct": 0.0,
+      "compaction_count": 0,
+      "is_immutable": false
+    }
+  ],
+  "total_allocations": 1,
+  "total_compactions": 0,
+  "updated_at": 1793799888.7624152
+}

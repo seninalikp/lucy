@@ -1,62 +1,114 @@
+# ==============================================================================
+# LUCY AI Operating System — Production .gitignore
+# ==============================================================================
+
 # Byte-compiled / optimized files
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
 
-# Distribution / packaging
+# Environments & Dependencies
+.venv/
+venv/
+ENV/
+env/
 build/
 dist/
 *.egg-info/
 .eggs/
 
-# Virtual Environments
-.venv/
-venv/
-ENV/
-env/
-
-# Environment and Local Secrets
+# Secrets, API Keys & Environment Variables (STRICT EXCLUSION)
 .env
-.env.local
-.env.*.local
-*.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.secret
+*api_key*
+*api_keys*
+*token*
+*.credentials
 data/lucy/secure/*.json
 !data/lucy/secure/.gitkeep
 
-# IDE and Editor files
+# Runtime Databases, Logs & Heavy Local State
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.zip
+*.jsonl
+*.log
+logs/*.log
+!logs/.gitkeep
+data/lucy/logs/*
+!data/lucy/logs/.gitkeep
+
+# Local Runtime Caches, State & Indexes
+data/lucy/cache/
+data/lucy/vector_db/
+data/lucy/rag/
+data/lucy/code_index/
+data/lucy/telemetry/
+data/lucy/ipc/
+data/lucy/worktrees/
+data/lucy/simulations/
+data/lucy/seals/
+data/lucy/continuity/backups/
+data/lucy/workspace_sentinel_state.json
+data/lucy/symbol_graph.json
+data/lucy/multi_provider_pool.json
+# Model Weights & Artifacts (Large Binaries)
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.onnx
+data/lucy/adapters/
+data/lucy/lora/
+data/lucy/quantization/
+data/lucy/personal_profile.json*
+data/personal_profile*.json
+data/lucy/terminal_history.json*
+data/lucy/runtime_state.json*
+data/lucy/session_state.json*
+data/lucy/projects.json*
+Modelfile.personal
+
+# Backup & Temporary files
+*.bak
+*.orig
+*.tmp
+.*.tmp
+data/lucy/.*.tmp
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Codebase Dumps, Scratch & Local Working Dirs
+scratch/
+dumps/
+archive/
+_archive/
+in/
+LUCY_CODEBASE_DUMP.txt
+*.dump.txt
+generate_lucy_code_dump.py
+
+# IDE & Editor Settings
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# Operating System files
+# Operating System Files
 .DS_Store
-.DS_Store?
-._*
 Thumbs.db
 ehthumbs.db
-
-# Logs and runtime artifacts
-logs/*.log
-!logs/.gitkeep
-data/lucy/logs/*.jsonl
-!data/lucy/logs/.gitkeep
-
-# Backup files
-*.bak
-*.orig
-
-# Testing & Cache
-.pytest_cache/
-.coverage
-htmlcov/
-.cache
-
-# Codebase dumps
-LUCY_CODEBASE_DUMP.txt
-*.dump.txt
-

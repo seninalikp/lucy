@@ -1,4 +1,4 @@
-﻿"""
+"""
 adaptive_communication.py
 Stage 27 = adaptive communication.
 

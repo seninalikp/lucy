@@ -1,4 +1,4 @@
-﻿"""
+"""
 provider_identity_boundary.py
 Stage 31 = Provider / API Identity Boundary.
 

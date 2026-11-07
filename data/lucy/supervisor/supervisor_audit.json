@@ -1,0 +1,171 @@
+[
+  {
+    "timestamp": "2026-10-29T05:55:48.839070+00:00",
+    "total_registered": 13,
+    "healthy_count": 13,
+    "stalled_count": 0,
+    "failed_count": 0,
+    "recovered_count": 0,
+    "process_memory_mb": 57.07,
+    "private_memory_mb": 47.5,
+    "subsystems": [
+      {
+        "name": "receipt_ledger",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "workspace_sensor",
+        "subsystem_type": "sensor",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "proactive_briefer",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "cron_scheduler",
+        "subsystem_type": "daemon",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "hardware_telemetry",
+        "subsystem_type": "sensor",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "worktree_fabric",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "ast_vector_index",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "causal_dag",
+        "subsystem_type": "memory",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "host_sandbox",
+        "subsystem_type": "sandbox",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "master_seal",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "mutation_fuzzer",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "self_healing_patcher",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      },
+      {
+        "name": "execution_profiler",
+        "subsystem_type": "core",
+        "last_heartbeat": 1793253348.8390348,
+        "seconds_since_heartbeat": 0.0,
+        "heartbeat_interval_sec": 5.0,
+        "stall_timeout_sec": 15.0,
+        "restarts_count": 0,
+        "status": "HEALTHY",
+        "last_error": null,
+        "metadata": {}
+      }
+    ],
+    "action_taken": "All monitored subsystems healthy. Zero stalls detected."
+  }
+]

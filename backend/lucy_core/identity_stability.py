@@ -1,4 +1,4 @@
-﻿"""
+"""
 identity_stability.py
 Stage 19 = identity stability.
 

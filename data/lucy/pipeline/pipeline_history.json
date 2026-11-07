@@ -1,0 +1,19 @@
+{
+  "stage": 114,
+  "era": 12,
+  "updated_at": 1793258707.500345,
+  "history": [
+    {
+      "pipeline_id": "pipe_refactor_1793258707",
+      "name": "code_refactor_fusion",
+      "success": true,
+      "total_steps": 6,
+      "completed_steps": 6,
+      "failed_steps": 0,
+      "skipped_steps": 0,
+      "total_latency_ms": 1.44,
+      "layers_executed": 4,
+      "error": null
+    }
+  ]
+}

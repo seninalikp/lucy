@@ -1,4 +1,4 @@
-﻿"""
+"""
 proactive_awareness.py
 Stage 24 = proactive awareness.
 

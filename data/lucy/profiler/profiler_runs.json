@@ -1,0 +1,132 @@
+[
+  {
+    "run_id": "prf_3348860",
+    "target": "run:/supervisor-status",
+    "timestamp": "2026-10-29T05:55:48.860535+00:00",
+    "total_wall_time_ms": 19.596,
+    "total_function_calls": 7112,
+    "top_hot_paths": [
+      {
+        "name": "handle (router.py:28)",
+        "filename": "router.py",
+        "lineno": 28,
+        "call_count": 1,
+        "total_time_ms": 0.048,
+        "cumulative_time_ms": 19.062,
+        "time_per_call_us": 19061.9,
+        "pct_of_total": 97.27
+      },
+      {
+        "name": "record_interaction (lucy_runtime.py:3413)",
+        "filename": "lucy_runtime.py",
+        "lineno": 3413,
+        "call_count": 1,
+        "total_time_ms": 0.066,
+        "cumulative_time_ms": 18.089,
+        "time_per_call_us": 18088.8,
+        "pct_of_total": 92.31
+      },
+      {
+        "name": "_latest_checkpoint_id (lucy_runtime.py:3721)",
+        "filename": "lucy_runtime.py",
+        "lineno": 3721,
+        "call_count": 1,
+        "total_time_ms": 0.007,
+        "cumulative_time_ms": 10.92,
+        "time_per_call_us": 10919.5,
+        "pct_of_total": 55.72
+      },
+      {
+        "name": "list_checkpoints (checkpoint_manager.py:47)",
+        "filename": "checkpoint_manager.py",
+        "lineno": 47,
+        "call_count": 1,
+        "total_time_ms": 0.259,
+        "cumulative_time_ms": 10.912,
+        "time_per_call_us": 10911.7,
+        "pct_of_total": 55.68
+      },
+      {
+        "name": "read_text (__init__.py:780)",
+        "filename": "__init__.py",
+        "lineno": 780,
+        "call_count": 106,
+        "total_time_ms": 0.177,
+        "cumulative_time_ms": 8.46,
+        "time_per_call_us": 79.81,
+        "pct_of_total": 43.17
+      },
+      {
+        "name": "<built-in method _io.open>",
+        "filename": "~",
+        "lineno": 0,
+        "call_count": 111,
+        "total_time_ms": 5.785,
+        "cumulative_time_ms": 6.008,
+        "time_per_call_us": 54.13,
+        "pct_of_total": 30.66
+      },
+      {
+        "name": "open (__init__.py:763)",
+        "filename": "__init__.py",
+        "lineno": 763,
+        "call_count": 110,
+        "total_time_ms": 0.059,
+        "cumulative_time_ms": 5.902,
+        "time_per_call_us": 53.66,
+        "pct_of_total": 30.12
+      },
+      {
+        "name": "safe_write_json (safe_storage.py:43)",
+        "filename": "safe_storage.py",
+        "lineno": 43,
+        "call_count": 3,
+        "total_time_ms": 0.072,
+        "cumulative_time_ms": 5.172,
+        "time_per_call_us": 1723.93,
+        "pct_of_total": 26.39
+      },
+      {
+        "name": "update (session_state.py:89)",
+        "filename": "session_state.py",
+        "lineno": 89,
+        "call_count": 2,
+        "total_time_ms": 0.017,
+        "cumulative_time_ms": 4.047,
+        "time_per_call_us": 2023.55,
+        "pct_of_total": 20.65
+      },
+      {
+        "name": "_write (session_state.py:60)",
+        "filename": "session_state.py",
+        "lineno": 60,
+        "call_count": 2,
+        "total_time_ms": 0.009,
+        "cumulative_time_ms": 3.635,
+        "time_per_call_us": 1817.7,
+        "pct_of_total": 18.55
+      },
+      {
+        "name": "<method 'read' of '_io.TextIOWrapper' objects>",
+        "filename": "~",
+        "lineno": 0,
+        "call_count": 106,
+        "total_time_ms": 2.01,
+        "cumulative_time_ms": 2.18,
+        "time_per_call_us": 20.56,
+        "pct_of_total": 11.12
+      },
+      {
+        "name": "backup_file (safe_storage.py:16)",
+        "filename": "safe_storage.py",
+        "lineno": 16,
+        "call_count": 3,
+        "total_time_ms": 0.031,
+        "cumulative_time_ms": 2.056,
+        "time_per_call_us": 685.4,
+        "pct_of_total": 10.49
+      }
+    ],
+    "flamegraph_ascii": "[================================] 100.0% Root: run:/supervisor-status (19.60ms)\n  [=                               ]   2.3% -> raw_decode               (0.46ms)\n  [=                               ]   3.9% -> decode                   (0.76ms)\n  [==================              ]  55.7% -> _latest_checkpoint_id    (10.92ms)\n  [=                               ]   2.0% -> compile                  (0.40ms)\n  [=                               ]   2.3% -> _compile                 (0.44ms)\n  [=                               ]   2.4% -> sub                      (0.46ms)\n  [=                               ]   4.7% -> loads                    (0.91ms)\n  [==                              ]   5.8% -> select_wildcard          (1.14ms)"
+  }
+]

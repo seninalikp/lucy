@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "stage": 121,
+  "era": 13,
+  "updated_at": 1793262557.2910528,
+  "nodes": [
+    {
+      "node_id": "node:operator:senin",
+      "node_type": "OPERATOR",
+      "label": "Operator Senin (Senin Ali K P)",
+      "properties": {
+        "name": "Senin",
+        "full_name": "Senin Ali K P",
+        "role": "Creator & Sovereign Authority"
+      },
+      "weight": 1.0,
+      "created_at": 1793261487.149187
+    },
+    {
+      "node_id": "node:core:lucy_os",
+      "node_type": "CORE",
+      "label": "Lucy Autonomous OS Core",
+      "properties": {
+        "stage": 121,
+        "era": 13,
+        "mode": "100% Offline Sovereign"
+      },
+      "weight": 1.0,
+      "created_at": 1793261487.1501343
+    },
+    {
+      "node_id": "node:era:12",
+      "node_type": "ERA",
+      "label": "Era 12: Cognitive Matrix & IPC Fabric",
+      "properties": {
+        "stages": "111-120",
+        "status": "Sealed"
+      },
+      "weight": 1.0,
+      "created_at": 1793261487.152007
+    },
+    {
+      "node_id": "node:era:13",
+      "node_type": "ERA",
+      "label": "Era 13: Self-Reflective Symbolic Mesh & Cognitive Graph Synthesizer",
+      "properties": {
+        "stages": "121-130",
+        "status": "Active"
+      },
+      "weight": 1.0,
+      "created_at": 1793261487.1538663
+    },
+    {
+      "node_id": "concept:concept_invariant_operator_identity",
+      "node_type": "CONCEPT",
+      "label": "Operator Authority Permanence",
+      "properties": {
+        "category": "SYSTEM_INVARIANT",
+        "confidence": 1.0,
+        "support_count": 1000,
+        "description": "Operator identity is permanently anchored to Senin (Senin Ali K P) across all reasoning branches."
+      },
+      "weight": 1.0,
+      "created_at": 1793262557.2878523
+    },
+    {
+      "node_id": "concept:concept_invariant_offline_sovereignty",
+      "node_type": "CONCEPT",
+      "label": "100% Offline Sovereign Execution",
+      "properties": {
+        "category": "SYSTEM_INVARIANT",
+        "confidence": 1.0,
+        "support_count": 1000,
+        "description": "All reasoning, compilation, RAG, and execution operate strictly offline without cloud dependencies."
+      },
+      "weight": 1.0,
+      "created_at": 1793262557.2895348
+    },
+    {
+      "node_id": "concept:concept_motif_atomic_test_commit",
+      "node_type": "CONCEPT",
+      "label": "Verified Test-Before-Commit Motif",
+      "properties": {
+        "category": "WORKFLOW_MOTIF",
+        "confidence": 0.98,
+        "support_count": 350,
+        "description": "Code modifications must be verified through automated regression suites before GitOps checkpoints."
+      },
+      "weight": 0.98,
+      "created_at": 1793262557.2910488
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge:node:core:lucy_os:AUTHORED_BY:node:operator:senin",
+      "source_id": "node:core:lucy_os",
+      "target_id": "node:operator:senin",
+      "relation": "AUTHORED_BY",
+      "weight": 1.0,
+      "properties": {
+        "status": "Permanent Invariant",
+        "immutable": true
+      },
+      "created_at": 1793261487.151085
+    },
+    {
+      "edge_id": "edge:node:era:12:EXTENDS:node:core:lucy_os",
+      "source_id": "node:era:12",
+      "target_id": "node:core:lucy_os",
+      "relation": "EXTENDS",
+      "weight": 1.0,
+      "properties": {},
+      "created_at": 1793261487.1528964
+    },
+    {
+      "edge_id": "edge:node:era:13:DERIVED_FROM:node:era:12",
+      "source_id": "node:era:13",
+      "target_id": "node:era:12",
+      "relation": "DERIVED_FROM",
+      "weight": 1.0,
+      "properties": {},
+      "created_at": 1793261487.1547554
+    },
+    {
+      "edge_id": "edge:node:era:13:EXTENDS:node:core:lucy_os",
+      "source_id": "node:era:13",
+      "target_id": "node:core:lucy_os",
+      "relation": "EXTENDS",
+      "weight": 1.0,
+      "properties": {},
+      "created_at": 1793261487.1556768
+    }
+  ]
+}

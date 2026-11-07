@@ -1,4 +1,4 @@
-﻿"""
+"""
 autonomy_boundaries.py
 Stage 30 = autonomy boundaries.
 

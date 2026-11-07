@@ -1,0 +1,43 @@
+{
+  "stage": 129,
+  "era": 13,
+  "local_node_id": "node_master_01",
+  "total_rpcs": 121,
+  "failed_rpcs": 0,
+  "nodes": [
+    {
+      "node_id": "node_master_01",
+      "endpoint": "ipc://localhost/master",
+      "role": "controller",
+      "status": "ACTIVE",
+      "latency_ms": 0.4,
+      "total_rpcs_handled": 121,
+      "registered_at": 1793263880.0716612,
+      "last_heartbeat": 1793799888.773764,
+      "signature": "4b21d12201d5d012c0955da00ce4c87a4e6c68d99741707572494fd9ff1c7e55"
+    },
+    {
+      "node_id": "worker_neural_01",
+      "endpoint": "ipc://localhost/worker_neural",
+      "role": "worker",
+      "status": "ACTIVE",
+      "latency_ms": 0.5,
+      "total_rpcs_handled": 0,
+      "registered_at": 1793263880.074073,
+      "last_heartbeat": 1793263880.0740738,
+      "signature": "ac185a69fca7831820b7f73ffcfcd86ae2c76ad22e205e86086ba6a34e30c278"
+    },
+    {
+      "node_id": "worker_sandbox_01",
+      "endpoint": "ipc://localhost/worker_sandbox",
+      "role": "sandbox",
+      "status": "ACTIVE",
+      "latency_ms": 0.6000000000000001,
+      "total_rpcs_handled": 0,
+      "registered_at": 1793263880.0753996,
+      "last_heartbeat": 1793263880.0753996,
+      "signature": "ce40d351d7a30266a561c524d0b961b4ea7a5dc4a5ce79e471a87a9374cc1963"
+    }
+  ],
+  "updated_at": 1793799888.7737896
+}

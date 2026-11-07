@@ -1,0 +1,19 @@
+{
+  "report_id": "fuzz_20261029_090428",
+  "total_payloads": 37,
+  "resilient_count": 36,
+  "crashes_detected": 1,
+  "resilience_rate": 97.3,
+  "categories_tested": {
+    "EMPTY_WHITESPACE": 4,
+    "OVERFLOW_BUFFER": 3,
+    "PATH_TRAVERSAL": 4,
+    "CODE_INJECTION": 6,
+    "FORMAT_STRING": 3,
+    "UNICODE_EDGE": 5,
+    "MALFORMED_SLASH": 7,
+    "EXTREME_BOUNDS": 5
+  },
+  "elapsed_ms": 143903.31,
+  "created_at": 1793245012.5758355
+}

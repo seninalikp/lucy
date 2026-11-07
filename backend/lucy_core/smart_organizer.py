@@ -1,4 +1,4 @@
-﻿"""
+"""
 smart_organizer.py
 Stage 21 = smart organizer.
 

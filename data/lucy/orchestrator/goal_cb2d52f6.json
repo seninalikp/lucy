@@ -1,0 +1,194 @@
+{
+  "goal_id": "goal_cb2d52f6",
+  "title": "Night Operational Audit & Alignment",
+  "description": "Autonomous system audit, log hygiene, LoRA check, and snapshot",
+  "template_name": "night_audit",
+  "created_at": "2026-10-29T01:12:07.965040+00:00",
+  "status": "COMPLETED",
+  "total_elapsed_ms": 1169.2853999556974,
+  "steps": {
+    "telemetry": {
+      "step_id": "telemetry",
+      "name": "Collect system hardware telemetry",
+      "action_type": "SYSTEM_TELEMETRY",
+      "dependencies": [],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "ram_load": 67,
+        "telemetry": {
+          "stage": "47 windows operator toolkit",
+          "timestamp": "2026-10-29T01:12:07.965170+00:00",
+          "os": {
+            "system": "Windows",
+            "release": "11",
+            "version": "10.0.26200",
+            "machine": "AMD64",
+            "cpu_cores": 12
+          },
+          "disk": {
+            "drive": "C:\\",
+            "total_gb": 475.86,
+            "used_gb": 288.35,
+            "free_gb": 187.51,
+            "percent_free": 39.4
+          },
+          "ram": {
+            "memory_load_percent": 67,
+            "total_mb": 15771,
+            "available_mb": 5069,
+            "used_mb": 10702
+          },
+          "power": {
+            "ac_line_status": "Plugged In (AC)",
+            "battery_percent": "88%"
+          }
+        }
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 0.10309997014701366
+    },
+    "sentinel_scan": {
+      "step_id": "sentinel_scan",
+      "name": "Scan workspace for modified files & errors",
+      "action_type": "SENTINEL_SCAN",
+      "dependencies": [
+        "telemetry"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "files_tracked": 7674
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 1147.5101000396535
+    },
+    "self_diagnostics": {
+      "step_id": "self_diagnostics",
+      "name": "Audit state files & clean log bloat",
+      "action_type": "DIAGNOSTIC_HEAL",
+      "dependencies": [
+        "sentinel_scan"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "health": "DEGRADED"
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 15.845600049942732
+    },
+    "lora_alignment": {
+      "step_id": "lora_alignment",
+      "name": "Verify personal LoRA dataset alignment",
+      "action_type": "LORA_ALIGNMENT",
+      "dependencies": [
+        "self_diagnostics"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "passed": true
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 0.00400003045797348
+    },
+    "state_snapshot": {
+      "step_id": "state_snapshot",
+      "name": "Snapshot state files to .bak backups",
+      "action_type": "SNAPSHOT_BACKUP",
+      "dependencies": [
+        "lora_alignment"
+      ],
+      "payload": {},
+      "max_retries": 1,
+      "status": "COMPLETED",
+      "result": {
+        "ok": true,
+        "backed_up": 8
+      },
+      "error": null,
+      "retry_count": 0,
+      "elapsed_ms": 5.758599960245192
+    }
+  },
+  "context": {
+    "telemetry": {
+      "stage": "47 windows operator toolkit",
+      "timestamp": "2026-10-29T01:12:07.965170+00:00",
+      "os": {
+        "system": "Windows",
+        "release": "11",
+        "version": "10.0.26200",
+        "machine": "AMD64",
+        "cpu_cores": 12
+      },
+      "disk": {
+        "drive": "C:\\",
+        "total_gb": 475.86,
+        "used_gb": 288.35,
+        "free_gb": 187.51,
+        "percent_free": 39.4
+      },
+      "ram": {
+        "memory_load_percent": 67,
+        "total_mb": 15771,
+        "available_mb": 5069,
+        "used_mb": 10702
+      },
+      "power": {
+        "ac_line_status": "Plugged In (AC)",
+        "battery_percent": "88%"
+      }
+    },
+    "sentinel_scan": {
+      "stage": "49 proactive workspace sentinel",
+      "scan_index": 66,
+      "created_count": 7,
+      "created": [
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\archive\\lucy_pre_stage84.zip",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\backend\\lucy_core\\lora_harvester.py",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\orchestrator\\goal_b0e9f3c6.json",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\dumps\\LUCY_DUMP_PART_37.txt",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\scratch\\patch_stage84.py",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\scratch\\update_runner_84.py",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\tests\\test_stage84_lora_harvester.py"
+      ],
+      "modified_count": 71,
+      "modified": [
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\backend\\lucy_core\\lucy_runtime.py",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\conversation_log.jsonl",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\execution_receipts.jsonl",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\multi_provider_pool.json",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\personal_profile.json",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\personal_profile.json.bak",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\reflection_log.jsonl",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\runtime_state.json",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\runtime_state.json.bak",
+        "C:\\Users\\admin\\Desktop\\senin\\LUCY\\lucy\\data\\lucy\\schedules.json"
+      ],
+      "deleted_count": 0,
+      "deleted": [],
+      "syntax_alerts_caught": 0,
+      "total_tracked": 7674
+    },
+    "heal_result": {
+      "healed": false,
+      "actions_taken": [],
+      "current_health": "DEGRADED",
+      "timestamp": "2026-10-29T01:12:09.128549+00:00"
+    }
+  }
+}

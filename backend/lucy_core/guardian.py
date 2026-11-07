@@ -5,6 +5,7 @@ Fuzzy Guardian layer over Lucy's existing boundary checker.
 
 from __future__ import annotations
 
+import re
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -92,26 +93,9 @@ class GuardianCore:
         self.log_file = self.logs_dir / "guardian_log.md"
         self.tool_policy = ToolActionPolicy()
 
-    def classify_action(self, action: str, active_project: str = "Lucy") -> GuardianResult:
-        """Direct entry point for action classification."""
-        return self.classify(action, active_project=active_project)
-
     def classify(self, action_text: str, active_project: str = "Lucy") -> GuardianResult:
-        cleaned = " ".join(str(action_text or "").split())
+        cleaned = " ".join(str(action_text).split())
         lowered = cleaned.lower()
-
-        if not lowered:
-            result = GuardianResult(
-                classification=SAFE,
-                reason="Empty or whitespace action is safe.",
-                action_text="",
-                active_project=active_project,
-                matched_pattern=None,
-                fuzzy_scores=FuzzyScores(completeness=0.0, relevance=0.0, confidence=1.0),
-            )
-            self._log(result)
-            return result
-
         matched, reason = self._high_risk_match(lowered)
 
         if matched:
@@ -156,7 +140,14 @@ class GuardianCore:
         active_project: str = "Lucy",
     ) -> dict:
         metadata = metadata or {}
-        action_text = " ".join(str(part) for part in [action_name, target_path or ""] if part).strip()
+        # Strip user home directory prefix from target_path for classification text
+        # so usernames like 'admin' or 'root' in file paths do not falsely trigger keyword boundaries.
+        cleaned_target = (
+            re.sub(r"[/\\](?:users|home)[/\\][^/\\]+", "", str(target_path or ""), flags=re.IGNORECASE)
+            if target_path
+            else ""
+        )
+        action_text = " ".join(str(part) for part in [action_name, cleaned_target] if part).strip()
         fuzzy = self.classify(action_text or action_name, active_project=active_project)
         decision = self.tool_policy.classify(
             ToolActionRequest(action_name=action_name, target_path=target_path, metadata=metadata)

@@ -1,0 +1,42 @@
+{
+  "ref_372268": {
+    "proposal_id": "ref_372268",
+    "file_path": "backend/lucy_core/refactor_engine.py",
+    "target_symbol": "analyze_file",
+    "rule_id": "CRITICAL_COMPLEXITY",
+    "description": "Extract sub-methods from `analyze_file` to decompose branching logic.",
+    "suggested_patch": "# Proposed Refactoring for CRITICAL_COMPLEXITY in analyze_file\n# Line 180: McCabe complexity (20) exceeds threshold (>15)",
+    "status": "PROPOSED",
+    "created_at": "2026-10-29T06:06:12.831589+00:00"
+  },
+  "ref_061700": {
+    "proposal_id": "ref_061700",
+    "file_path": "backend/lucy_core/refactor_engine.py",
+    "target_symbol": "analyze_file",
+    "rule_id": "LONG_FUNCTION",
+    "description": "Decompose `analyze_file` into smaller specialized helper routines.",
+    "suggested_patch": "# Proposed Refactoring for LONG_FUNCTION in analyze_file\n# Line 180: Function length (169 lines) exceeds threshold (>80)",
+    "status": "PROPOSED",
+    "created_at": "2026-10-29T06:06:12.831608+00:00"
+  },
+  "ref_652391": {
+    "proposal_id": "ref_652391",
+    "file_path": "backend/lucy_core/refactor_engine.py",
+    "target_symbol": "analyze_file",
+    "rule_id": "DEEP_NESTING",
+    "description": "Apply guard clauses / early returns to flatten nested conditions in `analyze_file`.",
+    "suggested_patch": "# Proposed Refactoring for DEEP_NESTING in analyze_file\n# Line 180: Block nesting depth (5) exceeds threshold (>4)",
+    "status": "PROPOSED",
+    "created_at": "2026-10-29T06:06:12.831615+00:00"
+  },
+  "ref_344115": {
+    "proposal_id": "ref_344115",
+    "file_path": "backend/lucy_core/refactor_engine.py",
+    "target_symbol": "suggest_refactorings",
+    "rule_id": "DEEP_NESTING",
+    "description": "Apply guard clauses / early returns to flatten nested conditions in `suggest_refactorings`.",
+    "suggested_patch": "# Proposed Refactoring for DEEP_NESTING in suggest_refactorings\n# Line 376: Block nesting depth (5) exceeds threshold (>4)",
+    "status": "PROPOSED",
+    "created_at": "2026-10-29T06:06:12.831619+00:00"
+  }
+}

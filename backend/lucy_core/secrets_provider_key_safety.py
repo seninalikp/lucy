@@ -1,4 +1,4 @@
-﻿"""
+"""
 secrets_provider_key_safety.py
 Stage 32 = Secrets & Provider Key Safety.
 

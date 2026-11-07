@@ -1,4 +1,4 @@
-﻿"""
+"""
 external_app_bridge.py
 Stage 23 = external app bridge.
 

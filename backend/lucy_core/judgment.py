@@ -1,4 +1,4 @@
-﻿"""
+"""
 judgment.py
 Stage 26 = judgment.
 

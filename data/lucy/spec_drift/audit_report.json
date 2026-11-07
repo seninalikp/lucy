@@ -1,0 +1,12 @@
+{
+  "audit_id": "audit_17b9169b75",
+  "timestamp": "2026-10-29T03:56:06.409435+00:00",
+  "total_specs": 8,
+  "passed_specs": 8,
+  "drifted_specs": 0,
+  "critical_drifts": 0,
+  "warning_drifts": 0,
+  "info_drifts": 0,
+  "compliance_score": 100.0,
+  "items": []
+}

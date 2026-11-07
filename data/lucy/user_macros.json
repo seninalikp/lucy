@@ -1,0 +1,6 @@
+{
+  "quickcheck": "sentinel alerts && telemetry",
+  "health": "provider status && sentinel status",
+  "sync": "scan workspace && train personal lora",
+  "fastscan": "scan workspace"
+}

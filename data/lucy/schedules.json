@@ -1,0 +1,1210 @@
+[
+  {
+    "job_id": "sys_hourly_sentinel",
+    "name": "Hourly Workspace Sentinel Scan",
+    "expression": "every 1h",
+    "target": "scan workspace",
+    "catch_up": false,
+    "enabled": true,
+    "created_at": "2026-10-27T22:33:31.112466+00:00",
+    "last_run": null,
+    "next_run": "2026-10-27T23:33:31.112478+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 3600.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "sys_nightly_audit",
+    "name": "Nightly System Audit & Alignment",
+    "expression": "daily 00:00",
+    "target": "/goal night audit",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T22:33:31.112505+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T00:00:00+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "daily",
+      "hour": 0,
+      "minute": 0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "sys_health_probe",
+    "name": "Periodic Subsystem Health Probe",
+    "expression": "every 30m",
+    "target": "/diagnostics",
+    "catch_up": false,
+    "enabled": true,
+    "created_at": "2026-10-27T22:33:31.112520+00:00",
+    "last_run": null,
+    "next_run": "2026-10-27T23:03:31.112522+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 1800.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_fc26e7d6",
+    "name": "Job cron_fc26e7d6",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T22:33:31.167894+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T00:33:31.167902+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_70ae6573",
+    "name": "Job cron_70ae6573",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T22:34:36.594032+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T00:34:36.594048+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_2356cec3",
+    "name": "Job cron_2356cec3",
+    "expression": "in 5m",
+    "target": "sentinel alerts",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T22:35:35.767098+00:00",
+    "last_run": null,
+    "next_run": "2026-10-27T22:40:35.767104+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "one_shot",
+      "delta_seconds": 300.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_958ab769",
+    "name": "Job cron_958ab769",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:10:48.940606+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:10:48.940617+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_2a85f707",
+    "name": "Job cron_2a85f707",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:27:49.285135+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:27:49.285143+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_b93dbe9c",
+    "name": "Job cron_b93dbe9c",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:29:38.254922+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:29:38.254932+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_ae8d5cf5",
+    "name": "Job cron_ae8d5cf5",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:31:39.525855+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:31:39.525874+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_d95e53c0",
+    "name": "Job cron_d95e53c0",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:43:46.322803+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:43:46.322813+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_7a29f053",
+    "name": "Job cron_7a29f053",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:53:54.583680+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:53:54.583692+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_82aa528a",
+    "name": "Job cron_82aa528a",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-27T23:58:22.341602+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T01:58:22.341618+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_e04800ad",
+    "name": "Job cron_e04800ad",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T00:07:46.269843+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T02:07:46.269864+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_292185be",
+    "name": "Job cron_292185be",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T00:09:04.709730+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T02:09:04.709744+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_94cd8670",
+    "name": "Job cron_94cd8670",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T00:16:09.899920+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T02:16:09.899933+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_de8b608c",
+    "name": "Job cron_de8b608c",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T00:20:38.619838+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T02:20:38.619850+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_b94ab17d",
+    "name": "Job cron_b94ab17d",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T00:41:47.047998+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T02:41:47.048009+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_0c67942a",
+    "name": "Job cron_0c67942a",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T00:51:46.618891+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T02:51:46.618912+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_33cacc98",
+    "name": "Job cron_33cacc98",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:09:59.630295+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:09:59.630306+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_0e14d189",
+    "name": "Job cron_0e14d189",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:23:30.639630+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:23:30.639646+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_b06105f2",
+    "name": "Job cron_b06105f2",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:30:21.382462+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:30:21.382475+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_df9cdc91",
+    "name": "Job cron_df9cdc91",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:37:34.576145+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:37:34.576158+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_69fc063f",
+    "name": "Job cron_69fc063f",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:42:12.376439+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:42:12.376447+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_428c9111",
+    "name": "Job cron_428c9111",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:49:43.468387+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:49:43.468456+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_c6d13149",
+    "name": "Job cron_c6d13149",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:57:57.160988+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:57:57.160998+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_7bc50f59",
+    "name": "Job cron_7bc50f59",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T07:59:45.675874+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T09:59:45.675882+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_0d322787",
+    "name": "Job cron_0d322787",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T08:14:08.009012+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T10:14:08.009023+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_7ee79ffb",
+    "name": "Job cron_7ee79ffb",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T08:58:41.096375+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T10:58:41.096382+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_670c1781",
+    "name": "Job cron_670c1781",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:00:48.906616+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:00:48.906628+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_df5ada71",
+    "name": "Job cron_df5ada71",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:10:41.986330+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:10:41.986348+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_298ca2a9",
+    "name": "Job cron_298ca2a9",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:12:59.131534+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:12:59.131550+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_761a31e3",
+    "name": "Job cron_761a31e3",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:26:14.575342+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:26:14.575363+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_94b7db36",
+    "name": "Job cron_94b7db36",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:31:28.614810+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:31:28.614832+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_c33bec0e",
+    "name": "Job cron_c33bec0e",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:41:58.644245+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:41:58.644261+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_fe6ea51e",
+    "name": "Job cron_fe6ea51e",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:46:25.705207+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:46:25.705225+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_253a586b",
+    "name": "Job cron_253a586b",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T09:51:24.631293+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T11:51:24.631306+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_54b6508f",
+    "name": "Job cron_54b6508f",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:04:12.126408+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:04:12.126425+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_160bbfad",
+    "name": "Job cron_160bbfad",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:12:45.820878+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:12:45.820889+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_57cd999c",
+    "name": "Job cron_57cd999c",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:23:58.432469+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:23:58.432481+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_038ebee2",
+    "name": "Job cron_038ebee2",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:26:47.779368+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:26:47.779385+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_d5186ea7",
+    "name": "Job cron_d5186ea7",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:29:51.121430+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:29:51.121443+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_e2f5c7e8",
+    "name": "Job cron_e2f5c7e8",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:46:18.448122+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:46:18.448137+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_81ffe46a",
+    "name": "Job cron_81ffe46a",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:55:27.187019+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:55:27.187033+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_f464adb2",
+    "name": "Job cron_f464adb2",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T10:58:23.016288+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T12:58:23.016298+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_61b4230c",
+    "name": "Job cron_61b4230c",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T13:20:04.227716+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T15:20:04.227735+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_b539cc63",
+    "name": "Job cron_b539cc63",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T13:36:51.134326+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T15:36:51.134336+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_8c7e51c9",
+    "name": "Job cron_8c7e51c9",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T13:46:06.428261+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T15:46:06.428269+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_966795aa",
+    "name": "Job cron_966795aa",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T13:53:47.800441+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T15:53:47.800450+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_df1c39cc",
+    "name": "Job cron_df1c39cc",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T13:57:36.647574+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T15:57:36.647583+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_20175b9b",
+    "name": "Job cron_20175b9b",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T14:07:22.361543+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T16:07:22.361552+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_07e2e927",
+    "name": "Job cron_07e2e927",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T14:15:08.548001+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T16:15:08.548012+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_b0ecded4",
+    "name": "Job cron_b0ecded4",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T14:23:22.035067+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T16:23:22.035083+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_02524297",
+    "name": "Job cron_02524297",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-28T14:28:52.944239+00:00",
+    "last_run": null,
+    "next_run": "2026-10-28T16:28:52.944422+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_a48a838a",
+    "name": "Job cron_a48a838a",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:04:05.296016+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:04:05.296037+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_25130c13",
+    "name": "Job cron_25130c13",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:10:41.452558+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:10:41.452570+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_f2f0fe44",
+    "name": "Job cron_f2f0fe44",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:17:01.462067+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:17:01.462074+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_c1ebf592",
+    "name": "Job cron_c1ebf592",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:22:57.151351+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:22:57.151360+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_4c2a8472",
+    "name": "Job cron_4c2a8472",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:28:29.230767+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:28:29.230781+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_163caf71",
+    "name": "Job cron_163caf71",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:45:09.798361+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:45:09.798369+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_4d2b823f",
+    "name": "Job cron_4d2b823f",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T00:55:28.406330+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T02:55:28.406340+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_4a3e2fec",
+    "name": "Job cron_4a3e2fec",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:03:08.212632+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:03:08.212640+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_cc7b293a",
+    "name": "Job cron_cc7b293a",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:06:59.849822+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:06:59.849830+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_48a00836",
+    "name": "Job cron_48a00836",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:12:09.540617+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:12:09.540624+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_27365fc9",
+    "name": "Job cron_27365fc9",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:18:01.789736+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:18:01.789749+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_52ccfa5b",
+    "name": "Job cron_52ccfa5b",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:24:59.666057+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:24:59.666074+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_37bc4727",
+    "name": "Job cron_37bc4727",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:30:05.079974+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:30:05.079982+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_94b71929",
+    "name": "Job cron_94b71929",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:35:48.962122+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:35:48.962137+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_5fe9fe2b",
+    "name": "Job cron_5fe9fe2b",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:41:37.613948+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:41:37.613959+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_4f20c6d5",
+    "name": "Job cron_4f20c6d5",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T01:47:02.265316+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T03:47:02.265330+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  },
+  {
+    "job_id": "cron_782a644d",
+    "name": "Job cron_782a644d",
+    "expression": "every 2h",
+    "target": "system telemetry",
+    "catch_up": true,
+    "enabled": true,
+    "created_at": "2026-10-29T02:10:57.170230+00:00",
+    "last_run": null,
+    "next_run": "2026-10-29T04:10:57.170242+00:00",
+    "run_count": 0,
+    "meta": {
+      "type": "interval",
+      "delta_seconds": 7200.0
+    },
+    "last_error": null
+  }
+]

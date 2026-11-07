@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "mode": "local_json_approved_facts",
   "created_at": "2026-06-05T00:00:00+00:00",
-  "updated_at": "2026-06-05T23:54:36.251635+00:00",
+  "updated_at": "2026-10-28T10:10:59.625862+00:00",
   "memories": [
     {
       "id": "mem_0001",
@@ -13,7 +13,21 @@
       "created_at": "2026-06-05T00:00:00+00:00",
       "updated_at": "2026-06-05T00:00:00+00:00",
       "last_seen_at": null,
-      "deleted": false
+      "deleted": false,
+      "content": "Lucy is the user's main local-first JARVIS-style operating assistant project.",
+      "type": "general",
+      "tags": [
+        "assistant",
+        "first",
+        "general",
+        "jarvis",
+        "local",
+        "lucy",
+        "main",
+        "operating"
+      ],
+      "importance": 3,
+      "status": "active"
     },
     {
       "id": "mem_0002",
@@ -24,7 +38,21 @@
       "created_at": "2026-06-05T00:00:00+00:00",
       "updated_at": "2026-06-05T00:00:00+00:00",
       "last_seen_at": null,
-      "deleted": false
+      "deleted": false,
+      "content": "Lucy should stay private, local-first, permission-gated, project-aware, and safety-focused.",
+      "type": "general",
+      "tags": [
+        "and",
+        "aware",
+        "first",
+        "focused",
+        "gated",
+        "general",
+        "local",
+        "lucy"
+      ],
+      "importance": 3,
+      "status": "active"
     },
     {
       "id": "mem_0003",
@@ -35,7 +63,21 @@
       "created_at": "2026-06-05T00:00:00+00:00",
       "updated_at": "2026-06-05T00:00:00+00:00",
       "last_seen_at": null,
-      "deleted": false
+      "deleted": false,
+      "content": "ELIE is a tiny Lucy-inspired reference skeleton, not Lucy herself.",
+      "type": "general",
+      "tags": [
+        "elie",
+        "general",
+        "herself",
+        "inspired",
+        "lucy",
+        "not",
+        "reference",
+        "skeleton"
+      ],
+      "importance": 3,
+      "status": "active"
     },
     {
       "id": "mem_0004",
@@ -46,7 +88,21 @@
       "created_at": "2026-06-05T00:00:00+00:00",
       "updated_at": "2026-06-05T00:00:00+00:00",
       "last_seen_at": null,
-      "deleted": false
+      "deleted": false,
+      "content": "Recovered ELIE memory references Lucy V0.1 Checkpoint 023 architecture style.",
+      "type": "general",
+      "tags": [
+        "023",
+        "architecture",
+        "checkpoint",
+        "elie",
+        "general",
+        "lucy",
+        "memory",
+        "recovered"
+      ],
+      "importance": 3,
+      "status": "active"
     },
     {
       "id": "mem_0005",
@@ -56,6 +112,185 @@
       "source": "user",
       "created_at": "2026-06-05T23:54:36.251593+00:00",
       "updated_at": "2026-06-05T23:54:36.251620+00:00",
+      "last_seen_at": null,
+      "deleted": false,
+      "content": "Lucy has permanent local memory and talking style preferences.",
+      "type": "general",
+      "tags": [
+        "and",
+        "general",
+        "has",
+        "local",
+        "lucy",
+        "memory",
+        "permanent",
+        "preferences"
+      ],
+      "importance": 3,
+      "status": "active"
+    },
+    {
+      "id": "mem_0006",
+      "type": "long_term_goal",
+      "fact": "that my primary goal is making Lucy a real adaptive assistant",
+      "content": "that my primary goal is making Lucy a real adaptive assistant",
+      "tags": [
+        "adaptive",
+        "assistant",
+        "goal",
+        "long_term_goal",
+        "lucy",
+        "making",
+        "primary",
+        "real"
+      ],
+      "importance": 3,
+      "normalized": "that my primary goal is making lucy a real adaptive assistant",
+      "category": "long_term_goal",
+      "source": "user",
+      "status": "active",
+      "created_at": "2026-10-27T23:32:49.331172+00:00",
+      "updated_at": "2026-10-27T23:32:49.331182+00:00",
+      "last_seen_at": null,
+      "deleted": false
+    },
+    {
+      "id": "mem_0007",
+      "type": "technical_setup",
+      "fact": "My main stack is Python and FastAPI for digital operations",
+      "content": "My main stack is Python and FastAPI for digital operations",
+      "tags": [
+        "and",
+        "digital",
+        "fastapi",
+        "for",
+        "main",
+        "operations",
+        "python",
+        "technical_setup"
+      ],
+      "importance": 3,
+      "normalized": "my main stack is python and fastapi for digital operations",
+      "category": "technical_setup",
+      "source": "conversation",
+      "status": "active",
+      "created_at": "2026-10-27T23:32:55.701569+00:00",
+      "updated_at": "2026-10-27T23:32:56.142520+00:00",
+      "last_seen_at": "2026-10-27T23:32:56.142537+00:00",
+      "deleted": false
+    },
+    {
+      "id": "mem_0008",
+      "type": "general",
+      "fact": "my primary focus is zero hallucinations",
+      "content": "my primary focus is zero hallucinations",
+      "tags": [
+        "focus",
+        "general",
+        "hallucinations",
+        "primary",
+        "zero"
+      ],
+      "importance": 3,
+      "normalized": "my primary focus is zero hallucinations",
+      "category": "general",
+      "source": "user",
+      "status": "active",
+      "created_at": "2026-10-28T09:19:23.137347+00:00",
+      "updated_at": "2026-10-28T10:06:47.635414+00:00",
+      "last_seen_at": "2026-10-28T10:06:47.635424+00:00",
+      "deleted": false
+    },
+    {
+      "id": "mem_0009",
+      "type": "technical_setup",
+      "fact": "that my main stack is Python and Flask.",
+      "content": "that my main stack is Python and Flask.",
+      "tags": [
+        "and",
+        "flask",
+        "main",
+        "python",
+        "stack",
+        "technical_setup",
+        "that"
+      ],
+      "importance": 3,
+      "normalized": "that my main stack is python and flask.",
+      "category": "technical_setup",
+      "source": "user",
+      "status": "active",
+      "created_at": "2026-10-28T09:19:37.409227+00:00",
+      "updated_at": "2026-10-28T10:07:01.916638+00:00",
+      "last_seen_at": "2026-10-28T10:07:01.916650+00:00",
+      "deleted": false
+    },
+    {
+      "id": "mem_0010",
+      "type": "general",
+      "fact": "that my primary focus is Prototype Drift.",
+      "content": "that my primary focus is Prototype Drift.",
+      "tags": [
+        "drift",
+        "focus",
+        "general",
+        "primary",
+        "prototype",
+        "that"
+      ],
+      "importance": 3,
+      "normalized": "that my primary focus is prototype drift.",
+      "category": "general",
+      "source": "user",
+      "status": "active",
+      "created_at": "2026-10-28T10:10:51.005972+00:00",
+      "updated_at": "2026-10-28T10:10:51.005982+00:00",
+      "last_seen_at": null,
+      "deleted": false
+    },
+    {
+      "id": "mem_0011",
+      "type": "general",
+      "fact": "that my primary focus is Lucy Sovereign Terminal.",
+      "content": "that my primary focus is Lucy Sovereign Terminal.",
+      "tags": [
+        "focus",
+        "general",
+        "lucy",
+        "primary",
+        "sovereign",
+        "terminal",
+        "that"
+      ],
+      "importance": 3,
+      "normalized": "that my primary focus is lucy sovereign terminal.",
+      "category": "general",
+      "source": "user",
+      "status": "active",
+      "created_at": "2026-10-28T10:10:51.048168+00:00",
+      "updated_at": "2026-10-28T10:10:51.048177+00:00",
+      "last_seen_at": null,
+      "deleted": false
+    },
+    {
+      "id": "mem_0012",
+      "type": "general",
+      "fact": "that my favorite editor is Neovim.",
+      "content": "that my favorite editor is Neovim.",
+      "tags": [
+        "editor",
+        "favorite",
+        "general",
+        "neovim",
+        "that"
+      ],
+      "importance": 3,
+      "normalized": "that my favorite editor is neovim.",
+      "category": "general",
+      "source": "user",
+      "status": "active",
+      "created_at": "2026-10-28T10:10:59.625848+00:00",
+      "updated_at": "2026-10-28T10:10:59.625856+00:00",
       "last_seen_at": null,
       "deleted": false
     }
